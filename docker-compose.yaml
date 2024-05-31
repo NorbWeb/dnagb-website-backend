@@ -1,0 +1,20 @@
+version: '3'
+services:
+  db:
+    image: kartoza/postgis:15-3.3
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_MULTIPLE_EXTENSIONS: 'postgis'
+    ports:
+      - 5432:5432
+    volumes:
+      - ./cms/db-files:/db-files
+
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - 5401:8080
