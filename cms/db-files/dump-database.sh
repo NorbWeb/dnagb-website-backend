@@ -43,6 +43,7 @@ appdatatables=(
 
 userdatatables=(
    	events
+	settings
 )
 
 for i in ${!appdatatables[@]}; do
