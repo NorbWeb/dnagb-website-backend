@@ -64,10 +64,57 @@ ALTER SEQUENCE public.events_id_seq OWNED BY public.events.id;
 
 
 --
+-- Name: settings; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.settings (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    user_created uuid,
+    date_created timestamp with time zone,
+    user_updated uuid,
+    date_updated timestamp with time zone,
+    title_short character varying(255),
+    title_long character varying(255)
+);
+
+
+ALTER TABLE public.settings OWNER TO nmadauss;
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.settings_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.settings_id_seq OWNER TO nmadauss;
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.settings_id_seq OWNED BY public.settings.id;
+
+
+--
 -- Name: events id; Type: DEFAULT; Schema: public; Owner: nmadauss
 --
 
 ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.events_id_seq'::regclass);
+
+
+--
+-- Name: settings id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.settings ALTER COLUMN id SET DEFAULT nextval('public.settings_id_seq'::regclass);
 
 
 --
@@ -76,6 +123,14 @@ ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.event
 
 ALTER TABLE ONLY public.events
     ADD CONSTRAINT events_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: settings settings_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.settings
+    ADD CONSTRAINT settings_pkey PRIMARY KEY (id);
 
 
 --
@@ -92,6 +147,22 @@ ALTER TABLE ONLY public.events
 
 ALTER TABLE ONLY public.events
     ADD CONSTRAINT events_user_updated_foreign FOREIGN KEY (user_updated) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: settings settings_user_created_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.settings
+    ADD CONSTRAINT settings_user_created_foreign FOREIGN KEY (user_created) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: settings settings_user_updated_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.settings
+    ADD CONSTRAINT settings_user_updated_foreign FOREIGN KEY (user_updated) REFERENCES public.directus_users(id);
 
 
 --

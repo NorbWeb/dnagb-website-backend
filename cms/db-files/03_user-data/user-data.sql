@@ -24,10 +24,24 @@ INSERT INTO public.events (id, status, sort, user_created, date_created, user_up
 
 
 --
+-- Data for Name: settings; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.settings (id, status, user_created, date_created, user_updated, date_updated, title_short, title_long) VALUES (1, 'draft', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-11 06:59:08.077+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-11 07:35:58.513+00', 'DNagB', 'Deutscher Naginata Bund e.V.');
+
+
+--
 -- Name: events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
 SELECT pg_catalog.setval('public.events_id_seq', 1, true);
+
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.settings_id_seq', 1, true);
 
 
 --
