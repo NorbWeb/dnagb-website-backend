@@ -44,6 +44,11 @@ appdatatables=(
 userdatatables=(
    	events
 	settings
+	landing_page
+	up_to_date
+	imprint
+	privacy
+	contact
 )
 
 for i in ${!appdatatables[@]}; do
