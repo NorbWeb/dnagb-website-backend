@@ -75,7 +75,13 @@ CREATE TABLE public.settings (
     user_updated uuid,
     date_updated timestamp with time zone,
     title_short character varying(255),
-    title_long character varying(255)
+    title_long_1 character varying(255),
+    title_long_2 character varying(255) DEFAULT NULL::character varying,
+    "primary" character varying(255),
+    secondary character varying(255),
+    white character varying(255),
+    black character varying(255),
+    grey character varying(255)
 );
 
 
