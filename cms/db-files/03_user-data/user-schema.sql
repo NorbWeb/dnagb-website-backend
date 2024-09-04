@@ -71,10 +71,14 @@ CREATE TABLE public.events (
     date_created timestamp with time zone,
     user_updated uuid,
     date_updated timestamp with time zone,
-    name character varying(255),
     description text,
     date_start timestamp without time zone,
-    date_end timestamp without time zone
+    date_end timestamp without time zone,
+    location_name character varying(255),
+    title character varying(255) DEFAULT NULL::character varying,
+    address character varying(255),
+    announcement character varying(255),
+    type json
 );
 
 
