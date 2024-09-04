@@ -76,9 +76,12 @@ CREATE TABLE public.events (
     date_end timestamp without time zone,
     location_name character varying(255),
     title character varying(255) DEFAULT NULL::character varying,
-    address character varying(255),
     announcement character varying(255),
-    type json
+    type json,
+    city character varying(255) DEFAULT NULL::character varying,
+    street character varying(255) DEFAULT NULL::character varying,
+    number character varying(255) DEFAULT NULL::character varying,
+    postal_code character varying(255) DEFAULT NULL::character varying
 );
 
 
