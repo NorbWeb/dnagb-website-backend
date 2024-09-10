@@ -44,8 +44,8 @@ appdatatables=(
 userdatatables=(
    	events
 	settings
-	landing_page
-	up_to_date
+	association_text
+	board_speaker
 	imprint
 	privacy
 	contact

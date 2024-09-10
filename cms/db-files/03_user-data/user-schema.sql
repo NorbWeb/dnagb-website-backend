@@ -21,6 +21,79 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: association_text; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.association_text (
+    id integer NOT NULL,
+    who_we_are text,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL
+);
+
+
+ALTER TABLE public.association_text OWNER TO nmadauss;
+
+--
+-- Name: association_text_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.association_text_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.association_text_id_seq OWNER TO nmadauss;
+
+--
+-- Name: association_text_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.association_text_id_seq OWNED BY public.association_text.id;
+
+
+--
+-- Name: board_speaker; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.board_speaker (
+    id integer NOT NULL,
+    image uuid,
+    name character varying(255),
+    "position" character varying(255),
+    designation character varying(255) DEFAULT NULL::character varying,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL
+);
+
+
+ALTER TABLE public.board_speaker OWNER TO nmadauss;
+
+--
+-- Name: board_speaker_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.board_speaker_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.board_speaker_id_seq OWNER TO nmadauss;
+
+--
+-- Name: board_speaker_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.board_speaker_id_seq OWNED BY public.board_speaker.id;
+
+
+--
 -- Name: contact; Type: TABLE; Schema: public; Owner: nmadauss
 --
 
@@ -31,7 +104,7 @@ CREATE TABLE public.contact (
     date_created timestamp with time zone,
     user_updated uuid,
     date_updated timestamp with time zone,
-    title character varying(255) DEFAULT 'contact'::character varying
+    contact_text text
 );
 
 
@@ -120,7 +193,7 @@ CREATE TABLE public.imprint (
     date_created timestamp with time zone,
     user_updated uuid,
     date_updated timestamp with time zone,
-    title character varying(255) DEFAULT 'imprint'::character varying
+    imprint_text text
 );
 
 
@@ -149,46 +222,6 @@ ALTER SEQUENCE public.imprint_id_seq OWNED BY public.imprint.id;
 
 
 --
--- Name: landing_page; Type: TABLE; Schema: public; Owner: nmadauss
---
-
-CREATE TABLE public.landing_page (
-    id integer NOT NULL,
-    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
-    sort integer,
-    user_created uuid,
-    date_created timestamp with time zone,
-    user_updated uuid,
-    date_updated timestamp with time zone,
-    title character varying(255) DEFAULT 'landing page'::character varying
-);
-
-
-ALTER TABLE public.landing_page OWNER TO nmadauss;
-
---
--- Name: landing_page_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
---
-
-CREATE SEQUENCE public.landing_page_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.landing_page_id_seq OWNER TO nmadauss;
-
---
--- Name: landing_page_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
---
-
-ALTER SEQUENCE public.landing_page_id_seq OWNED BY public.landing_page.id;
-
-
---
 -- Name: privacy; Type: TABLE; Schema: public; Owner: nmadauss
 --
 
@@ -199,7 +232,7 @@ CREATE TABLE public.privacy (
     date_created timestamp with time zone,
     user_updated uuid,
     date_updated timestamp with time zone,
-    title character varying(255) DEFAULT 'privacy'::character varying
+    privacy_text text
 );
 
 
@@ -273,43 +306,17 @@ ALTER SEQUENCE public.settings_id_seq OWNED BY public.settings.id;
 
 
 --
--- Name: up_to_date; Type: TABLE; Schema: public; Owner: nmadauss
+-- Name: association_text id; Type: DEFAULT; Schema: public; Owner: nmadauss
 --
 
-CREATE TABLE public.up_to_date (
-    id integer NOT NULL,
-    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
-    sort integer,
-    user_created uuid,
-    date_created timestamp with time zone,
-    user_updated uuid,
-    date_updated timestamp with time zone,
-    title character varying(255) DEFAULT 'up to date'::character varying
-);
+ALTER TABLE ONLY public.association_text ALTER COLUMN id SET DEFAULT nextval('public.association_text_id_seq'::regclass);
 
-
-ALTER TABLE public.up_to_date OWNER TO nmadauss;
 
 --
--- Name: up_to_date_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+-- Name: board_speaker id; Type: DEFAULT; Schema: public; Owner: nmadauss
 --
 
-CREATE SEQUENCE public.up_to_date_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.up_to_date_id_seq OWNER TO nmadauss;
-
---
--- Name: up_to_date_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
---
-
-ALTER SEQUENCE public.up_to_date_id_seq OWNED BY public.up_to_date.id;
+ALTER TABLE ONLY public.board_speaker ALTER COLUMN id SET DEFAULT nextval('public.board_speaker_id_seq'::regclass);
 
 
 --
@@ -334,13 +341,6 @@ ALTER TABLE ONLY public.imprint ALTER COLUMN id SET DEFAULT nextval('public.impr
 
 
 --
--- Name: landing_page id; Type: DEFAULT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.landing_page ALTER COLUMN id SET DEFAULT nextval('public.landing_page_id_seq'::regclass);
-
-
---
 -- Name: privacy id; Type: DEFAULT; Schema: public; Owner: nmadauss
 --
 
@@ -355,10 +355,19 @@ ALTER TABLE ONLY public.settings ALTER COLUMN id SET DEFAULT nextval('public.set
 
 
 --
--- Name: up_to_date id; Type: DEFAULT; Schema: public; Owner: nmadauss
+-- Name: association_text association_text_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
 --
 
-ALTER TABLE ONLY public.up_to_date ALTER COLUMN id SET DEFAULT nextval('public.up_to_date_id_seq'::regclass);
+ALTER TABLE ONLY public.association_text
+    ADD CONSTRAINT association_text_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: board_speaker board_speaker_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.board_speaker
+    ADD CONSTRAINT board_speaker_pkey PRIMARY KEY (id);
 
 
 --
@@ -386,14 +395,6 @@ ALTER TABLE ONLY public.imprint
 
 
 --
--- Name: landing_page landing_page_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.landing_page
-    ADD CONSTRAINT landing_page_pkey PRIMARY KEY (id);
-
-
---
 -- Name: privacy privacy_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
 --
 
@@ -410,11 +411,11 @@ ALTER TABLE ONLY public.settings
 
 
 --
--- Name: up_to_date up_to_date_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+-- Name: board_speaker board_speaker_image_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
 --
 
-ALTER TABLE ONLY public.up_to_date
-    ADD CONSTRAINT up_to_date_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.board_speaker
+    ADD CONSTRAINT board_speaker_image_foreign FOREIGN KEY (image) REFERENCES public.directus_files(id) ON DELETE SET DEFAULT;
 
 
 --
@@ -466,22 +467,6 @@ ALTER TABLE ONLY public.imprint
 
 
 --
--- Name: landing_page landing_page_user_created_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.landing_page
-    ADD CONSTRAINT landing_page_user_created_foreign FOREIGN KEY (user_created) REFERENCES public.directus_users(id);
-
-
---
--- Name: landing_page landing_page_user_updated_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.landing_page
-    ADD CONSTRAINT landing_page_user_updated_foreign FOREIGN KEY (user_updated) REFERENCES public.directus_users(id);
-
-
---
 -- Name: privacy privacy_user_created_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
 --
 
@@ -511,22 +496,6 @@ ALTER TABLE ONLY public.settings
 
 ALTER TABLE ONLY public.settings
     ADD CONSTRAINT settings_user_updated_foreign FOREIGN KEY (user_updated) REFERENCES public.directus_users(id);
-
-
---
--- Name: up_to_date up_to_date_user_created_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.up_to_date
-    ADD CONSTRAINT up_to_date_user_created_foreign FOREIGN KEY (user_created) REFERENCES public.directus_users(id);
-
-
---
--- Name: up_to_date up_to_date_user_updated_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.up_to_date
-    ADD CONSTRAINT up_to_date_user_updated_foreign FOREIGN KEY (user_updated) REFERENCES public.directus_users(id);
 
 
 --

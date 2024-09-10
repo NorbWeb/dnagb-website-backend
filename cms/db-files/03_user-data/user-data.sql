@@ -17,10 +17,35 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
+-- Data for Name: association_text; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.association_text (id, who_we_are, status) VALUES (2, '<h2>Deutscher Naginata Bund</h2>
+<p>Der Deutsche Naginata Bund hat seit seiner Gr&uuml;ndung im Jahr 2003 eine best&auml;ndige Entwicklung erlebt. Bereits 2005 nahm erstmals ein deutsches Team im Zuge der Aufnahme in den Europ&auml;ischen Naginata-Verband an einer Naginata-Europameisterschaft teil und das mit Erfolg: Ein dritter Platz in der Kategorie Engi ging damals nach Deutschland. Und nur kurz darauf starteten auch schon die ersten DNagB-K&auml;mpfer, jetzt frisch Mitglieder im Internationalen Naginata-Verband,&nbsp; bei der 4. Weltmeisterschaft im Jahr 2007. Seitdem sind die deutschen Naginataka bei internationalen Turnieren nicht mehr wegzudenken.<br>Bei jeder folgenden Naginata-WM und Naginata-EM waren auch DNagB-Mitglieder als Nationalmannschaft auf den Kampffl&auml;chen und behaupteten sich zusehends beim Kampf um die begehrten Siegertreppenpl&auml;tze. Nach vielen "Auslandseins&auml;tzen" war der DNagB schlie&szlig;lich 2010 erstmals selbst Gastgeber einer EM. In Mainz-Laubenheim kamen &uuml;ber 100 Teilnehmer aus ganz Europa f&uuml;r ein Wochenende voller Naginata zusammen. Anschlie&szlig;end ging es f&uuml;r die Mannschaft des DNagB im Jahr 2011 nach Japan zur 5. Naginata-Weltmeisterschaft.</p>
+<ul>
+<li>Unter der Rubrik "<a href="https://dnagb.de/events-erfolge/">Erfolge</a>" finden Sie eine Zusammenstellung unserer bisherigen Erfolge.</li>
+</ul>
+<p>Auf nationaler Ebene veranstaltet der DNagB seit 2004 jedes Jahr die Deutsche Meisterschaft, bei der inzwischen regelm&auml;&szlig;ig Mitglieder aus ganz Deutschland gegeneinander antreten. Daneben kann man seit 2008 Ky&ucirc;-Pr&uuml;fungen nach der DNagB-Pr&uuml;fungsordnung machen. Diese werden in der Regel mit Lehrg&auml;ngen gekoppelt, f&uuml;r die der DNagB hochgraduierte Lehrer aus dem europ&auml;ischen Ausland einl&auml;dt. Und immer wieder hatten wir in den letzten Jahren auch die Freude, japanische Naginata-G&auml;ste in Deutschland begr&uuml;&szlig;en zu d&uuml;rfen.</p>', 'published');
+
+
+--
+-- Data for Name: board_speaker; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.board_speaker (id, image, name, "position", designation, status) VALUES (1, '01320837-1f3e-42a6-9432-5e4ffe65532c', 'Ines Klose (3. Dan)', 'president', 'Präsidentin', 'draft');
+INSERT INTO public.board_speaker (id, image, name, "position", designation, status) VALUES (2, '6f552699-8d86-45a2-a550-c499a788c80a', 'Marie-Luise Göbel (3. Dan)', 'vice', 'Vizepräsidentin', 'draft');
+INSERT INTO public.board_speaker (id, image, name, "position", designation, status) VALUES (3, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Nicolas Adalin Braun', 'treasurer', 'Kassenwart', 'draft');
+INSERT INTO public.board_speaker (id, image, name, "position", designation, status) VALUES (4, 'e5ab9d1f-c129-4ae9-aa66-c688b64dad0f', 'Julian Parrino (2. Dan)', 'speaker', 'Referent für Prüfungswesen', 'draft');
+INSERT INTO public.board_speaker (id, image, name, "position", designation, status) VALUES (5, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Thomas Gerstman', 'speaker', 'Referent für Öffentlichkeitsarbeit', 'draft');
+INSERT INTO public.board_speaker (id, image, name, "position", designation, status) VALUES (6, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Jonas Stock', 'speaker', 'Referent für Jugend', 'draft');
+INSERT INTO public.board_speaker (id, image, name, "position", designation, status) VALUES (7, 'c880bb79-61b4-4cf0-b3f7-d6c134b3da15', 'Cornelia Izquierdo Barea (2. Dan)', 'speaker', 'Vorsitzende des Rechtsausschusses', 'draft');
+
+
+--
 -- Data for Name: contact; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
-INSERT INTO public.contact (id, status, user_created, date_created, user_updated, date_updated, title) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:28.38+00', NULL, NULL, 'contact');
+INSERT INTO public.contact (id, status, user_created, date_created, user_updated, date_updated, contact_text) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:28.38+00', NULL, NULL, NULL);
 
 
 --
@@ -31,28 +56,21 @@ INSERT INTO public.events (id, status, sort, user_created, date_created, user_up
 INSERT INTO public.events (id, status, sort, user_created, date_created, user_updated, date_updated, description, date_start, date_end, location_name, title, announcement, type, city, street, number, postal_code) VALUES (2, 'published', NULL, 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-04 10:52:12.944+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-04 11:36:59.182+00', '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>', '2024-10-25 12:00:00', '2024-10-27 16:00:00', 'Sporthalle SC Fantasie', 'Seminar in XY', NULL, '["contest"]', 'Fantasiestadt', 'Beispielstraße', '1', '12345');
 INSERT INTO public.events (id, status, sort, user_created, date_created, user_updated, date_updated, description, date_start, date_end, location_name, title, announcement, type, city, street, number, postal_code) VALUES (4, 'published', NULL, 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-04 11:02:39.552+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-04 11:37:19.056+00', '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>', '2024-11-19 09:00:00', NULL, 'Testgelände 1', 'Testeintrag 1', NULL, '["contest","seminar","examination"]', 'Teststadt 1', 'Teststraß', '1', '67445');
 INSERT INTO public.events (id, status, sort, user_created, date_created, user_updated, date_updated, description, date_start, date_end, location_name, title, announcement, type, city, street, number, postal_code) VALUES (6, 'published', NULL, 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-04 11:04:19.672+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-04 11:37:40.391+00', '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>', '2024-10-31 09:00:00', NULL, 'Offene Wiese', 'Testereignis 3', NULL, '["contest","examination"]', 'Wiesenstadt', 'Wiesenplatz', '15', '75836');
-INSERT INTO public.events (id, status, sort, user_created, date_created, user_updated, date_updated, description, date_start, date_end, location_name, title, announcement, type, city, street, number, postal_code) VALUES (3, 'published', NULL, 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-04 11:01:20.678+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-04 11:38:23.921+00', '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>', '2024-07-15 12:00:00', '2024-07-17 12:00:00', 'Sporthalle SC Meisterschaft', 'Deutsche Meisterschaft', NULL, '["contest","examination"]', 'Meisterstadt', 'Meisterstraße', '8364', '93875');
+INSERT INTO public.events (id, status, sort, user_created, date_created, user_updated, date_updated, description, date_start, date_end, location_name, title, announcement, type, city, street, number, postal_code) VALUES (3, 'published', NULL, 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-04 11:01:20.678+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-09 11:22:34.48+00', '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>', '2024-09-28 12:00:00', '2024-09-30 12:00:00', 'Sporthalle SC Meisterschaft', 'Deutsche Meisterschaft', NULL, '["contest","examination"]', 'Meisterstadt', 'Meisterstraße', '8364', '93875');
 
 
 --
 -- Data for Name: imprint; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
-INSERT INTO public.imprint (id, status, user_created, date_created, user_updated, date_updated, title) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:33.936+00', NULL, NULL, 'imprint');
-
-
---
--- Data for Name: landing_page; Type: TABLE DATA; Schema: public; Owner: nmadauss
---
-
-INSERT INTO public.landing_page (id, status, sort, user_created, date_created, user_updated, date_updated, title) VALUES (1, 'published', NULL, 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:47:55.241+00', NULL, NULL, 'landing page');
+INSERT INTO public.imprint (id, status, user_created, date_created, user_updated, date_updated, imprint_text) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:33.936+00', NULL, NULL, NULL);
 
 
 --
 -- Data for Name: privacy; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
-INSERT INTO public.privacy (id, status, user_created, date_created, user_updated, date_updated, title) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:31.106+00', NULL, NULL, 'privacy');
+INSERT INTO public.privacy (id, status, user_created, date_created, user_updated, date_updated, privacy_text) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:31.106+00', NULL, NULL, NULL);
 
 
 --
@@ -63,10 +81,17 @@ INSERT INTO public.settings (id, status, user_created, date_created, user_update
 
 
 --
--- Data for Name: up_to_date; Type: TABLE DATA; Schema: public; Owner: nmadauss
+-- Name: association_text_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
-INSERT INTO public.up_to_date (id, status, sort, user_created, date_created, user_updated, date_updated, title) VALUES (1, 'published', NULL, 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:36.805+00', NULL, NULL, 'up to date');
+SELECT pg_catalog.setval('public.association_text_id_seq', 2, true);
+
+
+--
+-- Name: board_speaker_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.board_speaker_id_seq', 7, true);
 
 
 --
@@ -91,13 +116,6 @@ SELECT pg_catalog.setval('public.imprint_id_seq', 1, true);
 
 
 --
--- Name: landing_page_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
---
-
-SELECT pg_catalog.setval('public.landing_page_id_seq', 1, true);
-
-
---
 -- Name: privacy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
@@ -109,13 +127,6 @@ SELECT pg_catalog.setval('public.privacy_id_seq', 1, true);
 --
 
 SELECT pg_catalog.setval('public.settings_id_seq', 1, true);
-
-
---
--- Name: up_to_date_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
---
-
-SELECT pg_catalog.setval('public.up_to_date_id_seq', 1, true);
 
 
 --
