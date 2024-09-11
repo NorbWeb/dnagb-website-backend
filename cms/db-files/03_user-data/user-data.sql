@@ -23,7 +23,7 @@ SET row_security = off;
 INSERT INTO public.association_text (id, who_we_are, status) VALUES (2, '<h2>Deutscher Naginata Bund</h2>
 <p>Der Deutsche Naginata Bund hat seit seiner Gr&uuml;ndung im Jahr 2003 eine best&auml;ndige Entwicklung erlebt. Bereits 2005 nahm erstmals ein deutsches Team im Zuge der Aufnahme in den Europ&auml;ischen Naginata-Verband an einer Naginata-Europameisterschaft teil und das mit Erfolg: Ein dritter Platz in der Kategorie Engi ging damals nach Deutschland. Und nur kurz darauf starteten auch schon die ersten DNagB-K&auml;mpfer, jetzt frisch Mitglieder im Internationalen Naginata-Verband,&nbsp; bei der 4. Weltmeisterschaft im Jahr 2007. Seitdem sind die deutschen Naginataka bei internationalen Turnieren nicht mehr wegzudenken.<br>Bei jeder folgenden Naginata-WM und Naginata-EM waren auch DNagB-Mitglieder als Nationalmannschaft auf den Kampffl&auml;chen und behaupteten sich zusehends beim Kampf um die begehrten Siegertreppenpl&auml;tze. Nach vielen "Auslandseins&auml;tzen" war der DNagB schlie&szlig;lich 2010 erstmals selbst Gastgeber einer EM. In Mainz-Laubenheim kamen &uuml;ber 100 Teilnehmer aus ganz Europa f&uuml;r ein Wochenende voller Naginata zusammen. Anschlie&szlig;end ging es f&uuml;r die Mannschaft des DNagB im Jahr 2011 nach Japan zur 5. Naginata-Weltmeisterschaft.</p>
 <ul>
-<li>Unter der Rubrik "<a href="https://dnagb.de/events-erfolge/">Erfolge</a>" finden Sie eine Zusammenstellung unserer bisherigen Erfolge.</li>
+<li>Unter der Rubrik "Erfolge" finden Sie eine Zusammenstellung unserer bisherigen Erfolge.</li>
 </ul>
 <p>Auf nationaler Ebene veranstaltet der DNagB seit 2004 jedes Jahr die Deutsche Meisterschaft, bei der inzwischen regelm&auml;&szlig;ig Mitglieder aus ganz Deutschland gegeneinander antreten. Daneben kann man seit 2008 Ky&ucirc;-Pr&uuml;fungen nach der DNagB-Pr&uuml;fungsordnung machen. Diese werden in der Regel mit Lehrg&auml;ngen gekoppelt, f&uuml;r die der DNagB hochgraduierte Lehrer aus dem europ&auml;ischen Ausland einl&auml;dt. Und immer wieder hatten wir in den letzten Jahren auch die Freude, japanische Naginata-G&auml;ste in Deutschland begr&uuml;&szlig;en zu d&uuml;rfen.</p>', 'published');
 
@@ -32,13 +32,13 @@ INSERT INTO public.association_text (id, who_we_are, status) VALUES (2, '<h2>Deu
 -- Data for Name: board_speaker; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
-INSERT INTO public.board_speaker (id, image, name, "position", designation, status) VALUES (1, '01320837-1f3e-42a6-9432-5e4ffe65532c', 'Ines Klose (3. Dan)', 'president', 'Präsidentin', 'draft');
-INSERT INTO public.board_speaker (id, image, name, "position", designation, status) VALUES (2, '6f552699-8d86-45a2-a550-c499a788c80a', 'Marie-Luise Göbel (3. Dan)', 'vice', 'Vizepräsidentin', 'draft');
-INSERT INTO public.board_speaker (id, image, name, "position", designation, status) VALUES (3, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Nicolas Adalin Braun', 'treasurer', 'Kassenwart', 'draft');
-INSERT INTO public.board_speaker (id, image, name, "position", designation, status) VALUES (4, 'e5ab9d1f-c129-4ae9-aa66-c688b64dad0f', 'Julian Parrino (2. Dan)', 'speaker', 'Referent für Prüfungswesen', 'draft');
-INSERT INTO public.board_speaker (id, image, name, "position", designation, status) VALUES (5, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Thomas Gerstman', 'speaker', 'Referent für Öffentlichkeitsarbeit', 'draft');
-INSERT INTO public.board_speaker (id, image, name, "position", designation, status) VALUES (6, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Jonas Stock', 'speaker', 'Referent für Jugend', 'draft');
-INSERT INTO public.board_speaker (id, image, name, "position", designation, status) VALUES (7, 'c880bb79-61b4-4cf0-b3f7-d6c134b3da15', 'Cornelia Izquierdo Barea (2. Dan)', 'speaker', 'Vorsitzende des Rechtsausschusses', 'draft');
+INSERT INTO public.board_speaker (id, image, name, status, role, "position") VALUES (1, '01320837-1f3e-42a6-9432-5e4ffe65532c', 'Ines Klose (3. Dan)', 'draft', 'president', 'Präsidentin');
+INSERT INTO public.board_speaker (id, image, name, status, role, "position") VALUES (2, '6f552699-8d86-45a2-a550-c499a788c80a', 'Marie-Luise Göbel (3. Dan)', 'draft', 'vice', 'Vizepräsidentin');
+INSERT INTO public.board_speaker (id, image, name, status, role, "position") VALUES (3, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Nicolas Adalin Braun', 'draft', 'treasurer', 'Kassenwart');
+INSERT INTO public.board_speaker (id, image, name, status, role, "position") VALUES (4, 'e5ab9d1f-c129-4ae9-aa66-c688b64dad0f', 'Julian Parrino (2. Dan)', 'draft', 'speaker', 'Referent für Prüfwesen');
+INSERT INTO public.board_speaker (id, image, name, status, role, "position") VALUES (5, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Thomas Gerstman', 'draft', 'speaker', 'Referent für Öffentlichkeitsarbeit');
+INSERT INTO public.board_speaker (id, image, name, status, role, "position") VALUES (6, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Jonas Stock', 'draft', 'speaker', 'Referent für Jugend');
+INSERT INTO public.board_speaker (id, image, name, status, role, "position") VALUES (7, 'c880bb79-61b4-4cf0-b3f7-d6c134b3da15', 'Cornelia Izquierdo Barea (2. Dan)', 'draft', 'speaker', 'Vorsitzende des Rechtsausschusses');
 
 
 --

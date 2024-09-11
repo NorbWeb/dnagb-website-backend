@@ -63,9 +63,9 @@ CREATE TABLE public.board_speaker (
     id integer NOT NULL,
     image uuid,
     name character varying(255),
-    "position" character varying(255),
-    designation character varying(255) DEFAULT NULL::character varying,
-    status character varying(255) DEFAULT 'draft'::character varying NOT NULL
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    role character varying(255) DEFAULT NULL::character varying,
+    "position" character varying(255) DEFAULT NULL::character varying
 );
 
 
