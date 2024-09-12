@@ -1146,6 +1146,7 @@ INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_
 INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_agent, collection, item, comment, origin) VALUES (1100, 'update', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-11 10:01:18.779+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'directus_fields', '96', NULL, 'http://localhost:8055');
 INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_agent, collection, item, comment, origin) VALUES (1101, 'update', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-11 10:01:18.786+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'directus_fields', '144', NULL, 'http://localhost:8055');
 INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_agent, collection, item, comment, origin) VALUES (1102, 'update', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-11 10:01:18.804+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'directus_fields', '92', NULL, 'http://localhost:8055');
+INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_agent, collection, item, comment, origin) VALUES (1172, 'create', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-12 11:34:15.974+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'directus_permissions', '15', NULL, 'http://localhost:8055');
 INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_agent, collection, item, comment, origin) VALUES (1034, 'create', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-11 09:03:22.155+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'directus_files', '40c65b93-b372-45cf-a7b1-22dbb11f9054', NULL, 'http://localhost:8055');
 INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_agent, collection, item, comment, origin) VALUES (1036, 'login', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-11 09:04:23.092+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'directus_users', 'e326740c-cf99-4290-a147-ce854be586f6', NULL, 'http://localhost:8055');
 INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_agent, collection, item, comment, origin) VALUES (1040, 'update', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-11 09:09:15.67+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'directus_collections', 'association_text', NULL, 'http://localhost:8055');
@@ -1200,7 +1201,7 @@ INSERT INTO public.directus_roles (id, name, icon, description, ip_access, enfor
 --
 
 INSERT INTO public.directus_users (id, first_name, last_name, email, password, location, title, description, tags, avatar, language, tfa_secret, status, role, token, last_access, last_page, provider, external_identifier, auth_data, email_notifications, appearance, theme_dark, theme_light, theme_light_overrides, theme_dark_overrides) VALUES ('39af99ff-aee9-489b-b40f-b8cf083decaa', 'Admin', 'User', 'admin@example.com', '$argon2id$v=19$m=65536,t=3,p=4$KB9Z2cx2c8xKCLSNizjGxw$uuShqcJgl4YL+3AvCmH6ViNnWNEcFTXbwki5zaXbE3w', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '4860547e-9b75-4c11-b6b0-bd1a50b80cfb', NULL, '2024-06-04 06:52:42.333+00', '/users/39af99ff-aee9-489b-b40f-b8cf083decaa', 'default', NULL, NULL, true, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.directus_users (id, first_name, last_name, email, password, location, title, description, tags, avatar, language, tfa_secret, status, role, token, last_access, last_page, provider, external_identifier, auth_data, email_notifications, appearance, theme_dark, theme_light, theme_light_overrides, theme_dark_overrides) VALUES ('e326740c-cf99-4290-a147-ce854be586f6', 'Norbert', 'Madauß', 'admin@dnagb.de', '$argon2id$v=19$m=65536,t=3,p=4$bh3FaYfbMfSvsGP7an/q9w$c5G22WMnPiwqqcodHswsG6szIoSuOeojyDIuzadGGZc', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '4860547e-9b75-4c11-b6b0-bd1a50b80cfb', NULL, '2024-09-12 11:22:40.935+00', '/content/dojos', 'default', NULL, NULL, true, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.directus_users (id, first_name, last_name, email, password, location, title, description, tags, avatar, language, tfa_secret, status, role, token, last_access, last_page, provider, external_identifier, auth_data, email_notifications, appearance, theme_dark, theme_light, theme_light_overrides, theme_dark_overrides) VALUES ('e326740c-cf99-4290-a147-ce854be586f6', 'Norbert', 'Madauß', 'admin@dnagb.de', '$argon2id$v=19$m=65536,t=3,p=4$bh3FaYfbMfSvsGP7an/q9w$c5G22WMnPiwqqcodHswsG6szIoSuOeojyDIuzadGGZc', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '4860547e-9b75-4c11-b6b0-bd1a50b80cfb', NULL, '2024-09-12 11:22:40.935+00', '/settings/roles/public', 'default', NULL, NULL, true, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -1443,6 +1444,7 @@ INSERT INTO public.directus_permissions (id, role, collection, action, permissio
 INSERT INTO public.directus_permissions (id, role, collection, action, permissions, validation, presets, fields) VALUES (12, NULL, 'association_text', 'read', '{}', '{}', NULL, '*');
 INSERT INTO public.directus_permissions (id, role, collection, action, permissions, validation, presets, fields) VALUES (13, NULL, 'directus_files', 'read', '{}', '{}', NULL, '*');
 INSERT INTO public.directus_permissions (id, role, collection, action, permissions, validation, presets, fields) VALUES (14, NULL, 'directus_folders', 'read', '{}', '{}', NULL, '*');
+INSERT INTO public.directus_permissions (id, role, collection, action, permissions, validation, presets, fields) VALUES (15, NULL, 'dojos', 'read', '{}', '{}', NULL, '*');
 
 
 --
@@ -2610,6 +2612,7 @@ INSERT INTO public.directus_revisions (id, activity, collection, item, data, del
 INSERT INTO public.directus_revisions (id, activity, collection, item, data, delta, parent, version) VALUES (1146, 1169, 'dojos', '2', '{"name":"PSV Mainz","status":"published","coordinates":{"coordinates":[8.265910365782759,50.00118484504736],"type":"Point"},"link":"https://www.psv-mainz.de/de/sportarten/naginata/","logo":"1c171e85-9040-4be1-9b31-88636e82932d"}', '{"name":"PSV Mainz","status":"published","coordinates":{"coordinates":[8.265910365782759,50.00118484504736],"type":"Point"},"link":"https://www.psv-mainz.de/de/sportarten/naginata/","logo":"1c171e85-9040-4be1-9b31-88636e82932d"}', NULL, NULL);
 INSERT INTO public.directus_revisions (id, activity, collection, item, data, delta, parent, version) VALUES (1147, 1170, 'directus_files', '554e360b-8cac-4e87-b614-98bf61810e0b', '{"id":"554e360b-8cac-4e87-b614-98bf61810e0b","storage":"local","filename_disk":"554e360b-8cac-4e87-b614-98bf61810e0b.jpg","filename_download":"Naginata Potsdam.jpg","title":"Naginata Potsdam","type":"image/jpeg","folder":"10188a0c-ee94-42f5-bb97-6c291849f678","uploaded_by":"e326740c-cf99-4290-a147-ce854be586f6","uploaded_on":"2024-09-12T11:22:13.552Z","modified_by":"e326740c-cf99-4290-a147-ce854be586f6","modified_on":"2024-09-12T11:26:59.233Z","charset":null,"filesize":"58699","width":819,"height":722,"duration":null,"embed":null,"description":null,"location":null,"tags":null,"metadata":{},"focal_point_x":null,"focal_point_y":null}', '{"storage":"local","filename_disk":"554e360b-8cac-4e87-b614-98bf61810e0b.jpg","filename_download":"Naginata Potsdam.jpg","title":"Naginata Potsdam","type":"image/jpeg","folder":"10188a0c-ee94-42f5-bb97-6c291849f678","description":null,"metadata":{},"modified_by":"e326740c-cf99-4290-a147-ce854be586f6","modified_on":"2024-09-12T11:26:59.233Z"}', NULL, NULL);
 INSERT INTO public.directus_revisions (id, activity, collection, item, data, delta, parent, version) VALUES (1148, 1171, 'directus_files', '554e360b-8cac-4e87-b614-98bf61810e0b', '{"id":"554e360b-8cac-4e87-b614-98bf61810e0b","storage":"local","filename_disk":"554e360b-8cac-4e87-b614-98bf61810e0b.jpg","filename_download":"Naginata Potsdam.jpg","title":"Naginata Potsdam","type":"image/jpeg","folder":"10188a0c-ee94-42f5-bb97-6c291849f678","uploaded_by":"e326740c-cf99-4290-a147-ce854be586f6","uploaded_on":"2024-09-12T11:22:13.552Z","modified_by":"e326740c-cf99-4290-a147-ce854be586f6","modified_on":"2024-09-12T11:26:59.258Z","charset":null,"filesize":"35864","width":409,"height":385,"duration":null,"embed":null,"description":null,"location":null,"tags":null,"metadata":{},"focal_point_x":null,"focal_point_y":null}', '{"modified_by":"e326740c-cf99-4290-a147-ce854be586f6","modified_on":"2024-09-12T11:26:59.258Z"}', NULL, NULL);
+INSERT INTO public.directus_revisions (id, activity, collection, item, data, delta, parent, version) VALUES (1149, 1172, 'directus_permissions', '15', '{"role":null,"collection":"dojos","action":"read","fields":["*"],"permissions":{},"validation":{}}', '{"role":null,"collection":"dojos","action":"read","fields":["*"],"permissions":{},"validation":{}}', NULL, NULL);
 
 
 --
@@ -2650,7 +2653,7 @@ INSERT INTO public.directus_settings (id, project_name, project_url, project_col
 -- Name: directus_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
-SELECT pg_catalog.setval('public.directus_activity_id_seq', 1171, true);
+SELECT pg_catalog.setval('public.directus_activity_id_seq', 1172, true);
 
 
 --
@@ -2671,7 +2674,7 @@ SELECT pg_catalog.setval('public.directus_notifications_id_seq', 1, false);
 -- Name: directus_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
-SELECT pg_catalog.setval('public.directus_permissions_id_seq', 14, true);
+SELECT pg_catalog.setval('public.directus_permissions_id_seq', 15, true);
 
 
 --
@@ -2692,7 +2695,7 @@ SELECT pg_catalog.setval('public.directus_relations_id_seq', 16, true);
 -- Name: directus_revisions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
-SELECT pg_catalog.setval('public.directus_revisions_id_seq', 1148, true);
+SELECT pg_catalog.setval('public.directus_revisions_id_seq', 1149, true);
 
 
 --
