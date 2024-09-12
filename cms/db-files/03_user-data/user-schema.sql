@@ -143,7 +143,9 @@ CREATE TABLE public.dojos (
     coordinates public.geometry(Point,4326),
     name character varying(255),
     logo uuid,
-    link character varying(255)
+    link character varying(255),
+    city character varying(255),
+    description text
 );
 
 
