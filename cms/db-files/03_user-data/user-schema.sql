@@ -133,6 +133,45 @@ ALTER SEQUENCE public.contact_id_seq OWNED BY public.contact.id;
 
 
 --
+-- Name: dojos; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.dojos (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    sort integer,
+    coordinates public.geometry(Point,4326),
+    name character varying(255),
+    logo uuid,
+    link character varying(255)
+);
+
+
+ALTER TABLE public.dojos OWNER TO nmadauss;
+
+--
+-- Name: dojos_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.dojos_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.dojos_id_seq OWNER TO nmadauss;
+
+--
+-- Name: dojos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.dojos_id_seq OWNED BY public.dojos.id;
+
+
+--
 -- Name: events; Type: TABLE; Schema: public; Owner: nmadauss
 --
 
@@ -327,6 +366,13 @@ ALTER TABLE ONLY public.contact ALTER COLUMN id SET DEFAULT nextval('public.cont
 
 
 --
+-- Name: dojos id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.dojos ALTER COLUMN id SET DEFAULT nextval('public.dojos_id_seq'::regclass);
+
+
+--
 -- Name: events id; Type: DEFAULT; Schema: public; Owner: nmadauss
 --
 
@@ -376,6 +422,14 @@ ALTER TABLE ONLY public.board_speaker
 
 ALTER TABLE ONLY public.contact
     ADD CONSTRAINT contact_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: dojos dojos_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.dojos
+    ADD CONSTRAINT dojos_pkey PRIMARY KEY (id);
 
 
 --
@@ -432,6 +486,14 @@ ALTER TABLE ONLY public.contact
 
 ALTER TABLE ONLY public.contact
     ADD CONSTRAINT contact_user_updated_foreign FOREIGN KEY (user_updated) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: dojos dojos_logo_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.dojos
+    ADD CONSTRAINT dojos_logo_foreign FOREIGN KEY (logo) REFERENCES public.directus_files(id) ON DELETE SET NULL;
 
 
 --

@@ -49,6 +49,14 @@ INSERT INTO public.contact (id, status, user_created, date_created, user_updated
 
 
 --
+-- Data for Name: dojos; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.dojos (id, status, sort, coordinates, name, logo, link) VALUES (1, 'published', NULL, '0101000020E61000005006B6D8D91E2A40108AE15157334A40', 'Bishamonten Naginata Kyoshitsu', '554e360b-8cac-4e87-b614-98bf61810e0b', 'https://naginatasport.de/');
+INSERT INTO public.dojos (id, status, sort, coordinates, name, logo, link) VALUES (2, 'published', NULL, '0101000020E6100000A068496725882040585D33D326004940', 'PSV Mainz', '1c171e85-9040-4be1-9b31-88636e82932d', 'https://www.psv-mainz.de/de/sportarten/naginata/');
+
+
+--
 -- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
@@ -99,6 +107,13 @@ SELECT pg_catalog.setval('public.board_speaker_id_seq', 7, true);
 --
 
 SELECT pg_catalog.setval('public.contact_id_seq', 1, true);
+
+
+--
+-- Name: dojos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.dojos_id_seq', 2, true);
 
 
 --
