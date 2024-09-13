@@ -32,13 +32,13 @@ INSERT INTO public.association_text (id, who_we_are, status) VALUES (2, '<h2>Deu
 -- Data for Name: board_speaker; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
-INSERT INTO public.board_speaker (id, image, name, status, role, "position") VALUES (1, '01320837-1f3e-42a6-9432-5e4ffe65532c', 'Ines Klose (3. Dan)', 'draft', 'president', 'Präsidentin');
-INSERT INTO public.board_speaker (id, image, name, status, role, "position") VALUES (2, '6f552699-8d86-45a2-a550-c499a788c80a', 'Marie-Luise Göbel (3. Dan)', 'draft', 'vice', 'Vizepräsidentin');
-INSERT INTO public.board_speaker (id, image, name, status, role, "position") VALUES (3, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Nicolas Adalin Braun', 'draft', 'treasurer', 'Kassenwart');
-INSERT INTO public.board_speaker (id, image, name, status, role, "position") VALUES (4, 'e5ab9d1f-c129-4ae9-aa66-c688b64dad0f', 'Julian Parrino (2. Dan)', 'draft', 'speaker', 'Referent für Prüfwesen');
-INSERT INTO public.board_speaker (id, image, name, status, role, "position") VALUES (5, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Thomas Gerstman', 'draft', 'speaker', 'Referent für Öffentlichkeitsarbeit');
-INSERT INTO public.board_speaker (id, image, name, status, role, "position") VALUES (6, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Jonas Stock', 'draft', 'speaker', 'Referent für Jugend');
-INSERT INTO public.board_speaker (id, image, name, status, role, "position") VALUES (7, 'c880bb79-61b4-4cf0-b3f7-d6c134b3da15', 'Cornelia Izquierdo Barea (2. Dan)', 'draft', 'speaker', 'Vorsitzende des Rechtsausschusses');
+INSERT INTO public.board_speaker (id, image, name, status, role, "position", email) VALUES (2, '6f552699-8d86-45a2-a550-c499a788c80a', 'Marie-Luise Göbel (3. Dan)', 'draft', 'vice', 'Vizepräsidentin', NULL);
+INSERT INTO public.board_speaker (id, image, name, status, role, "position", email) VALUES (3, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Nicolas Adalin Braun', 'draft', 'treasurer', 'Kassenwart', NULL);
+INSERT INTO public.board_speaker (id, image, name, status, role, "position", email) VALUES (4, 'e5ab9d1f-c129-4ae9-aa66-c688b64dad0f', 'Julian Parrino (2. Dan)', 'draft', 'speaker', 'Referent für Prüfwesen', NULL);
+INSERT INTO public.board_speaker (id, image, name, status, role, "position", email) VALUES (5, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Thomas Gerstman', 'draft', 'speaker', 'Referent für Öffentlichkeitsarbeit', NULL);
+INSERT INTO public.board_speaker (id, image, name, status, role, "position", email) VALUES (6, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Jonas Stock', 'draft', 'speaker', 'Referent für Jugend', NULL);
+INSERT INTO public.board_speaker (id, image, name, status, role, "position", email) VALUES (7, 'c880bb79-61b4-4cf0-b3f7-d6c134b3da15', 'Cornelia Izquierdo Barea (2. Dan)', 'draft', 'speaker', 'Vorsitzende des Rechtsausschusses', NULL);
+INSERT INTO public.board_speaker (id, image, name, status, role, "position", email) VALUES (1, '01320837-1f3e-42a6-9432-5e4ffe65532c', 'Ines Klose (3. Dan)', 'draft', 'president', 'Präsidentin', 'praesident@dnagb.de');
 
 
 --
@@ -52,12 +52,12 @@ INSERT INTO public.contact (id, status, user_created, date_created, user_updated
 -- Data for Name: dojos; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
+INSERT INTO public.dojos (id, status, sort, name, logo, link, city, description, geometry) VALUES (2, 'published', NULL, 'PSV Mainz', '1c171e85-9040-4be1-9b31-88636e82932d', 'https://www.psv-mainz.de/de/sportarten/naginata/', 'Mainz', '<p>Wir sind&nbsp; Naginata-Fans, die eine Gruppe mit regelm&auml;&szlig;igem Trainingsangebot im November 2005 gegr&uuml;ndet haben. Mittlerweile sind unsere Naginata-K&auml;mpfer national und international erfolgreich und trainieren an bis zu drei Tagen in der Woche miteinander. Derzeit k&uuml;mmern sich zwei Lehrer um das Wohlergehen der Gruppe. Dabei ist uns nicht nur der Erfolg auf Turnieren, sondern vor allem der Spa&szlig; am Naginata und das Miteinander wichtig.</p>
+<p>Die meisten von uns sind Mitglieder im Deutschen Naginata Bund (DNagB) und damit auch im europ&auml;ischen und internationalen Naginata-Dachverband (ENF und INF). Dadurch bietet sich uns die M&ouml;glichkeit, an Wettk&auml;mpfen und Seminaren auf weltweiter Ebene teilzunehmen und Bekanntschaften zu kn&uuml;pfen.</p>', '0101000020E610000080893C5EE18A2040F45CB2E5CDFF4840');
 INSERT INTO public.dojos (id, status, sort, name, logo, link, city, description, geometry) VALUES (1, 'published', NULL, 'Bishamonten Naginata Kyoshitsu', '554e360b-8cac-4e87-b614-98bf61810e0b', 'https://naginatasport.de/', 'Potsdam', '<p>Wir sind die Erste Naginatagruppe Land Brandenburg - werden oft auch vereinfacht Naginatagruppe Potsdam genannt.<br>Seit 2012 trainieren wir in Potsdam die japanische Kampfkunst Naginata. Diese wird zu 100 % mit der antiken Langwaffe namens Naginata ausge&uuml;bt. Historische Funde zeigen, dass diese beeindruckende Waffe bereits vor &uuml;ber 1200 Jahren in Japan genutzt wurde - von K&auml;mpfern zu Fu&szlig; aber auch von berittenen Kriegern.</p>
 <p>Unser Training findet zweimal in der Woche&nbsp;<a class="cm_anchor" href="https://naginatasport.de/Dein-Weg-zu-uns/">in Potsdam-Babelsberg</a>&nbsp;statt. Bist Du an einem kostenfreien Probetraining interessiert, gib uns einfach einige Tage vorher Bescheid und es kann losgehen. Trainieren wirst Du dann barfu&szlig; in einer sauberen Turnhalle.</p>
 <p>Auf unserer Seite findest Du weitere Informationen &uuml;ber uns als Gruppe; Aktuelle Termine und Veranstaltungen bieten Dir einen Vorgeschmack auf baldige Aktivit&auml;ten und eine Wegbeschreibung, wie Du ganz einfach zu unserem Training finden kannst, haben wir ebenfalls f&uuml;r Dich bereitgestellt.</p>
 <p>Solltest Du noch Fragen haben kontaktiere uns einfach &uuml;ber die Kontaktm&ouml;glichkeit auf der linken Seite.</p>', '0101000020E61000007082F9E913282A40CCDFBCB681324A40');
-INSERT INTO public.dojos (id, status, sort, name, logo, link, city, description, geometry) VALUES (2, 'published', NULL, 'PSV Mainz', '1c171e85-9040-4be1-9b31-88636e82932d', 'https://www.psv-mainz.de/de/sportarten/naginata/', 'Mainz', '<p>Wir sind&nbsp; Naginata-Fans, die eine Gruppe mit regelm&auml;&szlig;igem Trainingsangebot im November 2005 gegr&uuml;ndet haben. Mittlerweile sind unsere Naginata-K&auml;mpfer national und international erfolgreich und trainieren an bis zu drei Tagen in der Woche miteinander. Derzeit k&uuml;mmern sich zwei Lehrer um das Wohlergehen der Gruppe. Dabei ist uns nicht nur der Erfolg auf Turnieren, sondern vor allem der Spa&szlig; am Naginata und das Miteinander wichtig.</p>
-<p>Die meisten von uns sind Mitglieder im Deutschen Naginata Bund (DNagB) und damit auch im europ&auml;ischen und internationalen Naginata-Dachverband (ENF und INF). Dadurch bietet sich uns die M&ouml;glichkeit, an Wettk&auml;mpfen und Seminaren auf weltweiter Ebene teilzunehmen und Bekanntschaften zu kn&uuml;pfen.</p>', '0101000020E610000080893C5EE18A2040F45CB2E5CDFF4840');
 
 
 --

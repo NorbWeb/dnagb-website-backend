@@ -65,7 +65,8 @@ CREATE TABLE public.board_speaker (
     name character varying(255),
     status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
     role character varying(255) DEFAULT NULL::character varying,
-    "position" character varying(255) DEFAULT NULL::character varying
+    "position" character varying(255) DEFAULT NULL::character varying,
+    email character varying(255)
 );
 
 
