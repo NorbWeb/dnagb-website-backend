@@ -140,12 +140,12 @@ CREATE TABLE public.dojos (
     id integer NOT NULL,
     status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
     sort integer,
-    coordinates public.geometry(Point,4326),
     name character varying(255),
     logo uuid,
     link character varying(255),
     city character varying(255),
-    description text
+    description text,
+    geometry public.geometry(Point,4326) DEFAULT NULL::public.geometry
 );
 
 
