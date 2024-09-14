@@ -56,6 +56,58 @@ ALTER SEQUENCE public.association_text_id_seq OWNED BY public.association_text.i
 
 
 --
+-- Name: board; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.board (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    president_name character varying(255) DEFAULT NULL::character varying,
+    president_sex character varying(255) DEFAULT NULL::character varying,
+    president_email character varying(255) DEFAULT NULL::character varying,
+    president_image uuid,
+    vice_sex character varying(255) DEFAULT NULL::character varying,
+    vice_name character varying(255) DEFAULT NULL::character varying,
+    vice_email character varying(255) DEFAULT NULL::character varying,
+    vice_image uuid,
+    treasurer_name character varying(255) DEFAULT NULL::character varying,
+    treasurer_sex character varying(255) DEFAULT NULL::character varying,
+    treasurer_email character varying(255) DEFAULT NULL::character varying,
+    treasurer_image uuid,
+    president_label character varying(255),
+    vice_label character varying(255) DEFAULT NULL::character varying,
+    treasurer_label character varying(255) DEFAULT NULL::character varying,
+    president_rank character varying(255),
+    vice_rank character varying(255) DEFAULT NULL::character varying,
+    treasurer_rank character varying(255) DEFAULT NULL::character varying
+);
+
+
+ALTER TABLE public.board OWNER TO nmadauss;
+
+--
+-- Name: board_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.board_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.board_id_seq OWNER TO nmadauss;
+
+--
+-- Name: board_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.board_id_seq OWNED BY public.board.id;
+
+
+--
 -- Name: board_speaker; Type: TABLE; Schema: public; Owner: nmadauss
 --
 
@@ -355,6 +407,13 @@ ALTER TABLE ONLY public.association_text ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
+-- Name: board id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.board ALTER COLUMN id SET DEFAULT nextval('public.board_id_seq'::regclass);
+
+
+--
 -- Name: board_speaker id; Type: DEFAULT; Schema: public; Owner: nmadauss
 --
 
@@ -409,6 +468,14 @@ ALTER TABLE ONLY public.settings ALTER COLUMN id SET DEFAULT nextval('public.set
 
 ALTER TABLE ONLY public.association_text
     ADD CONSTRAINT association_text_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: board board_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.board
+    ADD CONSTRAINT board_pkey PRIMARY KEY (id);
 
 
 --
@@ -468,11 +535,35 @@ ALTER TABLE ONLY public.settings
 
 
 --
+-- Name: board board_president_image_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.board
+    ADD CONSTRAINT board_president_image_foreign FOREIGN KEY (president_image) REFERENCES public.directus_files(id) ON DELETE SET NULL;
+
+
+--
 -- Name: board_speaker board_speaker_image_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
 --
 
 ALTER TABLE ONLY public.board_speaker
     ADD CONSTRAINT board_speaker_image_foreign FOREIGN KEY (image) REFERENCES public.directus_files(id) ON DELETE SET DEFAULT;
+
+
+--
+-- Name: board board_treasurer_image_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.board
+    ADD CONSTRAINT board_treasurer_image_foreign FOREIGN KEY (treasurer_image) REFERENCES public.directus_files(id) ON DELETE SET NULL;
+
+
+--
+-- Name: board board_vice_image_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.board
+    ADD CONSTRAINT board_vice_image_foreign FOREIGN KEY (vice_image) REFERENCES public.directus_files(id) ON DELETE SET NULL;
 
 
 --

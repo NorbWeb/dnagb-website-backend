@@ -46,6 +46,7 @@ userdatatables=(
 	settings
 	association_text
 	board_speaker
+	board
 	dojos
 	imprint
 	privacy

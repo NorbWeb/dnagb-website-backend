@@ -29,6 +29,13 @@ INSERT INTO public.association_text (id, who_we_are, status) VALUES (2, '<h2>Deu
 
 
 --
+-- Data for Name: board; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.board (id, status, president_name, president_sex, president_email, president_image, vice_sex, vice_name, vice_email, vice_image, treasurer_name, treasurer_sex, treasurer_email, treasurer_image, president_label, vice_label, treasurer_label, president_rank, vice_rank, treasurer_rank) VALUES (1, 'published', 'Ines Klose', 'female', 'praesident@dnagb.de', '01320837-1f3e-42a6-9432-5e4ffe65532c', 'female', 'Marie-Luise Göbel', 'vizepraesident@dnagb.de', '6f552699-8d86-45a2-a550-c499a788c80a', 'Nicolas Adalin Braun', 'male', 'kassenwart@dnagb.de', '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'president_label = [{male: ''Präsident''}, {female: ''Präsidentin''}]', 'vice_label = [{male: ''Vizepräsident''}, {female: ''Vizepräsidentin''}]', 'treasurer_label = [{male: ''Kassenwart''}, {female: ''Kassenwärtin''}]', '3. Dan', '3. Dan', NULL);
+
+
+--
 -- Data for Name: board_speaker; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
@@ -75,7 +82,18 @@ INSERT INTO public.events (id, status, sort, user_created, date_created, user_up
 -- Data for Name: imprint; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
-INSERT INTO public.imprint (id, status, user_created, date_created, user_updated, date_updated, imprint_text) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:33.936+00', NULL, NULL, NULL);
+INSERT INTO public.imprint (id, status, user_created, date_created, user_updated, date_updated, imprint_text) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:33.936+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-14 10:43:49.595+00', '<h2><span class="fontstyle0">Impressum</span></h2>
+<p><span class="fontstyle1">Deutscher Naginata Bund<br></span><span class="fontstyle1">Rosenbergstra&szlig;e 14<br></span><span class="fontstyle1">74072 Heilbronn</span></p>
+<p><span class="fontstyle1">Vereinsregister: VR 3863<br>Registergericht: Amtsgericht Mainz</span></p>
+<p><strong><span class="fontstyle0">Vertreten durch:<br></span></strong>Pr&auml;sidentin: Ines Klose<br>Vizepr&auml;sidentin: Marie-Luise G&ouml;bel<br>Kassenwart: Nicolas Adalin Braun</p>
+<h2><span class="fontstyle0">Kontakt</span></h2>
+<p><span class="fontstyle1">E-Mail: info@dnagb.de</span></p>
+<h2><span class="fontstyle0">Umsatzsteuer-ID</span></h2>
+<p><span class="fontstyle1">Umsatzsteuer-Identifikationsnummer gem&auml;&szlig; &sect; 27 a Umsatzsteuergesetz:<br>DE 1234567</span></p>
+<h2><span class="fontstyle0">Redaktionell verantwortlich</span></h2>
+<p><span class="fontstyle1">Ines Klose</span></p>
+<h2><span class="fontstyle0">Verbraucherstreitbeilegung/Universalschlichtungsstelle</span></h2>
+<p><span class="fontstyle1">Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</span>&nbsp;</p>');
 
 
 --
@@ -97,6 +115,13 @@ INSERT INTO public.settings (id, status, user_created, date_created, user_update
 --
 
 SELECT pg_catalog.setval('public.association_text_id_seq', 2, true);
+
+
+--
+-- Name: board_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.board_id_seq', 1, true);
 
 
 --
