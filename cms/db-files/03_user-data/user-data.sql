@@ -32,20 +32,7 @@ INSERT INTO public.association_text (id, who_we_are, status) VALUES (2, '<h2>Deu
 -- Data for Name: board; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
-INSERT INTO public.board (id, status, president_name, president_sex, president_email, president_image, vice_sex, vice_name, vice_email, vice_image, treasurer_name, treasurer_sex, treasurer_email, treasurer_image, president_label, vice_label, treasurer_label, president_rank, vice_rank, treasurer_rank) VALUES (1, 'published', 'Ines Klose', 'female', 'praesident@dnagb.de', '01320837-1f3e-42a6-9432-5e4ffe65532c', 'female', 'Marie-Luise Göbel', 'vizepraesident@dnagb.de', '6f552699-8d86-45a2-a550-c499a788c80a', 'Nicolas Adalin Braun', 'male', 'kassenwart@dnagb.de', '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', '[{male: ''Präsident''}, {female: ''Präsidentin''}]', '[{male: ''Vizepräsident''}, {female: ''Vizepräsidentin''}]', '[{male: ''Kassenwart''}, {female: ''Kassenwärtin''}]', '3. Dan', '3. Dan', NULL);
-
-
---
--- Data for Name: board_speaker; Type: TABLE DATA; Schema: public; Owner: nmadauss
---
-
-INSERT INTO public.board_speaker (id, image, name, status, role, "position", email) VALUES (2, '6f552699-8d86-45a2-a550-c499a788c80a', 'Marie-Luise Göbel (3. Dan)', 'draft', 'vice', 'Vizepräsidentin', NULL);
-INSERT INTO public.board_speaker (id, image, name, status, role, "position", email) VALUES (3, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Nicolas Adalin Braun', 'draft', 'treasurer', 'Kassenwart', NULL);
-INSERT INTO public.board_speaker (id, image, name, status, role, "position", email) VALUES (4, 'e5ab9d1f-c129-4ae9-aa66-c688b64dad0f', 'Julian Parrino (2. Dan)', 'draft', 'speaker', 'Referent für Prüfwesen', NULL);
-INSERT INTO public.board_speaker (id, image, name, status, role, "position", email) VALUES (5, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Thomas Gerstman', 'draft', 'speaker', 'Referent für Öffentlichkeitsarbeit', NULL);
-INSERT INTO public.board_speaker (id, image, name, status, role, "position", email) VALUES (6, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Jonas Stock', 'draft', 'speaker', 'Referent für Jugend', NULL);
-INSERT INTO public.board_speaker (id, image, name, status, role, "position", email) VALUES (7, 'c880bb79-61b4-4cf0-b3f7-d6c134b3da15', 'Cornelia Izquierdo Barea (2. Dan)', 'draft', 'speaker', 'Vorsitzende des Rechtsausschusses', NULL);
-INSERT INTO public.board_speaker (id, image, name, status, role, "position", email) VALUES (1, '01320837-1f3e-42a6-9432-5e4ffe65532c', 'Ines Klose (3. Dan)', 'draft', 'president', 'Präsidentin', 'praesident@dnagb.de');
+INSERT INTO public.board (id, status, president_name, president_email, president_image, vice_name, vice_email, vice_image, treasurer_name, treasurer_email, treasurer_image, president_rank, vice_rank, treasurer_rank, president_label, vice_label, treasurer_label) VALUES (1, 'published', 'Ines Klose', 'praesident@dnagb.de', '01320837-1f3e-42a6-9432-5e4ffe65532c', 'Marie-Luise Göbel', 'vizepraesident@dnagb.de', '6f552699-8d86-45a2-a550-c499a788c80a', 'Nicolas Adalin Braun', 'kassenwart@dnagb.de', '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', '3. Dan', '3. Dan', NULL, 'Präsidentin', 'Vizepräsidentin', 'Kassenwart');
 
 
 --
@@ -111,6 +98,16 @@ INSERT INTO public.settings (id, status, user_created, date_created, user_update
 
 
 --
+-- Data for Name: speaker; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (1, 'published', 'Julian Parrino', '2. Dan', 'pruefungsreferent@dnagb.de', 'e5ab9d1f-c129-4ae9-aa66-c688b64dad0f', 'Referent für Prüfwesen');
+INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (2, 'published', 'Thomas Gerstmann', NULL, 'oeffentlichkeitsreferent@dnagb.de', '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Referentin für Öffentlichkeitsarbeit');
+INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (3, 'published', 'Jonas Stock', NULL, NULL, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Referent für Jugend');
+INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (4, 'published', 'Cornelia Izquierdo Barea', '2. Dan', 'info@dnagb.de', '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Vorsitzende des Rechtsausschusses');
+
+
+--
 -- Name: association_text_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
@@ -122,13 +119,6 @@ SELECT pg_catalog.setval('public.association_text_id_seq', 2, true);
 --
 
 SELECT pg_catalog.setval('public.board_id_seq', 1, true);
-
-
---
--- Name: board_speaker_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
---
-
-SELECT pg_catalog.setval('public.board_speaker_id_seq', 7, true);
 
 
 --
@@ -171,6 +161,13 @@ SELECT pg_catalog.setval('public.privacy_id_seq', 1, true);
 --
 
 SELECT pg_catalog.setval('public.settings_id_seq', 1, true);
+
+
+--
+-- Name: speaker_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.speaker_id_seq', 4, true);
 
 
 --

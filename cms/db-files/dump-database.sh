@@ -45,8 +45,8 @@ userdatatables=(
    	events
 	settings
 	association_text
-	board_speaker
 	board
+	speaker
 	dojos
 	imprint
 	privacy

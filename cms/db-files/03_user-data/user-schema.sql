@@ -63,23 +63,20 @@ CREATE TABLE public.board (
     id integer NOT NULL,
     status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
     president_name character varying(255) DEFAULT NULL::character varying,
-    president_sex character varying(255) DEFAULT NULL::character varying,
     president_email character varying(255) DEFAULT NULL::character varying,
     president_image uuid,
-    vice_sex character varying(255) DEFAULT NULL::character varying,
     vice_name character varying(255) DEFAULT NULL::character varying,
     vice_email character varying(255) DEFAULT NULL::character varying,
     vice_image uuid,
     treasurer_name character varying(255) DEFAULT NULL::character varying,
-    treasurer_sex character varying(255) DEFAULT NULL::character varying,
     treasurer_email character varying(255) DEFAULT NULL::character varying,
     treasurer_image uuid,
-    president_label character varying(255),
-    vice_label character varying(255) DEFAULT NULL::character varying,
-    treasurer_label character varying(255) DEFAULT NULL::character varying,
     president_rank character varying(255),
     vice_rank character varying(255) DEFAULT NULL::character varying,
-    treasurer_rank character varying(255) DEFAULT NULL::character varying
+    treasurer_rank character varying(255) DEFAULT NULL::character varying,
+    president_label character varying(255),
+    vice_label character varying(255) DEFAULT NULL::character varying,
+    treasurer_label character varying(255) DEFAULT NULL::character varying
 );
 
 
@@ -105,45 +102,6 @@ ALTER TABLE public.board_id_seq OWNER TO nmadauss;
 --
 
 ALTER SEQUENCE public.board_id_seq OWNED BY public.board.id;
-
-
---
--- Name: board_speaker; Type: TABLE; Schema: public; Owner: nmadauss
---
-
-CREATE TABLE public.board_speaker (
-    id integer NOT NULL,
-    image uuid,
-    name character varying(255),
-    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
-    role character varying(255) DEFAULT NULL::character varying,
-    "position" character varying(255) DEFAULT NULL::character varying,
-    email character varying(255)
-);
-
-
-ALTER TABLE public.board_speaker OWNER TO nmadauss;
-
---
--- Name: board_speaker_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
---
-
-CREATE SEQUENCE public.board_speaker_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.board_speaker_id_seq OWNER TO nmadauss;
-
---
--- Name: board_speaker_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
---
-
-ALTER SEQUENCE public.board_speaker_id_seq OWNED BY public.board_speaker.id;
 
 
 --
@@ -400,6 +358,45 @@ ALTER SEQUENCE public.settings_id_seq OWNED BY public.settings.id;
 
 
 --
+-- Name: speaker; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.speaker (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    name character varying(255) DEFAULT NULL::character varying,
+    rank character varying(255) DEFAULT NULL::character varying,
+    email character varying(255) DEFAULT NULL::character varying,
+    image uuid DEFAULT '28bb19aa-a05d-4f39-929b-9bf4527e4bbe'::uuid,
+    role character varying(255)
+);
+
+
+ALTER TABLE public.speaker OWNER TO nmadauss;
+
+--
+-- Name: speaker_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.speaker_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.speaker_id_seq OWNER TO nmadauss;
+
+--
+-- Name: speaker_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.speaker_id_seq OWNED BY public.speaker.id;
+
+
+--
 -- Name: association_text id; Type: DEFAULT; Schema: public; Owner: nmadauss
 --
 
@@ -411,13 +408,6 @@ ALTER TABLE ONLY public.association_text ALTER COLUMN id SET DEFAULT nextval('pu
 --
 
 ALTER TABLE ONLY public.board ALTER COLUMN id SET DEFAULT nextval('public.board_id_seq'::regclass);
-
-
---
--- Name: board_speaker id; Type: DEFAULT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.board_speaker ALTER COLUMN id SET DEFAULT nextval('public.board_speaker_id_seq'::regclass);
 
 
 --
@@ -463,6 +453,13 @@ ALTER TABLE ONLY public.settings ALTER COLUMN id SET DEFAULT nextval('public.set
 
 
 --
+-- Name: speaker id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.speaker ALTER COLUMN id SET DEFAULT nextval('public.speaker_id_seq'::regclass);
+
+
+--
 -- Name: association_text association_text_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
 --
 
@@ -476,14 +473,6 @@ ALTER TABLE ONLY public.association_text
 
 ALTER TABLE ONLY public.board
     ADD CONSTRAINT board_pkey PRIMARY KEY (id);
-
-
---
--- Name: board_speaker board_speaker_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.board_speaker
-    ADD CONSTRAINT board_speaker_pkey PRIMARY KEY (id);
 
 
 --
@@ -535,19 +524,19 @@ ALTER TABLE ONLY public.settings
 
 
 --
+-- Name: speaker speaker_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.speaker
+    ADD CONSTRAINT speaker_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: board board_president_image_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
 --
 
 ALTER TABLE ONLY public.board
     ADD CONSTRAINT board_president_image_foreign FOREIGN KEY (president_image) REFERENCES public.directus_files(id) ON DELETE SET NULL;
-
-
---
--- Name: board_speaker board_speaker_image_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.board_speaker
-    ADD CONSTRAINT board_speaker_image_foreign FOREIGN KEY (image) REFERENCES public.directus_files(id) ON DELETE SET DEFAULT;
 
 
 --
@@ -652,6 +641,14 @@ ALTER TABLE ONLY public.settings
 
 ALTER TABLE ONLY public.settings
     ADD CONSTRAINT settings_user_updated_foreign FOREIGN KEY (user_updated) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: speaker speaker_image_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.speaker
+    ADD CONSTRAINT speaker_image_foreign FOREIGN KEY (image) REFERENCES public.directus_files(id) ON DELETE SET NULL;
 
 
 --
