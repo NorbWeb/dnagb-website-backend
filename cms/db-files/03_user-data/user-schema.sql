@@ -74,9 +74,9 @@ CREATE TABLE public.board (
     president_rank character varying(255),
     vice_rank character varying(255) DEFAULT NULL::character varying,
     treasurer_rank character varying(255) DEFAULT NULL::character varying,
-    president_label character varying(255),
-    vice_label character varying(255) DEFAULT NULL::character varying,
-    treasurer_label character varying(255) DEFAULT NULL::character varying
+    president_role character varying(255) DEFAULT NULL::character varying,
+    vice_role character varying(255) DEFAULT NULL::character varying,
+    treasurer_role character varying(255) DEFAULT NULL::character varying
 );
 
 
