@@ -2002,6 +2002,7 @@ INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_
 INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_agent, collection, item, comment, origin) VALUES (2003, 'create', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-18 18:46:03.1+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'directus_permissions', '20', NULL, 'http://localhost:8055');
 INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_agent, collection, item, comment, origin) VALUES (2004, 'create', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-18 18:46:04.971+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'directus_permissions', '21', NULL, 'http://localhost:8055');
 INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_agent, collection, item, comment, origin) VALUES (2005, 'create', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-18 18:46:06.743+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'directus_permissions', '22', NULL, 'http://localhost:8055');
+INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_agent, collection, item, comment, origin) VALUES (2006, 'create', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-18 18:56:23.581+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'useful', '1', NULL, 'http://localhost:8055');
 
 
 --
@@ -2040,7 +2041,7 @@ INSERT INTO public.directus_roles (id, name, icon, description, ip_access, enfor
 --
 
 INSERT INTO public.directus_users (id, first_name, last_name, email, password, location, title, description, tags, avatar, language, tfa_secret, status, role, token, last_access, last_page, provider, external_identifier, auth_data, email_notifications, appearance, theme_dark, theme_light, theme_light_overrides, theme_dark_overrides) VALUES ('39af99ff-aee9-489b-b40f-b8cf083decaa', 'Admin', 'User', 'admin@example.com', '$argon2id$v=19$m=65536,t=3,p=4$KB9Z2cx2c8xKCLSNizjGxw$uuShqcJgl4YL+3AvCmH6ViNnWNEcFTXbwki5zaXbE3w', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '4860547e-9b75-4c11-b6b0-bd1a50b80cfb', NULL, '2024-06-04 06:52:42.333+00', '/users/39af99ff-aee9-489b-b40f-b8cf083decaa', 'default', NULL, NULL, true, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.directus_users (id, first_name, last_name, email, password, location, title, description, tags, avatar, language, tfa_secret, status, role, token, last_access, last_page, provider, external_identifier, auth_data, email_notifications, appearance, theme_dark, theme_light, theme_light_overrides, theme_dark_overrides) VALUES ('e326740c-cf99-4290-a147-ce854be586f6', 'Norbert', 'Madauß', 'admin@dnagb.de', '$argon2id$v=19$m=65536,t=3,p=4$bh3FaYfbMfSvsGP7an/q9w$c5G22WMnPiwqqcodHswsG6szIoSuOeojyDIuzadGGZc', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '4860547e-9b75-4c11-b6b0-bd1a50b80cfb', NULL, '2024-09-18 17:55:23.238+00', '/settings/roles/public', 'default', NULL, NULL, true, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.directus_users (id, first_name, last_name, email, password, location, title, description, tags, avatar, language, tfa_secret, status, role, token, last_access, last_page, provider, external_identifier, auth_data, email_notifications, appearance, theme_dark, theme_light, theme_light_overrides, theme_dark_overrides) VALUES ('e326740c-cf99-4290-a147-ce854be586f6', 'Norbert', 'Madauß', 'admin@dnagb.de', '$argon2id$v=19$m=65536,t=3,p=4$bh3FaYfbMfSvsGP7an/q9w$c5G22WMnPiwqqcodHswsG6szIoSuOeojyDIuzadGGZc', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '4860547e-9b75-4c11-b6b0-bd1a50b80cfb', NULL, '2024-09-18 17:55:23.238+00', '/content/planing', 'default', NULL, NULL, true, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -4326,6 +4327,7 @@ INSERT INTO public.directus_revisions (id, activity, collection, item, data, del
 INSERT INTO public.directus_revisions (id, activity, collection, item, data, delta, parent, version) VALUES (1976, 2003, 'directus_permissions', '20', '{"role":null,"collection":"examination","action":"read","fields":["*"],"permissions":{},"validation":{}}', '{"role":null,"collection":"examination","action":"read","fields":["*"],"permissions":{},"validation":{}}', NULL, NULL);
 INSERT INTO public.directus_revisions (id, activity, collection, item, data, delta, parent, version) VALUES (1977, 2004, 'directus_permissions', '21', '{"role":null,"collection":"useful","action":"read","fields":["*"],"permissions":{},"validation":{}}', '{"role":null,"collection":"useful","action":"read","fields":["*"],"permissions":{},"validation":{}}', NULL, NULL);
 INSERT INTO public.directus_revisions (id, activity, collection, item, data, delta, parent, version) VALUES (1978, 2005, 'directus_permissions', '22', '{"role":null,"collection":"planing","action":"read","fields":["*"],"permissions":{},"validation":{}}', '{"role":null,"collection":"planing","action":"read","fields":["*"],"permissions":{},"validation":{}}', NULL, NULL);
+INSERT INTO public.directus_revisions (id, activity, collection, item, data, delta, parent, version) VALUES (1979, 2006, 'useful', '1', '{"status":"published","useful_text":"<h2>N&uuml;tzlich</h2>"}', '{"status":"published","useful_text":"<h2>N&uuml;tzlich</h2>"}', NULL, NULL);
 
 
 --
@@ -4365,7 +4367,7 @@ INSERT INTO public.directus_settings (id, project_name, project_url, project_col
 -- Name: directus_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
-SELECT pg_catalog.setval('public.directus_activity_id_seq', 2005, true);
+SELECT pg_catalog.setval('public.directus_activity_id_seq', 2006, true);
 
 
 --
@@ -4407,7 +4409,7 @@ SELECT pg_catalog.setval('public.directus_relations_id_seq', 21, true);
 -- Name: directus_revisions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
-SELECT pg_catalog.setval('public.directus_revisions_id_seq', 1978, true);
+SELECT pg_catalog.setval('public.directus_revisions_id_seq', 1979, true);
 
 
 --

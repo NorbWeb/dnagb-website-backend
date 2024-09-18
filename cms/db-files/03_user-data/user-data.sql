@@ -339,6 +339,7 @@ INSERT INTO public.events (id, status, sort, user_created, date_created, user_up
 -- Data for Name: examination; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
+INSERT INTO public.examination (id, status, examination_text) VALUES (1, 'published', '<h2>Pr&uuml;fung</h2>');
 
 
 --
@@ -547,6 +548,7 @@ INSERT INTO public.imprint (id, status, user_created, date_created, user_updated
 -- Data for Name: planing; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
+INSERT INTO public.planing (id, status, planing_text) VALUES (1, 'published', '<h2>Veranstaltung planen</h2>');
 
 
 --
@@ -577,6 +579,7 @@ INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (
 -- Data for Name: useful; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
+INSERT INTO public.useful (id, status, useful_text) VALUES (1, 'published', '<h2>N&uuml;tzlich</h2>');
 
 
 --
@@ -625,7 +628,7 @@ SELECT pg_catalog.setval('public.events_id_seq', 6, true);
 -- Name: examination_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
-SELECT pg_catalog.setval('public.examination_id_seq', 1, false);
+SELECT pg_catalog.setval('public.examination_id_seq', 1, true);
 
 
 --
@@ -646,7 +649,7 @@ SELECT pg_catalog.setval('public.imprint_id_seq', 1, true);
 -- Name: planing_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
-SELECT pg_catalog.setval('public.planing_id_seq', 1, false);
+SELECT pg_catalog.setval('public.planing_id_seq', 1, true);
 
 
 --
@@ -674,7 +677,7 @@ SELECT pg_catalog.setval('public.speaker_id_seq', 4, true);
 -- Name: useful_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
-SELECT pg_catalog.setval('public.useful_id_seq', 1, false);
+SELECT pg_catalog.setval('public.useful_id_seq', 1, true);
 
 
 --
