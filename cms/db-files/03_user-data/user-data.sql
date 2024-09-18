@@ -309,7 +309,7 @@ INSERT INTO public.budo (id, status, budo_text) VALUES (1, 'published', '<div cl
 -- Data for Name: contact; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
-INSERT INTO public.contact (id, status, user_created, date_created, user_updated, date_updated, contact_text) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:28.38+00', NULL, NULL, NULL);
+INSERT INTO public.contact (id, status, user_created, date_created, user_updated, date_updated, contact_text) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:28.38+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-18 18:27:11.149+00', '<h2>Kontakt</h2>');
 
 
 --
@@ -541,7 +541,7 @@ INSERT INTO public.imprint (id, status, user_created, date_created, user_updated
 -- Data for Name: privacy; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
-INSERT INTO public.privacy (id, status, user_created, date_created, user_updated, date_updated, privacy_text) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:31.106+00', NULL, NULL, NULL);
+INSERT INTO public.privacy (id, status, user_created, date_created, user_updated, date_updated, privacy_text) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:31.106+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-18 18:28:21.934+00', '<h2>Datenschutz</h2>');
 
 
 --
