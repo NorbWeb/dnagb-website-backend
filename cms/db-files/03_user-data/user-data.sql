@@ -336,6 +336,12 @@ INSERT INTO public.events (id, status, sort, user_created, date_created, user_up
 
 
 --
+-- Data for Name: examination; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+
+
+--
 -- Data for Name: history; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
@@ -538,6 +544,12 @@ INSERT INTO public.imprint (id, status, user_created, date_created, user_updated
 
 
 --
+-- Data for Name: planing; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+
+
+--
 -- Data for Name: privacy; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
@@ -559,6 +571,12 @@ INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (
 INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (2, 'published', 'Thomas Gerstmann', NULL, 'oeffentlichkeitsreferent@dnagb.de', '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Referentin für Öffentlichkeitsarbeit');
 INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (3, 'published', 'Jonas Stock', NULL, NULL, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Referent für Jugend');
 INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (4, 'published', 'Cornelia Izquierdo Barea', '2. Dan', 'info@dnagb.de', 'c880bb79-61b4-4cf0-b3f7-d6c134b3da15', 'Vorsitzende des Rechtsausschusses');
+
+
+--
+-- Data for Name: useful; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
 
 
 --
@@ -604,6 +622,13 @@ SELECT pg_catalog.setval('public.events_id_seq', 6, true);
 
 
 --
+-- Name: examination_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.examination_id_seq', 1, false);
+
+
+--
 -- Name: history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
@@ -615,6 +640,13 @@ SELECT pg_catalog.setval('public.history_id_seq', 1, true);
 --
 
 SELECT pg_catalog.setval('public.imprint_id_seq', 1, true);
+
+
+--
+-- Name: planing_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.planing_id_seq', 1, false);
 
 
 --
@@ -636,6 +668,13 @@ SELECT pg_catalog.setval('public.settings_id_seq', 1, true);
 --
 
 SELECT pg_catalog.setval('public.speaker_id_seq', 4, true);
+
+
+--
+-- Name: useful_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.useful_id_seq', 1, false);
 
 
 --

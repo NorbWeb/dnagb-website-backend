@@ -270,6 +270,41 @@ ALTER SEQUENCE public.events_id_seq OWNED BY public.events.id;
 
 
 --
+-- Name: examination; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.examination (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    examination_text text
+);
+
+
+ALTER TABLE public.examination OWNER TO nmadauss;
+
+--
+-- Name: examination_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.examination_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.examination_id_seq OWNER TO nmadauss;
+
+--
+-- Name: examination_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.examination_id_seq OWNED BY public.examination.id;
+
+
+--
 -- Name: history; Type: TABLE; Schema: public; Owner: nmadauss
 --
 
@@ -341,6 +376,41 @@ ALTER TABLE public.imprint_id_seq OWNER TO nmadauss;
 --
 
 ALTER SEQUENCE public.imprint_id_seq OWNED BY public.imprint.id;
+
+
+--
+-- Name: planing; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.planing (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    planing_text text
+);
+
+
+ALTER TABLE public.planing OWNER TO nmadauss;
+
+--
+-- Name: planing_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.planing_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.planing_id_seq OWNER TO nmadauss;
+
+--
+-- Name: planing_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.planing_id_seq OWNED BY public.planing.id;
 
 
 --
@@ -467,6 +537,41 @@ ALTER SEQUENCE public.speaker_id_seq OWNED BY public.speaker.id;
 
 
 --
+-- Name: useful; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.useful (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    useful_text text
+);
+
+
+ALTER TABLE public.useful OWNER TO nmadauss;
+
+--
+-- Name: useful_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.useful_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.useful_id_seq OWNER TO nmadauss;
+
+--
+-- Name: useful_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.useful_id_seq OWNED BY public.useful.id;
+
+
+--
 -- Name: association_text id; Type: DEFAULT; Schema: public; Owner: nmadauss
 --
 
@@ -509,6 +614,13 @@ ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.event
 
 
 --
+-- Name: examination id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.examination ALTER COLUMN id SET DEFAULT nextval('public.examination_id_seq'::regclass);
+
+
+--
 -- Name: history id; Type: DEFAULT; Schema: public; Owner: nmadauss
 --
 
@@ -520,6 +632,13 @@ ALTER TABLE ONLY public.history ALTER COLUMN id SET DEFAULT nextval('public.hist
 --
 
 ALTER TABLE ONLY public.imprint ALTER COLUMN id SET DEFAULT nextval('public.imprint_id_seq'::regclass);
+
+
+--
+-- Name: planing id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.planing ALTER COLUMN id SET DEFAULT nextval('public.planing_id_seq'::regclass);
 
 
 --
@@ -541,6 +660,13 @@ ALTER TABLE ONLY public.settings ALTER COLUMN id SET DEFAULT nextval('public.set
 --
 
 ALTER TABLE ONLY public.speaker ALTER COLUMN id SET DEFAULT nextval('public.speaker_id_seq'::regclass);
+
+
+--
+-- Name: useful id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.useful ALTER COLUMN id SET DEFAULT nextval('public.useful_id_seq'::regclass);
 
 
 --
@@ -592,6 +718,14 @@ ALTER TABLE ONLY public.events
 
 
 --
+-- Name: examination examination_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.examination
+    ADD CONSTRAINT examination_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: history history_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
 --
 
@@ -605,6 +739,14 @@ ALTER TABLE ONLY public.history
 
 ALTER TABLE ONLY public.imprint
     ADD CONSTRAINT imprint_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: planing planing_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.planing
+    ADD CONSTRAINT planing_pkey PRIMARY KEY (id);
 
 
 --
@@ -629,6 +771,14 @@ ALTER TABLE ONLY public.settings
 
 ALTER TABLE ONLY public.speaker
     ADD CONSTRAINT speaker_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: useful useful_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.useful
+    ADD CONSTRAINT useful_pkey PRIMARY KEY (id);
 
 
 --

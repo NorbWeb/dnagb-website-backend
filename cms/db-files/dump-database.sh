@@ -50,6 +50,9 @@ userdatatables=(
 	dojos
 	history
 	budo
+	examination
+	useful
+	planing
 	imprint
 	privacy
 	contact
