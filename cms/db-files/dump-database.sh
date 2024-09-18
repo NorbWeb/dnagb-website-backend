@@ -48,6 +48,8 @@ userdatatables=(
 	board
 	speaker
 	dojos
+	history
+	budo
 	imprint
 	privacy
 	contact
