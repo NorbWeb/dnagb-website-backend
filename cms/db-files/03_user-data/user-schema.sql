@@ -232,23 +232,23 @@ CREATE TABLE public.downloads (
 ALTER TABLE public.downloads OWNER TO nmadauss;
 
 --
--- Name: downloads_files_2; Type: TABLE; Schema: public; Owner: nmadauss
+-- Name: downloads_files; Type: TABLE; Schema: public; Owner: nmadauss
 --
 
-CREATE TABLE public.downloads_files_2 (
+CREATE TABLE public.downloads_files (
     id integer NOT NULL,
     downloads_id integer,
     directus_files_id uuid
 );
 
 
-ALTER TABLE public.downloads_files_2 OWNER TO nmadauss;
+ALTER TABLE public.downloads_files OWNER TO nmadauss;
 
 --
--- Name: downloads_files_2_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+-- Name: downloads_files_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
 --
 
-CREATE SEQUENCE public.downloads_files_2_id_seq
+CREATE SEQUENCE public.downloads_files_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -257,118 +257,13 @@ CREATE SEQUENCE public.downloads_files_2_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.downloads_files_2_id_seq OWNER TO nmadauss;
+ALTER TABLE public.downloads_files_id_seq OWNER TO nmadauss;
 
 --
--- Name: downloads_files_2_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+-- Name: downloads_files_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
 --
 
-ALTER SEQUENCE public.downloads_files_2_id_seq OWNED BY public.downloads_files_2.id;
-
-
---
--- Name: downloads_files_3; Type: TABLE; Schema: public; Owner: nmadauss
---
-
-CREATE TABLE public.downloads_files_3 (
-    id integer NOT NULL,
-    downloads_id integer,
-    directus_files_id uuid
-);
-
-
-ALTER TABLE public.downloads_files_3 OWNER TO nmadauss;
-
---
--- Name: downloads_files_3_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
---
-
-CREATE SEQUENCE public.downloads_files_3_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.downloads_files_3_id_seq OWNER TO nmadauss;
-
---
--- Name: downloads_files_3_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
---
-
-ALTER SEQUENCE public.downloads_files_3_id_seq OWNED BY public.downloads_files_3.id;
-
-
---
--- Name: downloads_files_4; Type: TABLE; Schema: public; Owner: nmadauss
---
-
-CREATE TABLE public.downloads_files_4 (
-    id integer NOT NULL,
-    downloads_id integer,
-    directus_files_id uuid
-);
-
-
-ALTER TABLE public.downloads_files_4 OWNER TO nmadauss;
-
---
--- Name: downloads_files_4_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
---
-
-CREATE SEQUENCE public.downloads_files_4_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.downloads_files_4_id_seq OWNER TO nmadauss;
-
---
--- Name: downloads_files_4_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
---
-
-ALTER SEQUENCE public.downloads_files_4_id_seq OWNED BY public.downloads_files_4.id;
-
-
---
--- Name: downloads_files_5; Type: TABLE; Schema: public; Owner: nmadauss
---
-
-CREATE TABLE public.downloads_files_5 (
-    id integer NOT NULL,
-    downloads_id integer,
-    directus_files_id uuid
-);
-
-
-ALTER TABLE public.downloads_files_5 OWNER TO nmadauss;
-
---
--- Name: downloads_files_5_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
---
-
-CREATE SEQUENCE public.downloads_files_5_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.downloads_files_5_id_seq OWNER TO nmadauss;
-
---
--- Name: downloads_files_5_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
---
-
-ALTER SEQUENCE public.downloads_files_5_id_seq OWNED BY public.downloads_files_5.id;
+ALTER SEQUENCE public.downloads_files_id_seq OWNED BY public.downloads_files.id;
 
 
 --
@@ -788,31 +683,10 @@ ALTER TABLE ONLY public.downloads ALTER COLUMN id SET DEFAULT nextval('public.do
 
 
 --
--- Name: downloads_files_2 id; Type: DEFAULT; Schema: public; Owner: nmadauss
+-- Name: downloads_files id; Type: DEFAULT; Schema: public; Owner: nmadauss
 --
 
-ALTER TABLE ONLY public.downloads_files_2 ALTER COLUMN id SET DEFAULT nextval('public.downloads_files_2_id_seq'::regclass);
-
-
---
--- Name: downloads_files_3 id; Type: DEFAULT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.downloads_files_3 ALTER COLUMN id SET DEFAULT nextval('public.downloads_files_3_id_seq'::regclass);
-
-
---
--- Name: downloads_files_4 id; Type: DEFAULT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.downloads_files_4 ALTER COLUMN id SET DEFAULT nextval('public.downloads_files_4_id_seq'::regclass);
-
-
---
--- Name: downloads_files_5 id; Type: DEFAULT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.downloads_files_5 ALTER COLUMN id SET DEFAULT nextval('public.downloads_files_5_id_seq'::regclass);
+ALTER TABLE ONLY public.downloads_files ALTER COLUMN id SET DEFAULT nextval('public.downloads_files_id_seq'::regclass);
 
 
 --
@@ -919,35 +793,11 @@ ALTER TABLE ONLY public.dojos
 
 
 --
--- Name: downloads_files_2 downloads_files_2_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+-- Name: downloads_files downloads_files_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
 --
 
-ALTER TABLE ONLY public.downloads_files_2
-    ADD CONSTRAINT downloads_files_2_pkey PRIMARY KEY (id);
-
-
---
--- Name: downloads_files_3 downloads_files_3_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.downloads_files_3
-    ADD CONSTRAINT downloads_files_3_pkey PRIMARY KEY (id);
-
-
---
--- Name: downloads_files_4 downloads_files_4_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.downloads_files_4
-    ADD CONSTRAINT downloads_files_4_pkey PRIMARY KEY (id);
-
-
---
--- Name: downloads_files_5 downloads_files_5_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.downloads_files_5
-    ADD CONSTRAINT downloads_files_5_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.downloads_files
+    ADD CONSTRAINT downloads_files_pkey PRIMARY KEY (id);
 
 
 --
@@ -1079,67 +929,19 @@ ALTER TABLE ONLY public.dojos
 
 
 --
--- Name: downloads_files_2 downloads_files_2_directus_files_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+-- Name: downloads_files downloads_files_directus_files_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
 --
 
-ALTER TABLE ONLY public.downloads_files_2
-    ADD CONSTRAINT downloads_files_2_directus_files_id_foreign FOREIGN KEY (directus_files_id) REFERENCES public.directus_files(id) ON DELETE SET NULL;
-
-
---
--- Name: downloads_files_2 downloads_files_2_downloads_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.downloads_files_2
-    ADD CONSTRAINT downloads_files_2_downloads_id_foreign FOREIGN KEY (downloads_id) REFERENCES public.downloads(id) ON DELETE SET NULL;
+ALTER TABLE ONLY public.downloads_files
+    ADD CONSTRAINT downloads_files_directus_files_id_foreign FOREIGN KEY (directus_files_id) REFERENCES public.directus_files(id) ON DELETE SET NULL;
 
 
 --
--- Name: downloads_files_3 downloads_files_3_directus_files_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+-- Name: downloads_files downloads_files_downloads_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
 --
 
-ALTER TABLE ONLY public.downloads_files_3
-    ADD CONSTRAINT downloads_files_3_directus_files_id_foreign FOREIGN KEY (directus_files_id) REFERENCES public.directus_files(id) ON DELETE SET NULL;
-
-
---
--- Name: downloads_files_3 downloads_files_3_downloads_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.downloads_files_3
-    ADD CONSTRAINT downloads_files_3_downloads_id_foreign FOREIGN KEY (downloads_id) REFERENCES public.downloads(id) ON DELETE SET NULL;
-
-
---
--- Name: downloads_files_4 downloads_files_4_directus_files_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.downloads_files_4
-    ADD CONSTRAINT downloads_files_4_directus_files_id_foreign FOREIGN KEY (directus_files_id) REFERENCES public.directus_files(id) ON DELETE SET NULL;
-
-
---
--- Name: downloads_files_4 downloads_files_4_downloads_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.downloads_files_4
-    ADD CONSTRAINT downloads_files_4_downloads_id_foreign FOREIGN KEY (downloads_id) REFERENCES public.downloads(id) ON DELETE SET NULL;
-
-
---
--- Name: downloads_files_5 downloads_files_5_directus_files_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.downloads_files_5
-    ADD CONSTRAINT downloads_files_5_directus_files_id_foreign FOREIGN KEY (directus_files_id) REFERENCES public.directus_files(id) ON DELETE SET NULL;
-
-
---
--- Name: downloads_files_5 downloads_files_5_downloads_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.downloads_files_5
-    ADD CONSTRAINT downloads_files_5_downloads_id_foreign FOREIGN KEY (downloads_id) REFERENCES public.downloads(id) ON DELETE SET NULL;
+ALTER TABLE ONLY public.downloads_files
+    ADD CONSTRAINT downloads_files_downloads_id_foreign FOREIGN KEY (downloads_id) REFERENCES public.downloads(id) ON DELETE SET NULL;
 
 
 --

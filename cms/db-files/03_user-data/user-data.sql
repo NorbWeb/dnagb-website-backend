@@ -332,41 +332,23 @@ INSERT INTO public.downloads (id, status) VALUES (1, 'published');
 
 
 --
--- Data for Name: downloads_files_2; Type: TABLE DATA; Schema: public; Owner: nmadauss
+-- Data for Name: downloads_files; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
-INSERT INTO public.downloads_files_2 (id, downloads_id, directus_files_id) VALUES (1, 1, '2ca156ae-237e-4838-8faf-ba3305646891');
-INSERT INTO public.downloads_files_2 (id, downloads_id, directus_files_id) VALUES (2, 1, '2b3d914b-262f-4af5-931c-10f5b7d57c64');
-INSERT INTO public.downloads_files_2 (id, downloads_id, directus_files_id) VALUES (3, 1, 'd15d6f15-3c90-413d-aedf-9f69f350ad74');
-INSERT INTO public.downloads_files_2 (id, downloads_id, directus_files_id) VALUES (4, 1, '22a8b15f-6b64-4e52-a032-28e5ec055d10');
-INSERT INTO public.downloads_files_2 (id, downloads_id, directus_files_id) VALUES (5, 1, '01416918-525e-40a4-b17f-3b33d99eb4ae');
-
-
---
--- Data for Name: downloads_files_3; Type: TABLE DATA; Schema: public; Owner: nmadauss
---
-
-INSERT INTO public.downloads_files_3 (id, downloads_id, directus_files_id) VALUES (1, 1, '8a5c93ed-635f-4d80-abdb-71281c5de750');
-INSERT INTO public.downloads_files_3 (id, downloads_id, directus_files_id) VALUES (2, 1, '96091d99-d2e6-438c-8ab9-eb82d9ff660a');
-INSERT INTO public.downloads_files_3 (id, downloads_id, directus_files_id) VALUES (3, 1, 'd0fcd050-9941-4406-ad1f-188a6e0f889c');
-
-
---
--- Data for Name: downloads_files_4; Type: TABLE DATA; Schema: public; Owner: nmadauss
---
-
-INSERT INTO public.downloads_files_4 (id, downloads_id, directus_files_id) VALUES (1, 1, '142ed4e4-3c51-478e-85e6-3fafb99bc253');
-INSERT INTO public.downloads_files_4 (id, downloads_id, directus_files_id) VALUES (2, 1, 'f2106a52-d69a-4966-9163-96968eaf127e');
-INSERT INTO public.downloads_files_4 (id, downloads_id, directus_files_id) VALUES (3, 1, '1ce8973f-c6bb-4659-89b1-f0e3e0e8f1fe');
-INSERT INTO public.downloads_files_4 (id, downloads_id, directus_files_id) VALUES (4, 1, '7c89161c-3e44-4a66-8dff-7565ebca6cb3');
-
-
---
--- Data for Name: downloads_files_5; Type: TABLE DATA; Schema: public; Owner: nmadauss
---
-
-INSERT INTO public.downloads_files_5 (id, downloads_id, directus_files_id) VALUES (1, 1, 'a503136f-fb64-47ab-b7c7-19a548bd3abc');
-INSERT INTO public.downloads_files_5 (id, downloads_id, directus_files_id) VALUES (2, 1, '12960f32-ce19-4a01-a68a-b1c8c63df788');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (1, 1, '12960f32-ce19-4a01-a68a-b1c8c63df788');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (2, 1, 'a503136f-fb64-47ab-b7c7-19a548bd3abc');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (3, 1, 'f2106a52-d69a-4966-9163-96968eaf127e');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (4, 1, '1ce8973f-c6bb-4659-89b1-f0e3e0e8f1fe');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (5, 1, '7c89161c-3e44-4a66-8dff-7565ebca6cb3');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (6, 1, '142ed4e4-3c51-478e-85e6-3fafb99bc253');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (7, 1, 'd0fcd050-9941-4406-ad1f-188a6e0f889c');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (8, 1, '8a5c93ed-635f-4d80-abdb-71281c5de750');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (9, 1, '96091d99-d2e6-438c-8ab9-eb82d9ff660a');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (10, 1, '2ca156ae-237e-4838-8faf-ba3305646891');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (11, 1, '2b3d914b-262f-4af5-931c-10f5b7d57c64');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (12, 1, 'd15d6f15-3c90-413d-aedf-9f69f350ad74');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (13, 1, '01416918-525e-40a4-b17f-3b33d99eb4ae');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (14, 1, '22a8b15f-6b64-4e52-a032-28e5ec055d10');
 
 
 --
@@ -668,31 +650,10 @@ SELECT pg_catalog.setval('public.dojos_id_seq', 2, true);
 
 
 --
--- Name: downloads_files_2_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+-- Name: downloads_files_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
-SELECT pg_catalog.setval('public.downloads_files_2_id_seq', 5, true);
-
-
---
--- Name: downloads_files_3_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
---
-
-SELECT pg_catalog.setval('public.downloads_files_3_id_seq', 3, true);
-
-
---
--- Name: downloads_files_4_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
---
-
-SELECT pg_catalog.setval('public.downloads_files_4_id_seq', 4, true);
-
-
---
--- Name: downloads_files_5_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
---
-
-SELECT pg_catalog.setval('public.downloads_files_5_id_seq', 2, true);
+SELECT pg_catalog.setval('public.downloads_files_id_seq', 14, true);
 
 
 --

@@ -57,10 +57,7 @@ userdatatables=(
 	privacy
 	contact
 	downloads
-	downloads_files_2
-	downloads_files_3
-	downloads_files_4
-	downloads_files_5
+	downloads_files
 )
 
 for i in ${!appdatatables[@]}; do
