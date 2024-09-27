@@ -345,10 +345,10 @@ INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES 
 INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (9, 1, '96091d99-d2e6-438c-8ab9-eb82d9ff660a');
 INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (10, 1, '2ca156ae-237e-4838-8faf-ba3305646891');
 INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (11, 1, '2b3d914b-262f-4af5-931c-10f5b7d57c64');
-INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (12, 1, 'd15d6f15-3c90-413d-aedf-9f69f350ad74');
 INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (13, 1, '01416918-525e-40a4-b17f-3b33d99eb4ae');
 INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (14, 1, '22a8b15f-6b64-4e52-a032-28e5ec055d10');
 INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (1, 1, '12960f32-ce19-4a01-a68a-b1c8c63df788');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (12, 1, 'd15d6f15-3c90-413d-aedf-9f69f350ad74');
 
 
 --
