@@ -377,184 +377,23 @@ INSERT INTO public.examination (id, status, examination_text) VALUES (1, 'publis
 -- Data for Name: history; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
-INSERT INTO public.history (id, status, history_text) VALUES (1, 'published', '<div class="fl-module fl-module-heading fl-node-5ae8959daa6ad" data-node="5ae8959daa6ad">
-<div class="fl-module-content fl-node-content">
-<h2 class="fl-heading"><span class="fl-heading-text">Die Entwicklungsgeschichte</span></h2>
-</div>
-</div>
-<div class="fl-col-group fl-node-5b109ea535397 fl-col-group-nested" data-node="5b109ea535397">
-<div class="fl-col fl-node-5b109ea537abb" data-node="5b109ea537abb">
-<div class="fl-col-content fl-node-content">
-<div class="fl-module fl-module-rich-text fl-node-5b109eb8157c9" data-node="5b109eb8157c9">
-<div class="fl-module-content fl-node-content">
-<div class="fl-rich-text">
-<p>&nbsp;</p>
+INSERT INTO public.history (id, status, history_text) VALUES (1, 'published', '<h2>Die Entwicklungsgeschichte</h2>
 <p>Im alten Japan entwickelten sich im Laufe der Jahrhunderte viele hundert Schulen und Ausbildungssysteme, die den Umgang mit den klassischen Waffen wie Schwert, Naginata, Speer, etc. lehrten. Allen gleich war das Kernproblem des Kampftrainings, n&auml;mlich eine wirkungsvolle Ausbildung zu vermitteln ohne schwerwiegende Verletzungen unter den Sch&uuml;lern zu haben. In den meisten Schulen wurde auf der Grundlage des Katajutsu trainiert, das hei&szlig;t zwei Sch&uuml;ler trainieren eine festgelegte Abfolge von Angriffen, Verteidigungen und Gegenangriffen mit entsch&auml;rften bzw. gepolsterten Waffen, die aus Holz oder/und Bambus hergestellt wurden. Von diesen Formen kann es &uuml;ber hundert verschiedene geben, in denen die g&auml;ngigen Waffen gegeneinander und auch in vielen m&ouml;glichen Kombinationen, wie zum Beispiel Naginata/Schwert oder Schwert/Speer, aufeinander treffen. So erlernt der Sch&uuml;ler mit der Zeit ein gro&szlig;es Repertoire an Techniken und Situationen, aus dem er im Ernstfall sch&ouml;pfen kann. Beispiele f&uuml;r noch heute praktizierte wichtige Kory&ucirc; Naginatajutsu sind Tend&ocirc;ry&ucirc; und Jiki Shinkagery&ucirc;.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="fl-col-group fl-node-5b109ec56d60d fl-col-group-nested" data-node="5b109ec56d60d">
-<div class="fl-col fl-node-5b109ec56fd1a fl-col-small" data-node="5b109ec56fd1a">
-<div class="fl-col-content fl-node-content">
-<div class="fl-module fl-module-rich-text fl-node-5b109ecaec54b" data-node="5b109ecaec54b">
-<div class="fl-module-content fl-node-content">
-<div class="fl-rich-text">
 <p><img class="alignnone size-full wp-image-177 aligncenter" src="https://dnagb.de/was-ist-naginata/wordpress/wp-content/uploads/2017/11/2_4_Tendoryu.jpg" sizes="(max-width: 448px) 100vw, 448px" srcset="https://dnagb.de/wordpress/wp-content/uploads/2017/11/2_4_Tendoryu.jpg 448w, https://dnagb.de/wordpress/wp-content/uploads/2017/11/2_4_Tendoryu-300x225.jpg 300w" alt="2_4_tendoryu" width="448" height="336"><br><strong>Tend&ocirc;ry&ucirc; Naginatajutsu: Kata "Ishizuki Koishi Gaeshi no Midare"</strong></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="fl-col fl-node-5b109ec572426 fl-col-small" data-node="5b109ec572426">
-<div class="fl-col-content fl-node-content">
-<div class="fl-module fl-module-rich-text fl-node-5b109efac545c" data-node="5b109efac545c">
-<div class="fl-module-content fl-node-content">
-<div class="fl-rich-text">
 <p><img class="alignnone size-full wp-image-175 aligncenter" src="https://dnagb.de/was-ist-naginata/wordpress/wp-content/uploads/2017/11/2_4_Jiki-Shinkageryu.jpg" sizes="(max-width: 448px) 100vw, 448px" srcset="https://dnagb.de/wordpress/wp-content/uploads/2017/11/2_4_Jiki-Shinkageryu.jpg 448w, https://dnagb.de/wordpress/wp-content/uploads/2017/11/2_4_Jiki-Shinkageryu-300x225.jpg 300w" alt="2_4_jiki-shinkageryu" width="448" height="336" loading="lazy"><br><strong>Jiki Shinkagery&ucirc; Naginatajutsu: Kata "Kiridome"</strong></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="fl-col-group fl-node-5b109f83c2d38 fl-col-group-nested" data-node="5b109f83c2d38">
-<div class="fl-col fl-node-5b109f83c545b" data-node="5b109f83c545b">
-<div class="fl-col-content fl-node-content">
-<div class="fl-module fl-module-rich-text fl-node-5b109f9457682" data-node="5b109f9457682">
-<div class="fl-module-content fl-node-content">
-<div class="fl-rich-text">
 <p>Da es beim reinen Katatraining jedoch schwierig ist, eine spontane, unkooperative Kampfsituation ohne Verletzungen nachzustellen, begannen manche Schulen Ende des 17. Jahrhunderts Schutzausr&uuml;stung und besondere ungef&auml;hrliche Trainingswaffen einzuf&uuml;hren, die eine Art von freiem Kampf zulie&szlig;en. Die Bezeichnung "frei" beinhaltet hier die Einschr&auml;nkung, dass nur die gesch&uuml;tzten K&ouml;rperpartien als Trefferstellen zugelassen waren. Das prominenteste Beispiel f&uuml;r diese Evolution ist sicherlich die Itt&ocirc;-Schwertschule, die gro&szlig;en Einfluss auf die Entwicklung des Kend&ocirc; (Schwertkampf) mit seiner charakteristischen R&uuml;stung (B&ocirc;gu) in der Mitte des 18. Jahrhunderts gehabt hat. Auf der Grundlage dieser R&uuml;stung haben andere, erst sp&auml;ter formulierte Disziplinen wie Naginata oder J&ucirc;kend&ocirc; (Bajonettfechten) f&uuml;r sich spezifische Schutzausr&uuml;stung entwickelt.<br>Naginata in seiner heutigen Form gibt es erst seit der Gr&uuml;ndung des ZNNR (Alljapanischer Naginata Verband) 1955 und ist die Folge einer Entwicklung, die bereits in den 30er Jahren ihre Anfang nahm. Damals bem&uuml;hten sich Vertreter verschiedener alter Stile und auch die Regierung darum, eine Form von Naginatatraining f&uuml;r den Schulsport zu entwickeln.<br>Nach dem Krieg wurde diese Vorarbeiten in der Verbindung mit einem stil&uuml;bergreifenden Ansatz wieder aufgenommen und m&uuml;ndeten in der Bud&ocirc;disziplin Naginata, die nun auch das R&uuml;stungstraining kennt. Interessanterweise findet man aber schon auf Holzdrucken aus der Ed&ocirc;zeit Darstellungen, auf denen Naginatak&auml;mpfer oder auch Speerfechter in B&ocirc;gu zu sehen sind.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="fl-col-group fl-node-5b109fa41f410 fl-col-group-nested" data-node="5b109fa41f410">
-<div class="fl-col fl-node-5b109fa421b19 fl-col-small" data-node="5b109fa421b19">
-<div class="fl-col-content fl-node-content">
-<div class="fl-module fl-module-rich-text fl-node-5b109fb66d60a" data-node="5b109fb66d60a">
-<div class="fl-module-content fl-node-content">
-<div class="fl-rich-text">
 <p><img class="alignnone size-full wp-image-199 aligncenter" src="https://dnagb.de/was-ist-naginata/wordpress/wp-content/uploads/2017/11/2_4_Holzdruck-1.jpg" sizes="(max-width: 450px) 100vw, 450px" srcset="https://dnagb.de/wordpress/wp-content/uploads/2017/11/2_4_Holzdruck-1.jpg 450w, https://dnagb.de/wordpress/wp-content/uploads/2017/11/2_4_Holzdruck-1-300x225.jpg 300w" alt="2_4_holzdruck-1" width="450" height="337" loading="lazy"></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="fl-col fl-node-5b109fa42422a fl-col-small" data-node="5b109fa42422a">
-<div class="fl-col-content fl-node-content">
-<div class="fl-module fl-module-rich-text fl-node-5b109fce130b9" data-node="5b109fce130b9">
-<div class="fl-module-content fl-node-content">
-<div class="fl-rich-text">
 <p><img class="size-full wp-image-200 aligncenter" src="https://dnagb.de/was-ist-naginata/wordpress/wp-content/uploads/2017/11/2_4_Holzdruck-2.jpg" sizes="(max-width: 425px) 100vw, 425px" srcset="https://dnagb.de/wordpress/wp-content/uploads/2017/11/2_4_Holzdruck-2.jpg 425w, https://dnagb.de/wordpress/wp-content/uploads/2017/11/2_4_Holzdruck-2-300x208.jpg 300w" alt="2_4_holzdruck-2" width="425" height="294" loading="lazy"></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="fl-col-group fl-node-5b109fdcd65b9 fl-col-group-nested" data-node="5b109fdcd65b9">
-<div class="fl-col fl-node-5b109fdcd8cca" data-node="5b109fdcd8cca">
-<div class="fl-col-content fl-node-content">
-<div class="fl-module fl-module-rich-text fl-node-5b109fedbb824" data-node="5b109fedbb824">
-<div class="fl-module-content fl-node-content">
-<div class="fl-rich-text">
 <p><strong>Holzdrucke vom Training mit entsch&auml;rften Waffen (Schwert, Naginata, Speer) und Schutzausr&uuml;stung</strong></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="fl-col-group fl-node-5b10a082b1bca fl-col-group-nested" data-node="5b10a082b1bca">
-<div class="fl-col fl-node-5b10a082b42db" data-node="5b10a082b42db">
-<div class="fl-col-content fl-node-content">
-<div class="fl-module fl-module-heading fl-node-5b10a08a660dc" data-node="5b10a08a660dc">
-<div class="fl-module-content fl-node-content">
-<h3 class="fl-heading"><span class="fl-heading-text">"Naginatad&ocirc;" und "Atarashii Naginata"</span></h3>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="fl-col-group fl-node-5b10a0351a5e8 fl-col-group-nested" data-node="5b10a0351a5e8">
-<div class="fl-col fl-node-5b10a0351cd1c fl-col-small" data-node="5b10a0351cd1c">
-<div class="fl-col-content fl-node-content">
-<div class="fl-module fl-module-rich-text fl-node-5b10a03f9bc4f" data-node="5b10a03f9bc4f">
-<div class="fl-module-content fl-node-content">
-<div class="fl-rich-text">
+<h3>"Naginatad&ocirc;" und "Atarashii Naginata"</h3>
 <p>F&uuml;r die Bud&ocirc;-Disziplin, die den Umgang mit der Naginata lehrt, w&auml;re der Name "Naginatad&ocirc;" naheliegend (D&ocirc;: Im weltlichen Sinne Stra&szlig;e oder Weg, im philosophischen Zusammenhang Lebensweg). Diese Namensbildung w&auml;re dann analog denen f&uuml;r Schwertkampf (Kend&ocirc;), Bogenschie&szlig;en (Ky&ucirc;d&ocirc;), J&ucirc;d&ocirc; etc. Dies ist aber nicht der Fall. Die Bud&ocirc;disziplin, die den Umgang mit der Naginata lehrt und den R&uuml;stungswettkampf kennt, hei&szlig;t schlicht Naginata - wie die Waffe selbst.<br>Eine solche Namensgebung mit "-d&ocirc;" war in den 30er bzw. 40er Jahren in Gebrauch, als es von mehreren Seiten Bestrebungen gab, Formen von Naginata zu schaffen, die sich f&uuml;r den Unterricht in Schulen eigneten. Diese &Uuml;bungsprogramme waren auf der Grundlage verschiedener Kory&ucirc; Naginatajutsu mit dem Ziel der Leibesert&uuml;chtigung anhand der Naginata geschaffen worden. Eine dieser Methoden nannte sich "Gakk&ocirc; Naginatad&ocirc;" (d.h. "Schulnaginataweg") und basierte auf der Bewegungslehre von Jiki Shinkagery&ucirc; Naginatajutsu.<br>Um den Unterschied zu den Kory&ucirc; Naginatajutsu und auch zu den &Uuml;bungsprogrammen der Vorkriegszeit wie Gakk&ocirc; Naginatad&ocirc;, denen in der Nachkriegszeit eine gewisse militaristische Vorbelastung anhaftete, deutlich erkennbar zu machen, wurde in fr&uuml;hen Jahren des ZNNR auch die Bezeichnung "Atarashii Naginata" (also "Neues Naginata") verwendet. Den Begriff "Atarashii Naginata" findet man mittlerweile fast nur noch au&szlig;erhalb Japans, dann h&auml;ufig auch falsch (ab-)geschrieben. In Japan wird er jedoch heute in der Regel nicht mehr verwendet.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="fl-col fl-node-5b10a0351f404 fl-col-small" data-node="5b10a0351f404">
-<div class="fl-col-content fl-node-content">
-<div class="fl-module fl-module-rich-text fl-node-5b10a064109c8" data-node="5b10a064109c8">
-<div class="fl-module-content fl-node-content">
-<div class="fl-rich-text">
 <p><img class="alignnone size-full wp-image-198" src="https://dnagb.de/was-ist-naginata/wordpress/wp-content/uploads/2017/11/2_4_Gakko-Naginatado.jpg" sizes="(max-width: 448px) 100vw, 448px" srcset="https://dnagb.de/wordpress/wp-content/uploads/2017/11/2_4_Gakko-Naginatado.jpg 448w, https://dnagb.de/wordpress/wp-content/uploads/2017/11/2_4_Gakko-Naginatado-300x225.jpg 300w" alt="2_4_gakko-naginatado" width="448" height="336" loading="lazy"><br><strong>Gakk&ocirc; Naginatad&ocirc;</strong></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="fl-col-group fl-node-5b10a0f9416ef fl-col-group-nested" data-node="5b10a0f9416ef">
-<div class="fl-col fl-node-5b10a0f943e0d" data-node="5b10a0f943e0d">
-<div class="fl-col-content fl-node-content">
-<div class="fl-module fl-module-rich-text fl-node-5b10a0ff09483" data-node="5b10a0ff09483">
-<div class="fl-module-content fl-node-content">
-<div class="fl-rich-text">
 <p>Da sowohl Disziplin als auch Waffe Naginata hei&szlig;en, ist nat&uuml;rlich f&uuml;r vielerlei Verwechslungen T&uuml;r und Tor ge&ouml;ffnet, insbesondere im gleichzeitigen Umgang mit den alten Stilen. Klar ist die Unterscheidung jedoch in der japanischen Schriftform.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="fl-module fl-module-rich-text fl-node-5ae894d3af4ba" data-node="5ae894d3af4ba">
-<div class="fl-module-content fl-node-content">
-<div class="fl-rich-text">
 <h3>Bedeutung und Schreibweise des japanischen Wortes "Naginata"</h3>
-<div>Die chinesischen Schriftzeichen (Kanji), die urspr&uuml;nglich verwendet wurden, um das japanische Wort "Naginata" zu schreiben, bedeuten so viel wie "langes Schwert" (Wort 1). "Lang" bezieht sich auf den Griff bzw. die Stange, an der die Klinge befestigt ist. Im 14. Jahrhundert kamen in Japan Schwerter mit au&szlig;ergew&ouml;hnlich langer Klinge in Mode und der Begriff verlor seine Eindeutigkeit - war ein langes Schwert nun eine Waffe mit langer Klinge oder von gro&szlig;er Gesamtl&auml;nge? Daher wurde seitdem das Wort Naginata vielfach, aber komplizierter Weise nicht ausschlie&szlig;lich, mit einem anderen Zeichen in der ersten Position geschrieben. Die neue Zeichenkombination bedeutet soviel wie "m&auml;hendes Schwert" (Wort 2) und bezieht sich damit auf eine typische Bewegungen mit der Waffe und nicht mehr auf ihre Gestalt.<br>In j&uuml;ngerer Zeit geriet das erste der beiden Kanji weitgehend in Vergessenheit und geh&ouml;rt nicht zu den Zeichen, die heute standardm&auml;&szlig;ig in Japan in der Schule gelehrt werden (J&ocirc;y&ocirc; Kanji). Im heutigen Japan wird Naginata fast ausschlie&szlig;lich in Silbenschriftzeichen (Hiragana) geschrieben (Wort 3), die lediglich den Lautwert aber keine Bedeutung an sich tragen. Dies soll erneut den Unterschied zu den Kory&ucirc; Naginatajutsu und den &Uuml;bungsprogrammen der fr&uuml;hen Sh&ocirc;wazeit betonen. Auf die Schreibweisen 2 oder gar 1 trifft man aber bei der Besch&auml;ftigung mit Klingen und den alten Naginataschulen immer noch.</div>
-<div><img class="alignnone size-full wp-image-176" src="https://dnagb.de/was-ist-naginata/wordpress/wp-content/uploads/2017/11/2_4_Schreibweisen.jpg" sizes="(max-width: 450px) 100vw, 450px" srcset="https://dnagb.de/wordpress/wp-content/uploads/2017/11/2_4_Schreibweisen.jpg 450w, https://dnagb.de/wordpress/wp-content/uploads/2017/11/2_4_Schreibweisen-300x63.jpg 300w" alt="2_4_schreibweisen" width="450" height="95" loading="lazy"><br><strong>Die drei Schreibweisen f&uuml;r "Naginata"</strong></div>
-<div>&nbsp;</div>
-</div>
-</div>
-</div>
-<div class="fl-col-group fl-node-5b10a1bc57682 fl-col-group-nested" data-node="5b10a1bc57682">
-<div class="fl-col fl-node-5b10a1bc59d93" data-node="5b10a1bc59d93">
-<div class="fl-col-content fl-node-content">
-<div class="fl-module fl-module-rich-text fl-node-5b10a1c43c8d0" data-node="5b10a1c43c8d0">
-<div class="fl-module-content fl-node-content">
-<div class="fl-rich-text">
+<p>Die chinesischen Schriftzeichen (Kanji), die urspr&uuml;nglich verwendet wurden, um das japanische Wort "Naginata" zu schreiben, bedeuten so viel wie "langes Schwert" (Wort 1). "Lang" bezieht sich auf den Griff bzw. die Stange, an der die Klinge befestigt ist. Im 14. Jahrhundert kamen in Japan Schwerter mit au&szlig;ergew&ouml;hnlich langer Klinge in Mode und der Begriff verlor seine Eindeutigkeit - war ein langes Schwert nun eine Waffe mit langer Klinge oder von gro&szlig;er Gesamtl&auml;nge? Daher wurde seitdem das Wort Naginata vielfach, aber komplizierter Weise nicht ausschlie&szlig;lich, mit einem anderen Zeichen in der ersten Position geschrieben. Die neue Zeichenkombination bedeutet soviel wie "m&auml;hendes Schwert" (Wort 2) und bezieht sich damit auf eine typische Bewegungen mit der Waffe und nicht mehr auf ihre Gestalt.<br>In j&uuml;ngerer Zeit geriet das erste der beiden Kanji weitgehend in Vergessenheit und geh&ouml;rt nicht zu den Zeichen, die heute standardm&auml;&szlig;ig in Japan in der Schule gelehrt werden (J&ocirc;y&ocirc; Kanji). Im heutigen Japan wird Naginata fast ausschlie&szlig;lich in Silbenschriftzeichen (Hiragana) geschrieben (Wort 3), die lediglich den Lautwert aber keine Bedeutung an sich tragen. Dies soll erneut den Unterschied zu den Kory&ucirc; Naginatajutsu und den &Uuml;bungsprogrammen der fr&uuml;hen Sh&ocirc;wazeit betonen. Auf die Schreibweisen 2 oder gar 1 trifft man aber bei der Besch&auml;ftigung mit Klingen und den alten Naginataschulen immer noch.</p>
+<p><img class="alignnone size-full wp-image-176" src="https://dnagb.de/was-ist-naginata/wordpress/wp-content/uploads/2017/11/2_4_Schreibweisen.jpg" sizes="(max-width: 450px) 100vw, 450px" srcset="https://dnagb.de/wordpress/wp-content/uploads/2017/11/2_4_Schreibweisen.jpg 450w, https://dnagb.de/wordpress/wp-content/uploads/2017/11/2_4_Schreibweisen-300x63.jpg 300w" alt="2_4_schreibweisen" width="450" height="95" loading="lazy"><br><strong>Die drei Schreibweisen f&uuml;r "Naginata"</strong></p>
 <h3>Naginata und Frauen</h3>
-<div>Lange Zeit war die Naginata eine verbreitete Waffe auf den Kriegsschaupl&auml;tzen des japanischen Mittelalters und die Ausbildung an ihr geh&ouml;rte genauso zum Pflichtprogramm f&uuml;r Samurai wie Schwertkampf, Reiten, Bogenschie&szlig;en etc. Insbesondere f&uuml;r die Kriegerm&ouml;nche (S&ocirc;hei), also die bewaffneten Kr&auml;fte der buddhistischen M&ouml;nchsorden Japans, war die Naginata die typische Waffe.<br>W&auml;hrend die Naginata im Laufe der Zeit ihre Rolle auf dem Schlachtfeld verlor, wurde sie aufgrund ihrer Reichweite und der gro&szlig;en Hebelwirkung im 17. bis 19. Jahrhundert die Waffe, an der viele Frauen von Stand ausgebildet wurden. Als Mitgift wurden wertvolle Naginata zu Erbst&uuml;cken der weiblichen Mitglieder einer Sippe. Aus dieser historischen Beziehung heraus wird Naginata heute in Japan &uuml;berwiegend von Frauen ausge&uuml;bt. Au&szlig;erhalb Japans ist das Geschlechterverh&auml;ltnis jedoch ausgeglichener, mit einem Frauenanteil von ca. 25-50%.</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="fl-col-group fl-node-5b10a1e0ca268 fl-col-group-nested" data-node="5b10a1e0ca268">
-<div class="fl-col fl-node-5b10a1e0cc976" data-node="5b10a1e0cc976">
-<div class="fl-col-content fl-node-content">
-<div class="fl-module fl-module-rich-text fl-node-5b10a1eeddaf3" data-node="5b10a1eeddaf3">
-<div class="fl-module-content fl-node-content">
-<div class="fl-rich-text">
-<p><em>Text: Andreas Nicol</em></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>');
+<p>Lange Zeit war die Naginata eine verbreitete Waffe auf den Kriegsschaupl&auml;tzen des japanischen Mittelalters und die Ausbildung an ihr geh&ouml;rte genauso zum Pflichtprogramm f&uuml;r Samurai wie Schwertkampf, Reiten, Bogenschie&szlig;en etc. Insbesondere f&uuml;r die Kriegerm&ouml;nche (S&ocirc;hei), also die bewaffneten Kr&auml;fte der buddhistischen M&ouml;nchsorden Japans, war die Naginata die typische Waffe.<br>W&auml;hrend die Naginata im Laufe der Zeit ihre Rolle auf dem Schlachtfeld verlor, wurde sie aufgrund ihrer Reichweite und der gro&szlig;en Hebelwirkung im 17. bis 19. Jahrhundert die Waffe, an der viele Frauen von Stand ausgebildet wurden. Als Mitgift wurden wertvolle Naginata zu Erbst&uuml;cken der weiblichen Mitglieder einer Sippe. Aus dieser historischen Beziehung heraus wird Naginata heute in Japan &uuml;berwiegend von Frauen ausge&uuml;bt. Au&szlig;erhalb Japans ist das Geschlechterverh&auml;ltnis jedoch ausgeglichener, mit einem Frauenanteil von ca. 25-50%.</p>');
 
 
 --
@@ -597,7 +436,7 @@ INSERT INTO public.privacy (id, status, user_created, date_created, user_updated
 -- Data for Name: settings; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
-INSERT INTO public.settings (id, status, user_created, date_created, user_updated, date_updated, title_short, title_long_1, title_long_2, "primary", secondary, primary_text, secondary_text) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-11 06:59:08.077+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-26 19:49:04.274+00', 'DNagB', 'Deutscher Naginata Bund', 'Deutscher Naginata Bund e.V.', '#F2A606', '#15605F', '#22262A', '#FFFFFF');
+INSERT INTO public.settings (id, status, user_created, date_created, user_updated, date_updated, title_short, title_long_1, title_long_2, "primary", secondary, primary_text, secondary_text, logo, favicon) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-11 06:59:08.077+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-10-01 11:30:28.308+00', 'DNagB', 'Deutscher Naginata Bund', 'Deutscher Naginata Bund e.V.', '#F2A606', '#15605F', '#22262A', '#FFFFFF', '40c65b93-b372-45cf-a7b1-22dbb11f9054', '147dab14-4609-47be-a9f1-e74076855598');
 
 
 --
@@ -605,9 +444,9 @@ INSERT INTO public.settings (id, status, user_created, date_created, user_update
 --
 
 INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (1, 'published', 'Julian Parrino', '2. Dan', 'pruefungsreferent@dnagb.de', 'e5ab9d1f-c129-4ae9-aa66-c688b64dad0f', 'Referent für Prüfwesen');
-INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (2, 'published', 'Thomas Gerstmann', NULL, 'oeffentlichkeitsreferent@dnagb.de', '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Referentin für Öffentlichkeitsarbeit');
 INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (3, 'published', 'Jonas Stock', NULL, NULL, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Referent für Jugend');
 INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (4, 'published', 'Cornelia Izquierdo Barea', '2. Dan', 'info@dnagb.de', 'c880bb79-61b4-4cf0-b3f7-d6c134b3da15', 'Vorsitzende des Rechtsausschusses');
+INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (2, 'published', 'Thomas Gerstmann', NULL, 'oeffentlichkeitsreferent@dnagb.de', '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Referent für Öffentlichkeitsarbeit');
 
 
 --

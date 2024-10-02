@@ -538,7 +538,9 @@ CREATE TABLE public.settings (
     "primary" character varying(255),
     secondary character varying(255),
     primary_text character varying(255),
-    secondary_text character varying(255) DEFAULT NULL::character varying
+    secondary_text character varying(255) DEFAULT NULL::character varying,
+    logo uuid,
+    favicon uuid
 );
 
 
@@ -990,6 +992,22 @@ ALTER TABLE ONLY public.privacy
 
 ALTER TABLE ONLY public.privacy
     ADD CONSTRAINT privacy_user_updated_foreign FOREIGN KEY (user_updated) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: settings settings_favicon_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.settings
+    ADD CONSTRAINT settings_favicon_foreign FOREIGN KEY (favicon) REFERENCES public.directus_files(id) ON DELETE SET NULL;
+
+
+--
+-- Name: settings settings_logo_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.settings
+    ADD CONSTRAINT settings_logo_foreign FOREIGN KEY (logo) REFERENCES public.directus_files(id) ON DELETE SET NULL;
 
 
 --
