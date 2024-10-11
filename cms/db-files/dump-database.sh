@@ -42,21 +42,21 @@ appdatatables=(
 )
 
 userdatatables=(
-   	events
-	settings
 	association_text
-	board
-	speaker
-	dojos
-	history
-	budo
+   	events
 	examination
-	useful
-	planing
 	imprint
+	board
 	privacy
+	useful
 	contact
+	dojos
+	planing
+	speaker
+	membership
+	naginata
 	downloads
+	settings
 	downloads_files
 )
 

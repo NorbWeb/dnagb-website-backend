@@ -105,41 +105,6 @@ ALTER SEQUENCE public.board_id_seq OWNED BY public.board.id;
 
 
 --
--- Name: budo; Type: TABLE; Schema: public; Owner: nmadauss
---
-
-CREATE TABLE public.budo (
-    id integer NOT NULL,
-    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
-    budo_text text
-);
-
-
-ALTER TABLE public.budo OWNER TO nmadauss;
-
---
--- Name: budo_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
---
-
-CREATE SEQUENCE public.budo_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.budo_id_seq OWNER TO nmadauss;
-
---
--- Name: budo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
---
-
-ALTER SEQUENCE public.budo_id_seq OWNED BY public.budo.id;
-
-
---
 -- Name: contact; Type: TABLE; Schema: public; Owner: nmadauss
 --
 
@@ -374,41 +339,6 @@ ALTER SEQUENCE public.examination_id_seq OWNED BY public.examination.id;
 
 
 --
--- Name: history; Type: TABLE; Schema: public; Owner: nmadauss
---
-
-CREATE TABLE public.history (
-    id integer NOT NULL,
-    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
-    history_text text
-);
-
-
-ALTER TABLE public.history OWNER TO nmadauss;
-
---
--- Name: history_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
---
-
-CREATE SEQUENCE public.history_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.history_id_seq OWNER TO nmadauss;
-
---
--- Name: history_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
---
-
-ALTER SEQUENCE public.history_id_seq OWNED BY public.history.id;
-
-
---
 -- Name: imprint; Type: TABLE; Schema: public; Owner: nmadauss
 --
 
@@ -445,6 +375,80 @@ ALTER TABLE public.imprint_id_seq OWNER TO nmadauss;
 --
 
 ALTER SEQUENCE public.imprint_id_seq OWNED BY public.imprint.id;
+
+
+--
+-- Name: membership; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.membership (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    membership_text text
+);
+
+
+ALTER TABLE public.membership OWNER TO nmadauss;
+
+--
+-- Name: membership_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.membership_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.membership_id_seq OWNER TO nmadauss;
+
+--
+-- Name: membership_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.membership_id_seq OWNED BY public.membership.id;
+
+
+--
+-- Name: naginata; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.naginata (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    martial_art text,
+    equipment text,
+    ranks text,
+    what_is text,
+    history text
+);
+
+
+ALTER TABLE public.naginata OWNER TO nmadauss;
+
+--
+-- Name: naginata_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.naginata_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.naginata_id_seq OWNER TO nmadauss;
+
+--
+-- Name: naginata_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.naginata_id_seq OWNED BY public.naginata.id;
 
 
 --
@@ -657,13 +661,6 @@ ALTER TABLE ONLY public.board ALTER COLUMN id SET DEFAULT nextval('public.board_
 
 
 --
--- Name: budo id; Type: DEFAULT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.budo ALTER COLUMN id SET DEFAULT nextval('public.budo_id_seq'::regclass);
-
-
---
 -- Name: contact id; Type: DEFAULT; Schema: public; Owner: nmadauss
 --
 
@@ -706,17 +703,24 @@ ALTER TABLE ONLY public.examination ALTER COLUMN id SET DEFAULT nextval('public.
 
 
 --
--- Name: history id; Type: DEFAULT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.history ALTER COLUMN id SET DEFAULT nextval('public.history_id_seq'::regclass);
-
-
---
 -- Name: imprint id; Type: DEFAULT; Schema: public; Owner: nmadauss
 --
 
 ALTER TABLE ONLY public.imprint ALTER COLUMN id SET DEFAULT nextval('public.imprint_id_seq'::regclass);
+
+
+--
+-- Name: membership id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.membership ALTER COLUMN id SET DEFAULT nextval('public.membership_id_seq'::regclass);
+
+
+--
+-- Name: naginata id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.naginata ALTER COLUMN id SET DEFAULT nextval('public.naginata_id_seq'::regclass);
 
 
 --
@@ -771,14 +775,6 @@ ALTER TABLE ONLY public.board
 
 
 --
--- Name: budo budo_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.budo
-    ADD CONSTRAINT budo_pkey PRIMARY KEY (id);
-
-
---
 -- Name: contact contact_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
 --
 
@@ -827,19 +823,27 @@ ALTER TABLE ONLY public.examination
 
 
 --
--- Name: history history_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
---
-
-ALTER TABLE ONLY public.history
-    ADD CONSTRAINT history_pkey PRIMARY KEY (id);
-
-
---
 -- Name: imprint imprint_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
 --
 
 ALTER TABLE ONLY public.imprint
     ADD CONSTRAINT imprint_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: membership membership_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.membership
+    ADD CONSTRAINT membership_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: naginata naginata_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.naginata
+    ADD CONSTRAINT naginata_pkey PRIMARY KEY (id);
 
 
 --
