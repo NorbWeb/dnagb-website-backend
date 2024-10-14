@@ -939,7 +939,7 @@ ALTER TABLE ONLY public.dojos
 --
 
 ALTER TABLE ONLY public.downloads_files
-    ADD CONSTRAINT downloads_files_directus_files_id_foreign FOREIGN KEY (directus_files_id) REFERENCES public.directus_files(id) ON DELETE SET NULL;
+    ADD CONSTRAINT downloads_files_directus_files_id_foreign FOREIGN KEY (directus_files_id) REFERENCES public.directus_files(id) ON DELETE CASCADE;
 
 
 --
@@ -947,7 +947,7 @@ ALTER TABLE ONLY public.downloads_files
 --
 
 ALTER TABLE ONLY public.downloads_files
-    ADD CONSTRAINT downloads_files_downloads_id_foreign FOREIGN KEY (downloads_id) REFERENCES public.downloads(id) ON DELETE SET NULL;
+    ADD CONSTRAINT downloads_files_downloads_id_foreign FOREIGN KEY (downloads_id) REFERENCES public.downloads(id) ON DELETE CASCADE;
 
 
 --

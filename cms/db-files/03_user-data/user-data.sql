@@ -219,7 +219,7 @@ SELECT pg_catalog.setval('public.dojos_id_seq', 2, true);
 -- Name: downloads_files_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
-SELECT pg_catalog.setval('public.downloads_files_id_seq', 14, true);
+SELECT pg_catalog.setval('public.downloads_files_id_seq', 17, true);
 
 
 --
