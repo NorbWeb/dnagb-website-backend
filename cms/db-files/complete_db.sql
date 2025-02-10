@@ -17,6 +17,1577 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
+-- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION postgis IS 'PostGIS geometry and geography spatial types and functions';
+
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: association_text; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.association_text (
+    id integer NOT NULL,
+    who_we_are text,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL
+);
+
+
+ALTER TABLE public.association_text OWNER TO nmadauss;
+
+--
+-- Name: association_text_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.association_text_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.association_text_id_seq OWNER TO nmadauss;
+
+--
+-- Name: association_text_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.association_text_id_seq OWNED BY public.association_text.id;
+
+
+--
+-- Name: board; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.board (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    president_name character varying(255) DEFAULT NULL::character varying,
+    president_email character varying(255) DEFAULT NULL::character varying,
+    president_image uuid,
+    vice_name character varying(255) DEFAULT NULL::character varying,
+    vice_email character varying(255) DEFAULT NULL::character varying,
+    vice_image uuid,
+    treasurer_name character varying(255) DEFAULT NULL::character varying,
+    treasurer_email character varying(255) DEFAULT NULL::character varying,
+    treasurer_image uuid,
+    president_rank character varying(255),
+    vice_rank character varying(255) DEFAULT NULL::character varying,
+    treasurer_rank character varying(255) DEFAULT NULL::character varying,
+    president_role character varying(255) DEFAULT NULL::character varying,
+    vice_role character varying(255) DEFAULT NULL::character varying,
+    treasurer_role character varying(255) DEFAULT NULL::character varying
+);
+
+
+ALTER TABLE public.board OWNER TO nmadauss;
+
+--
+-- Name: board_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.board_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.board_id_seq OWNER TO nmadauss;
+
+--
+-- Name: board_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.board_id_seq OWNED BY public.board.id;
+
+
+--
+-- Name: contact; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.contact (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    user_created uuid,
+    date_created timestamp with time zone,
+    user_updated uuid,
+    date_updated timestamp with time zone,
+    contact_text text
+);
+
+
+ALTER TABLE public.contact OWNER TO nmadauss;
+
+--
+-- Name: contact_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.contact_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.contact_id_seq OWNER TO nmadauss;
+
+--
+-- Name: contact_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.contact_id_seq OWNED BY public.contact.id;
+
+
+--
+-- Name: directus_activity; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_activity (
+    id integer NOT NULL,
+    action character varying(45) NOT NULL,
+    "user" uuid,
+    "timestamp" timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    ip character varying(50),
+    user_agent text,
+    collection character varying(64) NOT NULL,
+    item character varying(255) NOT NULL,
+    comment text,
+    origin character varying(255)
+);
+
+
+ALTER TABLE public.directus_activity OWNER TO nmadauss;
+
+--
+-- Name: directus_activity_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.directus_activity_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.directus_activity_id_seq OWNER TO nmadauss;
+
+--
+-- Name: directus_activity_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.directus_activity_id_seq OWNED BY public.directus_activity.id;
+
+
+--
+-- Name: directus_collections; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_collections (
+    collection character varying(64) NOT NULL,
+    icon character varying(30),
+    note text,
+    display_template character varying(255),
+    hidden boolean DEFAULT false NOT NULL,
+    singleton boolean DEFAULT false NOT NULL,
+    translations json,
+    archive_field character varying(64),
+    archive_app_filter boolean DEFAULT true NOT NULL,
+    archive_value character varying(255),
+    unarchive_value character varying(255),
+    sort_field character varying(64),
+    accountability character varying(255) DEFAULT 'all'::character varying,
+    color character varying(255),
+    item_duplication_fields json,
+    sort integer,
+    "group" character varying(64),
+    collapse character varying(255) DEFAULT 'open'::character varying NOT NULL,
+    preview_url character varying(255),
+    versioning boolean DEFAULT false NOT NULL
+);
+
+
+ALTER TABLE public.directus_collections OWNER TO nmadauss;
+
+--
+-- Name: directus_dashboards; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_dashboards (
+    id uuid NOT NULL,
+    name character varying(255) NOT NULL,
+    icon character varying(30) DEFAULT 'dashboard'::character varying NOT NULL,
+    note text,
+    date_created timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
+    user_created uuid,
+    color character varying(255)
+);
+
+
+ALTER TABLE public.directus_dashboards OWNER TO nmadauss;
+
+--
+-- Name: directus_extensions; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_extensions (
+    enabled boolean DEFAULT true NOT NULL,
+    id uuid NOT NULL,
+    folder character varying(255) NOT NULL,
+    source character varying(255) NOT NULL,
+    bundle uuid
+);
+
+
+ALTER TABLE public.directus_extensions OWNER TO nmadauss;
+
+--
+-- Name: directus_fields; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_fields (
+    id integer NOT NULL,
+    collection character varying(64) NOT NULL,
+    field character varying(64) NOT NULL,
+    special character varying(64),
+    interface character varying(64),
+    options json,
+    display character varying(64),
+    display_options json,
+    readonly boolean DEFAULT false NOT NULL,
+    hidden boolean DEFAULT false NOT NULL,
+    sort integer,
+    width character varying(30) DEFAULT 'full'::character varying,
+    translations json,
+    note text,
+    conditions json,
+    required boolean DEFAULT false,
+    "group" character varying(64),
+    validation json,
+    validation_message text
+);
+
+
+ALTER TABLE public.directus_fields OWNER TO nmadauss;
+
+--
+-- Name: directus_fields_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.directus_fields_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.directus_fields_id_seq OWNER TO nmadauss;
+
+--
+-- Name: directus_fields_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.directus_fields_id_seq OWNED BY public.directus_fields.id;
+
+
+--
+-- Name: directus_files; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_files (
+    id uuid NOT NULL,
+    storage character varying(255) NOT NULL,
+    filename_disk character varying(255),
+    filename_download character varying(255) NOT NULL,
+    title character varying(255),
+    type character varying(255),
+    folder uuid,
+    uploaded_by uuid,
+    uploaded_on timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    modified_by uuid,
+    modified_on timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    charset character varying(50),
+    filesize bigint,
+    width integer,
+    height integer,
+    duration integer,
+    embed character varying(200),
+    description text,
+    location text,
+    tags text,
+    metadata json,
+    focal_point_x integer,
+    focal_point_y integer
+);
+
+
+ALTER TABLE public.directus_files OWNER TO nmadauss;
+
+--
+-- Name: directus_flows; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_flows (
+    id uuid NOT NULL,
+    name character varying(255) NOT NULL,
+    icon character varying(30),
+    color character varying(255),
+    description text,
+    status character varying(255) DEFAULT 'active'::character varying NOT NULL,
+    trigger character varying(255),
+    accountability character varying(255) DEFAULT 'all'::character varying,
+    options json,
+    operation uuid,
+    date_created timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
+    user_created uuid
+);
+
+
+ALTER TABLE public.directus_flows OWNER TO nmadauss;
+
+--
+-- Name: directus_folders; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_folders (
+    id uuid NOT NULL,
+    name character varying(255) NOT NULL,
+    parent uuid
+);
+
+
+ALTER TABLE public.directus_folders OWNER TO nmadauss;
+
+--
+-- Name: directus_migrations; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_migrations (
+    version character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    "timestamp" timestamp with time zone DEFAULT CURRENT_TIMESTAMP
+);
+
+
+ALTER TABLE public.directus_migrations OWNER TO nmadauss;
+
+--
+-- Name: directus_notifications; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_notifications (
+    id integer NOT NULL,
+    "timestamp" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
+    status character varying(255) DEFAULT 'inbox'::character varying,
+    recipient uuid NOT NULL,
+    sender uuid,
+    subject character varying(255) NOT NULL,
+    message text,
+    collection character varying(64),
+    item character varying(255)
+);
+
+
+ALTER TABLE public.directus_notifications OWNER TO nmadauss;
+
+--
+-- Name: directus_notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.directus_notifications_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.directus_notifications_id_seq OWNER TO nmadauss;
+
+--
+-- Name: directus_notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.directus_notifications_id_seq OWNED BY public.directus_notifications.id;
+
+
+--
+-- Name: directus_operations; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_operations (
+    id uuid NOT NULL,
+    name character varying(255),
+    key character varying(255) NOT NULL,
+    type character varying(255) NOT NULL,
+    position_x integer NOT NULL,
+    position_y integer NOT NULL,
+    options json,
+    resolve uuid,
+    reject uuid,
+    flow uuid NOT NULL,
+    date_created timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
+    user_created uuid
+);
+
+
+ALTER TABLE public.directus_operations OWNER TO nmadauss;
+
+--
+-- Name: directus_panels; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_panels (
+    id uuid NOT NULL,
+    dashboard uuid NOT NULL,
+    name character varying(255),
+    icon character varying(30) DEFAULT NULL::character varying,
+    color character varying(10),
+    show_header boolean DEFAULT false NOT NULL,
+    note text,
+    type character varying(255) NOT NULL,
+    position_x integer NOT NULL,
+    position_y integer NOT NULL,
+    width integer NOT NULL,
+    height integer NOT NULL,
+    options json,
+    date_created timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
+    user_created uuid
+);
+
+
+ALTER TABLE public.directus_panels OWNER TO nmadauss;
+
+--
+-- Name: directus_permissions; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_permissions (
+    id integer NOT NULL,
+    role uuid,
+    collection character varying(64) NOT NULL,
+    action character varying(10) NOT NULL,
+    permissions json,
+    validation json,
+    presets json,
+    fields text
+);
+
+
+ALTER TABLE public.directus_permissions OWNER TO nmadauss;
+
+--
+-- Name: directus_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.directus_permissions_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.directus_permissions_id_seq OWNER TO nmadauss;
+
+--
+-- Name: directus_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.directus_permissions_id_seq OWNED BY public.directus_permissions.id;
+
+
+--
+-- Name: directus_presets; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_presets (
+    id integer NOT NULL,
+    bookmark character varying(255),
+    "user" uuid,
+    role uuid,
+    collection character varying(64),
+    search character varying(100),
+    layout character varying(100) DEFAULT 'tabular'::character varying,
+    layout_query json,
+    layout_options json,
+    refresh_interval integer,
+    filter json,
+    icon character varying(30) DEFAULT 'bookmark'::character varying,
+    color character varying(255)
+);
+
+
+ALTER TABLE public.directus_presets OWNER TO nmadauss;
+
+--
+-- Name: directus_presets_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.directus_presets_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.directus_presets_id_seq OWNER TO nmadauss;
+
+--
+-- Name: directus_presets_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.directus_presets_id_seq OWNED BY public.directus_presets.id;
+
+
+--
+-- Name: directus_relations; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_relations (
+    id integer NOT NULL,
+    many_collection character varying(64) NOT NULL,
+    many_field character varying(64) NOT NULL,
+    one_collection character varying(64),
+    one_field character varying(64),
+    one_collection_field character varying(64),
+    one_allowed_collections text,
+    junction_field character varying(64),
+    sort_field character varying(64),
+    one_deselect_action character varying(255) DEFAULT 'nullify'::character varying NOT NULL
+);
+
+
+ALTER TABLE public.directus_relations OWNER TO nmadauss;
+
+--
+-- Name: directus_relations_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.directus_relations_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.directus_relations_id_seq OWNER TO nmadauss;
+
+--
+-- Name: directus_relations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.directus_relations_id_seq OWNED BY public.directus_relations.id;
+
+
+--
+-- Name: directus_revisions; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_revisions (
+    id integer NOT NULL,
+    activity integer NOT NULL,
+    collection character varying(64) NOT NULL,
+    item character varying(255) NOT NULL,
+    data json,
+    delta json,
+    parent integer,
+    version uuid
+);
+
+
+ALTER TABLE public.directus_revisions OWNER TO nmadauss;
+
+--
+-- Name: directus_revisions_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.directus_revisions_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.directus_revisions_id_seq OWNER TO nmadauss;
+
+--
+-- Name: directus_revisions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.directus_revisions_id_seq OWNED BY public.directus_revisions.id;
+
+
+--
+-- Name: directus_roles; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_roles (
+    id uuid NOT NULL,
+    name character varying(100) NOT NULL,
+    icon character varying(30) DEFAULT 'supervised_user_circle'::character varying NOT NULL,
+    description text,
+    ip_access text,
+    enforce_tfa boolean DEFAULT false NOT NULL,
+    admin_access boolean DEFAULT false NOT NULL,
+    app_access boolean DEFAULT true NOT NULL
+);
+
+
+ALTER TABLE public.directus_roles OWNER TO nmadauss;
+
+--
+-- Name: directus_sessions; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_sessions (
+    token character varying(64) NOT NULL,
+    "user" uuid,
+    expires timestamp with time zone NOT NULL,
+    ip character varying(255),
+    user_agent text,
+    share uuid,
+    origin character varying(255),
+    next_token character varying(64)
+);
+
+
+ALTER TABLE public.directus_sessions OWNER TO nmadauss;
+
+--
+-- Name: directus_settings; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_settings (
+    id integer NOT NULL,
+    project_name character varying(100) DEFAULT 'Directus'::character varying NOT NULL,
+    project_url character varying(255),
+    project_color character varying(255) DEFAULT '#6644FF'::character varying NOT NULL,
+    project_logo uuid,
+    public_foreground uuid,
+    public_background uuid,
+    public_note text,
+    auth_login_attempts integer DEFAULT 25,
+    auth_password_policy character varying(100),
+    storage_asset_transform character varying(7) DEFAULT 'all'::character varying,
+    storage_asset_presets json,
+    custom_css text,
+    storage_default_folder uuid,
+    basemaps json,
+    mapbox_key character varying(255),
+    module_bar json,
+    project_descriptor character varying(100),
+    default_language character varying(255) DEFAULT 'en-US'::character varying NOT NULL,
+    custom_aspect_ratios json,
+    public_favicon uuid,
+    default_appearance character varying(255) DEFAULT 'auto'::character varying NOT NULL,
+    default_theme_light character varying(255),
+    theme_light_overrides json,
+    default_theme_dark character varying(255),
+    theme_dark_overrides json,
+    report_error_url character varying(255),
+    report_bug_url character varying(255),
+    report_feature_url character varying(255),
+    public_registration boolean DEFAULT false NOT NULL,
+    public_registration_verify_email boolean DEFAULT true NOT NULL,
+    public_registration_role uuid,
+    public_registration_email_filter json
+);
+
+
+ALTER TABLE public.directus_settings OWNER TO nmadauss;
+
+--
+-- Name: directus_settings_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.directus_settings_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.directus_settings_id_seq OWNER TO nmadauss;
+
+--
+-- Name: directus_settings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.directus_settings_id_seq OWNED BY public.directus_settings.id;
+
+
+--
+-- Name: directus_shares; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_shares (
+    id uuid NOT NULL,
+    name character varying(255),
+    collection character varying(64) NOT NULL,
+    item character varying(255) NOT NULL,
+    role uuid,
+    password character varying(255),
+    user_created uuid,
+    date_created timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
+    date_start timestamp with time zone,
+    date_end timestamp with time zone,
+    times_used integer DEFAULT 0,
+    max_uses integer
+);
+
+
+ALTER TABLE public.directus_shares OWNER TO nmadauss;
+
+--
+-- Name: directus_translations; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_translations (
+    id uuid NOT NULL,
+    language character varying(255) NOT NULL,
+    key character varying(255) NOT NULL,
+    value text NOT NULL
+);
+
+
+ALTER TABLE public.directus_translations OWNER TO nmadauss;
+
+--
+-- Name: directus_users; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_users (
+    id uuid NOT NULL,
+    first_name character varying(50),
+    last_name character varying(50),
+    email character varying(128),
+    password character varying(255),
+    location character varying(255),
+    title character varying(50),
+    description text,
+    tags json,
+    avatar uuid,
+    language character varying(255) DEFAULT NULL::character varying,
+    tfa_secret character varying(255),
+    status character varying(16) DEFAULT 'active'::character varying NOT NULL,
+    role uuid,
+    token character varying(255),
+    last_access timestamp with time zone,
+    last_page character varying(255),
+    provider character varying(128) DEFAULT 'default'::character varying NOT NULL,
+    external_identifier character varying(255),
+    auth_data json,
+    email_notifications boolean DEFAULT true,
+    appearance character varying(255),
+    theme_dark character varying(255),
+    theme_light character varying(255),
+    theme_light_overrides json,
+    theme_dark_overrides json
+);
+
+
+ALTER TABLE public.directus_users OWNER TO nmadauss;
+
+--
+-- Name: directus_versions; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_versions (
+    id uuid NOT NULL,
+    key character varying(64) NOT NULL,
+    name character varying(255),
+    collection character varying(64) NOT NULL,
+    item character varying(255) NOT NULL,
+    hash character varying(255),
+    date_created timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
+    date_updated timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
+    user_created uuid,
+    user_updated uuid
+);
+
+
+ALTER TABLE public.directus_versions OWNER TO nmadauss;
+
+--
+-- Name: directus_webhooks; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.directus_webhooks (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    method character varying(10) DEFAULT 'POST'::character varying NOT NULL,
+    url character varying(255) NOT NULL,
+    status character varying(10) DEFAULT 'active'::character varying NOT NULL,
+    data boolean DEFAULT true NOT NULL,
+    actions character varying(100) NOT NULL,
+    collections character varying(255) NOT NULL,
+    headers json,
+    was_active_before_deprecation boolean DEFAULT false NOT NULL,
+    migrated_flow uuid
+);
+
+
+ALTER TABLE public.directus_webhooks OWNER TO nmadauss;
+
+--
+-- Name: directus_webhooks_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.directus_webhooks_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.directus_webhooks_id_seq OWNER TO nmadauss;
+
+--
+-- Name: directus_webhooks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.directus_webhooks_id_seq OWNED BY public.directus_webhooks.id;
+
+
+--
+-- Name: dojos; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.dojos (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    sort integer,
+    name character varying(255),
+    logo uuid,
+    link character varying(255),
+    city character varying(255),
+    description text,
+    geometry public.geometry(Point,4326) DEFAULT NULL::public.geometry
+);
+
+
+ALTER TABLE public.dojos OWNER TO nmadauss;
+
+--
+-- Name: dojos_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.dojos_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.dojos_id_seq OWNER TO nmadauss;
+
+--
+-- Name: dojos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.dojos_id_seq OWNED BY public.dojos.id;
+
+
+--
+-- Name: downloads; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.downloads (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL
+);
+
+
+ALTER TABLE public.downloads OWNER TO nmadauss;
+
+--
+-- Name: downloads_files; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.downloads_files (
+    id integer NOT NULL,
+    downloads_id integer,
+    directus_files_id uuid
+);
+
+
+ALTER TABLE public.downloads_files OWNER TO nmadauss;
+
+--
+-- Name: downloads_files_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.downloads_files_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.downloads_files_id_seq OWNER TO nmadauss;
+
+--
+-- Name: downloads_files_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.downloads_files_id_seq OWNED BY public.downloads_files.id;
+
+
+--
+-- Name: downloads_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.downloads_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.downloads_id_seq OWNER TO nmadauss;
+
+--
+-- Name: downloads_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.downloads_id_seq OWNED BY public.downloads.id;
+
+
+--
+-- Name: events; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.events (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    sort integer,
+    user_created uuid,
+    date_created timestamp with time zone,
+    user_updated uuid,
+    date_updated timestamp with time zone,
+    description text,
+    date_start timestamp without time zone,
+    date_end timestamp without time zone,
+    location_name character varying(255),
+    title character varying(255) DEFAULT NULL::character varying,
+    announcement character varying(255),
+    type json,
+    city character varying(255) DEFAULT NULL::character varying,
+    street character varying(255) DEFAULT NULL::character varying,
+    number character varying(255) DEFAULT NULL::character varying,
+    postal_code character varying(255) DEFAULT NULL::character varying
+);
+
+
+ALTER TABLE public.events OWNER TO nmadauss;
+
+--
+-- Name: events_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.events_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.events_id_seq OWNER TO nmadauss;
+
+--
+-- Name: events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.events_id_seq OWNED BY public.events.id;
+
+
+--
+-- Name: examination; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.examination (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    examination_text text
+);
+
+
+ALTER TABLE public.examination OWNER TO nmadauss;
+
+--
+-- Name: examination_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.examination_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.examination_id_seq OWNER TO nmadauss;
+
+--
+-- Name: examination_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.examination_id_seq OWNED BY public.examination.id;
+
+
+--
+-- Name: imprint; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.imprint (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    user_created uuid,
+    date_created timestamp with time zone,
+    user_updated uuid,
+    date_updated timestamp with time zone,
+    imprint_text text
+);
+
+
+ALTER TABLE public.imprint OWNER TO nmadauss;
+
+--
+-- Name: imprint_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.imprint_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.imprint_id_seq OWNER TO nmadauss;
+
+--
+-- Name: imprint_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.imprint_id_seq OWNED BY public.imprint.id;
+
+
+--
+-- Name: membership; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.membership (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    membership_text text
+);
+
+
+ALTER TABLE public.membership OWNER TO nmadauss;
+
+--
+-- Name: membership_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.membership_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.membership_id_seq OWNER TO nmadauss;
+
+--
+-- Name: membership_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.membership_id_seq OWNED BY public.membership.id;
+
+
+--
+-- Name: naginata; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.naginata (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    martial_art text,
+    equipment text,
+    ranks text,
+    what_is text,
+    history text
+);
+
+
+ALTER TABLE public.naginata OWNER TO nmadauss;
+
+--
+-- Name: naginata_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.naginata_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.naginata_id_seq OWNER TO nmadauss;
+
+--
+-- Name: naginata_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.naginata_id_seq OWNED BY public.naginata.id;
+
+
+--
+-- Name: planing; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.planing (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    planing_text text
+);
+
+
+ALTER TABLE public.planing OWNER TO nmadauss;
+
+--
+-- Name: planing_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.planing_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.planing_id_seq OWNER TO nmadauss;
+
+--
+-- Name: planing_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.planing_id_seq OWNED BY public.planing.id;
+
+
+--
+-- Name: privacy; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.privacy (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    user_created uuid,
+    date_created timestamp with time zone,
+    user_updated uuid,
+    date_updated timestamp with time zone,
+    privacy_text text
+);
+
+
+ALTER TABLE public.privacy OWNER TO nmadauss;
+
+--
+-- Name: privacy_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.privacy_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.privacy_id_seq OWNER TO nmadauss;
+
+--
+-- Name: privacy_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.privacy_id_seq OWNED BY public.privacy.id;
+
+
+--
+-- Name: settings; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.settings (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    user_created uuid,
+    date_created timestamp with time zone,
+    user_updated uuid,
+    date_updated timestamp with time zone,
+    title_short character varying(255),
+    title_long_1 character varying(255),
+    title_long_2 character varying(255) DEFAULT NULL::character varying,
+    "primary" character varying(255),
+    secondary character varying(255),
+    primary_text character varying(255),
+    secondary_text character varying(255) DEFAULT NULL::character varying,
+    logo uuid,
+    favicon uuid
+);
+
+
+ALTER TABLE public.settings OWNER TO nmadauss;
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.settings_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.settings_id_seq OWNER TO nmadauss;
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.settings_id_seq OWNED BY public.settings.id;
+
+
+--
+-- Name: speaker; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.speaker (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    name character varying(255) DEFAULT NULL::character varying,
+    rank character varying(255) DEFAULT NULL::character varying,
+    email character varying(255) DEFAULT NULL::character varying,
+    image uuid DEFAULT '28bb19aa-a05d-4f39-929b-9bf4527e4bbe'::uuid,
+    role character varying(255)
+);
+
+
+ALTER TABLE public.speaker OWNER TO nmadauss;
+
+--
+-- Name: speaker_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.speaker_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.speaker_id_seq OWNER TO nmadauss;
+
+--
+-- Name: speaker_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.speaker_id_seq OWNED BY public.speaker.id;
+
+
+--
+-- Name: useful; Type: TABLE; Schema: public; Owner: nmadauss
+--
+
+CREATE TABLE public.useful (
+    id integer NOT NULL,
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    useful_text text
+);
+
+
+ALTER TABLE public.useful OWNER TO nmadauss;
+
+--
+-- Name: useful_id_seq; Type: SEQUENCE; Schema: public; Owner: nmadauss
+--
+
+CREATE SEQUENCE public.useful_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.useful_id_seq OWNER TO nmadauss;
+
+--
+-- Name: useful_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nmadauss
+--
+
+ALTER SEQUENCE public.useful_id_seq OWNED BY public.useful.id;
+
+
+--
+-- Name: association_text id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.association_text ALTER COLUMN id SET DEFAULT nextval('public.association_text_id_seq'::regclass);
+
+
+--
+-- Name: board id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.board ALTER COLUMN id SET DEFAULT nextval('public.board_id_seq'::regclass);
+
+
+--
+-- Name: contact id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.contact ALTER COLUMN id SET DEFAULT nextval('public.contact_id_seq'::regclass);
+
+
+--
+-- Name: directus_activity id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_activity ALTER COLUMN id SET DEFAULT nextval('public.directus_activity_id_seq'::regclass);
+
+
+--
+-- Name: directus_fields id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_fields ALTER COLUMN id SET DEFAULT nextval('public.directus_fields_id_seq'::regclass);
+
+
+--
+-- Name: directus_notifications id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_notifications ALTER COLUMN id SET DEFAULT nextval('public.directus_notifications_id_seq'::regclass);
+
+
+--
+-- Name: directus_permissions id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_permissions ALTER COLUMN id SET DEFAULT nextval('public.directus_permissions_id_seq'::regclass);
+
+
+--
+-- Name: directus_presets id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_presets ALTER COLUMN id SET DEFAULT nextval('public.directus_presets_id_seq'::regclass);
+
+
+--
+-- Name: directus_relations id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_relations ALTER COLUMN id SET DEFAULT nextval('public.directus_relations_id_seq'::regclass);
+
+
+--
+-- Name: directus_revisions id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_revisions ALTER COLUMN id SET DEFAULT nextval('public.directus_revisions_id_seq'::regclass);
+
+
+--
+-- Name: directus_settings id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_settings ALTER COLUMN id SET DEFAULT nextval('public.directus_settings_id_seq'::regclass);
+
+
+--
+-- Name: directus_webhooks id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_webhooks ALTER COLUMN id SET DEFAULT nextval('public.directus_webhooks_id_seq'::regclass);
+
+
+--
+-- Name: dojos id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.dojos ALTER COLUMN id SET DEFAULT nextval('public.dojos_id_seq'::regclass);
+
+
+--
+-- Name: downloads id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.downloads ALTER COLUMN id SET DEFAULT nextval('public.downloads_id_seq'::regclass);
+
+
+--
+-- Name: downloads_files id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.downloads_files ALTER COLUMN id SET DEFAULT nextval('public.downloads_files_id_seq'::regclass);
+
+
+--
+-- Name: events id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.events_id_seq'::regclass);
+
+
+--
+-- Name: examination id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.examination ALTER COLUMN id SET DEFAULT nextval('public.examination_id_seq'::regclass);
+
+
+--
+-- Name: imprint id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.imprint ALTER COLUMN id SET DEFAULT nextval('public.imprint_id_seq'::regclass);
+
+
+--
+-- Name: membership id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.membership ALTER COLUMN id SET DEFAULT nextval('public.membership_id_seq'::regclass);
+
+
+--
+-- Name: naginata id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.naginata ALTER COLUMN id SET DEFAULT nextval('public.naginata_id_seq'::regclass);
+
+
+--
+-- Name: planing id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.planing ALTER COLUMN id SET DEFAULT nextval('public.planing_id_seq'::regclass);
+
+
+--
+-- Name: privacy id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.privacy ALTER COLUMN id SET DEFAULT nextval('public.privacy_id_seq'::regclass);
+
+
+--
+-- Name: settings id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.settings ALTER COLUMN id SET DEFAULT nextval('public.settings_id_seq'::regclass);
+
+
+--
+-- Name: speaker id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.speaker ALTER COLUMN id SET DEFAULT nextval('public.speaker_id_seq'::regclass);
+
+
+--
+-- Name: useful id; Type: DEFAULT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.useful ALTER COLUMN id SET DEFAULT nextval('public.useful_id_seq'::regclass);
+
+
+--
+-- Data for Name: association_text; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.association_text (id, who_we_are, status) VALUES (2, '<h2>Deutscher Naginata Bund</h2>
+<p>Der Deutsche Naginata Bund (DNagB) ist ein gemeinn&uuml;tziger Verein, der den Sport Naginata in Deutschland f&ouml;rdert und mit gezielten Angeboten weiterentwickelt. Daf&uuml;r veranstaltet der DNagB regelm&auml;&szlig;ig Lehrg&auml;nge und Pr&uuml;fungen. Zu den Highlights z&auml;hlt au&szlig;erdem die j&auml;hrliche Deutsche Meisterschaft (DM), bei der Sportlerinnen und Sportler aus dem ganzen Land zusammen kommen.</p>
+<p>Der DNagB ist zudem die Schnittstelle zwischen seinen Mitgliedern und internationalen Naginata-Organisationen: Auf diese Weise k&ouml;nnen DNagB-Mitglieder auch an Seminaren, Pr&uuml;fungen und Turnieren im Ausland teilnehmen &ndash; beispielsweise entsendet der DNagB seit 2007 regelm&auml;&szlig;ig eine eigene Mannschaft zu Europa- und Weltmeisterschaften und war auch schon selbst Organisator dieser Gro&szlig;ereignisse.</p>
+<p>In Deutschland bieten mehrere Sportvereine Naginata als Wettkampfsport an: Diese sind in Berlin, Mainz, Ingelheim, Dellfeld, Leverkusen und Potsdam. In Mainz gibt es gleich zwei Gruppen &ndash; es gibt also deutschlandweit insgesamt sieben Trainingsgruppen. Sie werden auch Dojo genannt. (Stand Oktober 2024)</p>
+<p>&nbsp;Wie h&auml;ngen diese mit dem DNagB zusammen? Der DNagB hat selbst keine eigene Trainingsgruppe, vielmehr gestalten die Dojo ihre Trainingseinheiten selbstst&auml;ndig. Viele Naginata-Sportlerinnen und -sportler, die einem dieser Dojo angeh&ouml;ren, sind zugleich zus&auml;tzlich Mitglied im DNagB.Dies bietet einige Vorteile: Sie k&ouml;nnen so Pr&uuml;fungen im In- und Ausland wahrnehmen und bei der Deutschen Meisterschaft starten. Sie k&ouml;nnen sich f&uuml;r die Nationalmannschaft qualifizieren und zahlen bei vielen DNagB-Lehrg&auml;ngen eine verg&uuml;nstigte Teilnahmegeb&uuml;hr. Au&szlig;erdem kannst du als DNagB-Mitglied das Naginata-Geschehen in Deutschland aktiv mitgestalten!</p>', 'published');
+
+
+--
+-- Data for Name: board; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.board (id, status, president_name, president_email, president_image, vice_name, vice_email, vice_image, treasurer_name, treasurer_email, treasurer_image, president_rank, vice_rank, treasurer_rank, president_role, vice_role, treasurer_role) VALUES (1, 'published', 'Ines Klose', 'praesident@dnagb.de', '01320837-1f3e-42a6-9432-5e4ffe65532c', 'Marie-Luise Göbel', 'vizepraesident@dnagb.de', '6f552699-8d86-45a2-a550-c499a788c80a', 'Nicolas Adalin Braun', 'kassenwart@dnagb.de', '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', '3. Dan', '3. Dan', NULL, 'Präsidentin', 'Vizepräsidentin', 'Kassenwart');
+
+
+--
+-- Data for Name: contact; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.contact (id, status, user_created, date_created, user_updated, date_updated, contact_text) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:28.38+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-18 18:27:11.149+00', '<h2>Kontakt</h2>');
+
+
+--
 -- Data for Name: directus_activity; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
@@ -2315,6 +3886,7 @@ INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_
 INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_agent, collection, item, comment, origin) VALUES (2344, 'delete', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-10-14 06:11:32.412+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'downloads_files', '15', NULL, 'http://localhost:8055');
 INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_agent, collection, item, comment, origin) VALUES (2345, 'delete', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-10-14 06:11:32.414+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'downloads_files', '16', NULL, 'http://localhost:8055');
 INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_agent, collection, item, comment, origin) VALUES (2346, 'delete', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-10-14 06:11:32.416+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'downloads_files', '17', NULL, 'http://localhost:8055');
+INSERT INTO public.directus_activity (id, action, "user", "timestamp", ip, user_agent, collection, item, comment, origin) VALUES (2347, 'login', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-10-17 17:40:32.211+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'directus_users', 'e326740c-cf99-4290-a147-ce854be586f6', NULL, 'http://localhost:8055');
 
 
 --
@@ -2340,21 +3912,6 @@ INSERT INTO public.directus_collections (collection, icon, note, display_templat
 INSERT INTO public.directus_collections (collection, icon, note, display_template, hidden, singleton, translations, archive_field, archive_app_filter, archive_value, unarchive_value, sort_field, accountability, color, item_duplication_fields, sort, "group", collapse, preview_url, versioning) VALUES ('contact', 'local_post_office', NULL, NULL, false, true, '[{"language":"de-DE","translation":"Kontakt"}]', 'status', true, 'archived', 'draft', NULL, NULL, NULL, NULL, 3, 'legal', 'open', NULL, false);
 INSERT INTO public.directus_collections (collection, icon, note, display_template, hidden, singleton, translations, archive_field, archive_app_filter, archive_value, unarchive_value, sort_field, accountability, color, item_duplication_fields, sort, "group", collapse, preview_url, versioning) VALUES ('downloads_files', 'import_export', NULL, NULL, true, false, NULL, NULL, true, NULL, NULL, NULL, 'all', NULL, NULL, 9, NULL, 'open', NULL, false);
 INSERT INTO public.directus_collections (collection, icon, note, display_template, hidden, singleton, translations, archive_field, archive_app_filter, archive_value, unarchive_value, sort_field, accountability, color, item_duplication_fields, sort, "group", collapse, preview_url, versioning) VALUES ('examination', 'school', NULL, NULL, false, true, '[{"language":"de-DE","translation":"Prüfungen"}]', 'status', true, 'archived', 'draft', NULL, NULL, NULL, NULL, 1, 'infos', 'open', NULL, false);
-
-
---
--- Data for Name: directus_roles; Type: TABLE DATA; Schema: public; Owner: nmadauss
---
-
-INSERT INTO public.directus_roles (id, name, icon, description, ip_access, enforce_tfa, admin_access, app_access) VALUES ('4860547e-9b75-4c11-b6b0-bd1a50b80cfb', 'Administrator', 'verified', '$t:admin_description', NULL, false, true, true);
-
-
---
--- Data for Name: directus_users; Type: TABLE DATA; Schema: public; Owner: nmadauss
---
-
-INSERT INTO public.directus_users (id, first_name, last_name, email, password, location, title, description, tags, avatar, language, tfa_secret, status, role, token, last_access, last_page, provider, external_identifier, auth_data, email_notifications, appearance, theme_dark, theme_light, theme_light_overrides, theme_dark_overrides) VALUES ('39af99ff-aee9-489b-b40f-b8cf083decaa', 'Admin', 'User', 'admin@example.com', '$argon2id$v=19$m=65536,t=3,p=4$KB9Z2cx2c8xKCLSNizjGxw$uuShqcJgl4YL+3AvCmH6ViNnWNEcFTXbwki5zaXbE3w', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '4860547e-9b75-4c11-b6b0-bd1a50b80cfb', NULL, '2024-06-04 06:52:42.333+00', '/users/39af99ff-aee9-489b-b40f-b8cf083decaa', 'default', NULL, NULL, true, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.directus_users (id, first_name, last_name, email, password, location, title, description, tags, avatar, language, tfa_secret, status, role, token, last_access, last_page, provider, external_identifier, auth_data, email_notifications, appearance, theme_dark, theme_light, theme_light_overrides, theme_dark_overrides) VALUES ('e326740c-cf99-4290-a147-ce854be586f6', 'Norbert', 'Madauß', 'admin@dnagb.de', '$argon2id$v=19$m=65536,t=3,p=4$bh3FaYfbMfSvsGP7an/q9w$c5G22WMnPiwqqcodHswsG6szIoSuOeojyDIuzadGGZc', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '4860547e-9b75-4c11-b6b0-bd1a50b80cfb', NULL, '2024-10-14 05:37:39.059+00', '/content/downloads_files', 'default', NULL, NULL, true, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -2498,16 +4055,6 @@ INSERT INTO public.directus_fields (id, collection, field, special, interface, o
 
 
 --
--- Data for Name: directus_folders; Type: TABLE DATA; Schema: public; Owner: nmadauss
---
-
-INSERT INTO public.directus_folders (id, name, parent) VALUES ('c08223d9-4585-4852-a310-6696a6e0ad92', 'Vorstand und Referenten', NULL);
-INSERT INTO public.directus_folders (id, name, parent) VALUES ('10188a0c-ee94-42f5-bb97-6c291849f678', 'Dojos', NULL);
-INSERT INTO public.directus_folders (id, name, parent) VALUES ('ab971460-e3dd-4c77-8ea1-4f432f4949cd', 'Formulare und Dokumente', NULL);
-INSERT INTO public.directus_folders (id, name, parent) VALUES ('d13551bd-5fdd-4868-a6a9-b667adab7924', 'Logo und Icons', NULL);
-
-
---
 -- Data for Name: directus_files; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
@@ -2543,6 +4090,16 @@ INSERT INTO public.directus_files (id, storage, filename_disk, filename_download
 -- Data for Name: directus_flows; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
+
+
+--
+-- Data for Name: directus_folders; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.directus_folders (id, name, parent) VALUES ('c08223d9-4585-4852-a310-6696a6e0ad92', 'Vorstand und Referenten', NULL);
+INSERT INTO public.directus_folders (id, name, parent) VALUES ('10188a0c-ee94-42f5-bb97-6c291849f678', 'Dojos', NULL);
+INSERT INTO public.directus_folders (id, name, parent) VALUES ('ab971460-e3dd-4c77-8ea1-4f432f4949cd', 'Formulare und Dokumente', NULL);
+INSERT INTO public.directus_folders (id, name, parent) VALUES ('d13551bd-5fdd-4868-a6a9-b667adab7924', 'Logo und Icons', NULL);
 
 
 --
@@ -2705,12 +4262,6 @@ INSERT INTO public.directus_relations (id, many_collection, many_field, one_coll
 INSERT INTO public.directus_relations (id, many_collection, many_field, one_collection, one_field, one_collection_field, one_allowed_collections, junction_field, sort_field, one_deselect_action) VALUES (36, 'settings', 'favicon', 'directus_files', NULL, NULL, NULL, NULL, NULL, 'nullify');
 INSERT INTO public.directus_relations (id, many_collection, many_field, one_collection, one_field, one_collection_field, one_allowed_collections, junction_field, sort_field, one_deselect_action) VALUES (34, 'downloads_files', 'downloads_id', 'downloads', 'files', NULL, NULL, 'directus_files_id', NULL, 'nullify');
 INSERT INTO public.directus_relations (id, many_collection, many_field, one_collection, one_field, one_collection_field, one_allowed_collections, junction_field, sort_field, one_deselect_action) VALUES (33, 'downloads_files', 'directus_files_id', 'directus_files', NULL, NULL, NULL, 'downloads_id', NULL, 'nullify');
-
-
---
--- Data for Name: directus_versions; Type: TABLE DATA; Schema: public; Owner: nmadauss
---
-
 
 
 --
@@ -4960,9 +6511,10 @@ INSERT INTO public.directus_revisions (id, activity, collection, item, data, del
 
 
 --
--- Data for Name: directus_shares; Type: TABLE DATA; Schema: public; Owner: nmadauss
+-- Data for Name: directus_roles; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
+INSERT INTO public.directus_roles (id, name, icon, description, ip_access, enforce_tfa, admin_access, app_access) VALUES ('4860547e-9b75-4c11-b6b0-bd1a50b80cfb', 'Administrator', 'verified', '$t:admin_description', NULL, false, true, true);
 
 
 --
@@ -4970,6 +6522,7 @@ INSERT INTO public.directus_revisions (id, activity, collection, item, data, del
 --
 
 INSERT INTO public.directus_sessions (token, "user", expires, ip, user_agent, share, origin, next_token) VALUES ('e8O6ePuc9Tc3LfTNojo0hdINTGdSxR5JazbY18Q5G62LnIeyShsS7Jy0GV2-UXjO', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-10-21 05:37:39.042+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', NULL, 'http://localhost:8055', NULL);
+INSERT INTO public.directus_sessions (token, "user", expires, ip, user_agent, share, origin, next_token) VALUES ('ifcPel6Q7YIGf0L6ztRWDFy0y5OTepXxQ3syq-6q1seaALs9QCmHI3mM3L2apyMt', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-10-24 17:40:32.198+00', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', NULL, 'http://localhost:8055', NULL);
 
 
 --
@@ -4980,7 +6533,27 @@ INSERT INTO public.directus_settings (id, project_name, project_url, project_col
 
 
 --
+-- Data for Name: directus_shares; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+
+
+--
 -- Data for Name: directus_translations; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+
+
+--
+-- Data for Name: directus_users; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.directus_users (id, first_name, last_name, email, password, location, title, description, tags, avatar, language, tfa_secret, status, role, token, last_access, last_page, provider, external_identifier, auth_data, email_notifications, appearance, theme_dark, theme_light, theme_light_overrides, theme_dark_overrides) VALUES ('39af99ff-aee9-489b-b40f-b8cf083decaa', 'Admin', 'User', 'admin@example.com', '$argon2id$v=19$m=65536,t=3,p=4$KB9Z2cx2c8xKCLSNizjGxw$uuShqcJgl4YL+3AvCmH6ViNnWNEcFTXbwki5zaXbE3w', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '4860547e-9b75-4c11-b6b0-bd1a50b80cfb', NULL, '2024-06-04 06:52:42.333+00', '/users/39af99ff-aee9-489b-b40f-b8cf083decaa', 'default', NULL, NULL, true, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.directus_users (id, first_name, last_name, email, password, location, title, description, tags, avatar, language, tfa_secret, status, role, token, last_access, last_page, provider, external_identifier, auth_data, email_notifications, appearance, theme_dark, theme_light, theme_light_overrides, theme_dark_overrides) VALUES ('e326740c-cf99-4290-a147-ce854be586f6', 'Norbert', 'Madauß', 'admin@dnagb.de', '$argon2id$v=19$m=65536,t=3,p=4$bh3FaYfbMfSvsGP7an/q9w$c5G22WMnPiwqqcodHswsG6szIoSuOeojyDIuzadGGZc', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '4860547e-9b75-4c11-b6b0-bd1a50b80cfb', NULL, '2024-10-17 17:40:32.217+00', '/content/events', 'default', NULL, NULL, true, NULL, NULL, NULL, NULL, NULL);
+
+
+--
+-- Data for Name: directus_versions; Type: TABLE DATA; Schema: public; Owner: nmadauss
 --
 
 
@@ -4992,10 +6565,183 @@ INSERT INTO public.directus_settings (id, project_name, project_url, project_col
 
 
 --
+-- Data for Name: dojos; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.dojos (id, status, sort, name, logo, link, city, description, geometry) VALUES (2, 'published', NULL, 'PSV Mainz', '1c171e85-9040-4be1-9b31-88636e82932d', 'https://www.psv-mainz.de/de/sportarten/naginata/', 'Mainz', '<p>Wir sind&nbsp; Naginata-Fans, die eine Gruppe mit regelm&auml;&szlig;igem Trainingsangebot im November 2005 gegr&uuml;ndet haben. Mittlerweile sind unsere Naginata-K&auml;mpfer national und international erfolgreich und trainieren an bis zu drei Tagen in der Woche miteinander. Derzeit k&uuml;mmern sich zwei Lehrer um das Wohlergehen der Gruppe. Dabei ist uns nicht nur der Erfolg auf Turnieren, sondern vor allem der Spa&szlig; am Naginata und das Miteinander wichtig.</p>
+<p>Die meisten von uns sind Mitglieder im Deutschen Naginata Bund (DNagB) und damit auch im europ&auml;ischen und internationalen Naginata-Dachverband (ENF und INF). Dadurch bietet sich uns die M&ouml;glichkeit, an Wettk&auml;mpfen und Seminaren auf weltweiter Ebene teilzunehmen und Bekanntschaften zu kn&uuml;pfen.</p>', '0101000020E610000080893C5EE18A2040F45CB2E5CDFF4840');
+INSERT INTO public.dojos (id, status, sort, name, logo, link, city, description, geometry) VALUES (1, 'published', NULL, 'Bishamonten Naginata Kyoshitsu', '554e360b-8cac-4e87-b614-98bf61810e0b', 'https://naginatasport.de/', 'Potsdam', '<p>Wir sind die Erste Naginatagruppe Land Brandenburg - werden oft auch vereinfacht Naginatagruppe Potsdam genannt.<br>Seit 2012 trainieren wir in Potsdam die japanische Kampfkunst Naginata. Diese wird zu 100 % mit der antiken Langwaffe namens Naginata ausge&uuml;bt. Historische Funde zeigen, dass diese beeindruckende Waffe bereits vor &uuml;ber 1200 Jahren in Japan genutzt wurde - von K&auml;mpfern zu Fu&szlig; aber auch von berittenen Kriegern.</p>
+<p>Unser Training findet zweimal in der Woche&nbsp;<a class="cm_anchor" href="https://naginatasport.de/Dein-Weg-zu-uns/">in Potsdam-Babelsberg</a>&nbsp;statt. Bist Du an einem kostenfreien Probetraining interessiert, gib uns einfach einige Tage vorher Bescheid und es kann losgehen. Trainieren wirst Du dann barfu&szlig; in einer sauberen Turnhalle.</p>
+<p>Auf unserer Seite findest Du weitere Informationen &uuml;ber uns als Gruppe; Aktuelle Termine und Veranstaltungen bieten Dir einen Vorgeschmack auf baldige Aktivit&auml;ten und eine Wegbeschreibung, wie Du ganz einfach zu unserem Training finden kannst, haben wir ebenfalls f&uuml;r Dich bereitgestellt.</p>
+<p>Solltest Du noch Fragen haben kontaktiere uns einfach &uuml;ber die Kontaktm&ouml;glichkeit auf der linken Seite.</p>', '0101000020E61000007082F9E913282A40CCDFBCB681324A40');
+
+
+--
+-- Data for Name: downloads; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.downloads (id, status) VALUES (1, 'published');
+
+
+--
+-- Data for Name: downloads_files; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (2, 1, 'a503136f-fb64-47ab-b7c7-19a548bd3abc');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (3, 1, 'f2106a52-d69a-4966-9163-96968eaf127e');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (4, 1, '1ce8973f-c6bb-4659-89b1-f0e3e0e8f1fe');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (5, 1, '7c89161c-3e44-4a66-8dff-7565ebca6cb3');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (6, 1, '142ed4e4-3c51-478e-85e6-3fafb99bc253');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (7, 1, 'd0fcd050-9941-4406-ad1f-188a6e0f889c');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (8, 1, '8a5c93ed-635f-4d80-abdb-71281c5de750');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (9, 1, '96091d99-d2e6-438c-8ab9-eb82d9ff660a');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (10, 1, '2ca156ae-237e-4838-8faf-ba3305646891');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (11, 1, '2b3d914b-262f-4af5-931c-10f5b7d57c64');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (13, 1, '01416918-525e-40a4-b17f-3b33d99eb4ae');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (14, 1, '22a8b15f-6b64-4e52-a032-28e5ec055d10');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (12, 1, 'd15d6f15-3c90-413d-aedf-9f69f350ad74');
+INSERT INTO public.downloads_files (id, downloads_id, directus_files_id) VALUES (1, 1, '12960f32-ce19-4a01-a68a-b1c8c63df788');
+
+
+--
+-- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.events (id, status, sort, user_created, date_created, user_updated, date_updated, description, date_start, date_end, location_name, title, announcement, type, city, street, number, postal_code) VALUES (5, 'published', NULL, 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-04 11:03:38.109+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-26 05:22:27.561+00', '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>', '2024-12-17 12:00:00', NULL, 'Turnhalle Testgelände', 'Testereignis 2', NULL, '["seminar","examination"]', 'Mainz', 'Curiestraße', '5', '55129');
+INSERT INTO public.events (id, status, sort, user_created, date_created, user_updated, date_updated, description, date_start, date_end, location_name, title, announcement, type, city, street, number, postal_code) VALUES (2, 'published', NULL, 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-04 10:52:12.944+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-26 05:23:28.527+00', '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>', '2024-10-25 12:00:00', '2024-10-27 16:00:00', 'Sporthalle SC Fantasie', 'Seminar in XY', NULL, '["contest"]', 'Berlin', 'Yorckstraße', '10', '10965');
+INSERT INTO public.events (id, status, sort, user_created, date_created, user_updated, date_updated, description, date_start, date_end, location_name, title, announcement, type, city, street, number, postal_code) VALUES (4, 'published', NULL, 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-04 11:02:39.552+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-26 05:24:44.124+00', '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>', '2024-11-19 09:00:00', NULL, 'Testgelände 1', 'Testeintrag 1', NULL, '["contest","seminar","examination"]', 'Potsdam', 'Babelsberger Str.', '8', '14473');
+INSERT INTO public.events (id, status, sort, user_created, date_created, user_updated, date_updated, description, date_start, date_end, location_name, title, announcement, type, city, street, number, postal_code) VALUES (6, 'published', NULL, 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-04 11:04:19.672+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-26 05:25:38.77+00', '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>', '2024-10-31 09:00:00', NULL, 'Offene Wiese', 'Testereignis 3', NULL, '["contest","examination"]', 'Dellfeld', 'Zweibrücker Str.', '29', '66503');
+INSERT INTO public.events (id, status, sort, user_created, date_created, user_updated, date_updated, description, date_start, date_end, location_name, title, announcement, type, city, street, number, postal_code) VALUES (3, 'published', NULL, 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-04 11:01:20.678+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-26 05:27:16.275+00', '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>', '2024-09-28 12:00:00', '2024-09-30 12:00:00', 'Sporthalle SC Meisterschaft', 'Deutsche Meisterschaft', NULL, '["contest","examination"]', 'Hamburg', 'Siegfried-Wedells-Platz 1', '1', '20354');
+
+
+--
+-- Data for Name: examination; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.examination (id, status, examination_text) VALUES (1, 'published', '<h2>Pr&uuml;fung</h2>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. &nbsp;&nbsp;</p>
+<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. &nbsp;&nbsp;</p>
+<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. &nbsp;&nbsp;</p>
+<p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer.</p>');
+
+
+--
+-- Data for Name: imprint; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.imprint (id, status, user_created, date_created, user_updated, date_updated, imprint_text) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:33.936+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-10-08 19:09:10.013+00', '<h2><span class="fontstyle0">Impressum</span></h2>
+<p><span class="fontstyle1">Deutscher Naginata Bund<br></span><span class="fontstyle1">Rosenbergstra&szlig;e 14<br></span><span class="fontstyle1">74072 Heilbronn</span></p>
+<p><span class="fontstyle1">Vereinsregister: VR 3863<br>Registergericht: Amtsgericht Mainz</span></p>
+<p><strong><span class="fontstyle0">Vertreten durch:<br></span></strong>Pr&auml;sidentin: Ines Klose<br>Vizepr&auml;sidentin: Marie-Luise G&ouml;bel<br>Kassenwart: Nicolas Adalin Braun</p>
+<h2><span class="fontstyle0">Kontakt</span></h2>
+<p><span class="fontstyle1">E-Mail: info@dnagb.de</span></p>
+<h2><span class="fontstyle0">Umsatzsteuer-ID</span></h2>
+<p><span class="fontstyle1">Umsatzsteuer-Identifikationsnummer gem&auml;&szlig; &sect; 27 a Umsatzsteuergesetz:<br>DE 1234567</span></p>
+<h2><span class="fontstyle0">Redaktionell verantwortlich</span></h2>
+<p><span class="fontstyle1">Ines Klose</span></p>
+<h2><span class="fontstyle0">Verbraucherstreitbeilegung / Universalschlichtungsstelle</span></h2>
+<p><span class="fontstyle1">Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</span>&nbsp;</p>');
+
+
+--
+-- Data for Name: membership; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.membership (id, status, membership_text) VALUES (1, 'published', '<h2>Die DNagB Mitgliedschaft</h2>
+<h3>Wer kann Mitglied werden?</h3>
+<p>Prinzipiell kann jeder/jede im Deutschen Naginata Bund Mitglied werden. Wenn du Interesse hast, f&uuml;lle den entsprechenden Mitgliedsantrag vollst&auml;ndig aus und schicke ihn dem DNagB-Vorstand. Die Adresse hierf&uuml;r findest du direkt auf dem Antragsformular.<br><strong>Wichtig:</strong> Mit deiner Anmeldung akzeptierst du die Satzung und die Ordnungen des DNagB. Die jeweils aktuellen Fassungen sind auf der Website des DNagB als Download verf&uuml;gbar.</p>
+<h3>Was sind die Vorteile einer Mitgliedschaft?</h3>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+<h3>Was kostet die Mitgliedschaft?</h3>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>');
+
+
+--
+-- Data for Name: naginata; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.naginata (id, status, martial_art, equipment, ranks, what_is, history) VALUES (1, 'published', '<h2>Der Kampfsport</h2>', NULL, '<h2>Die Graduierungen</h2>', '<h2>Was ist Naginata?</h2>
+<p>Hinter dem Wort &bdquo;Naginata&ldquo; verbergen sich gleich mehrere Sachen: Zum einen ist es der Name einer Bud&ocirc;-Kampfsportart. Dabei trainieren und k&auml;mpfen die Sportlerinnen und Sportler mit einer Waffe aus Holz und Bambus, die ebenfalls Naginata hei&szlig;t. Diese Trainingsvariante wiederum basiert auf einer historischen Waffe aus Japan namens Naginata, die aus einem langen Holzgriff und einer Metallklinge besteht.<br>In Deutschland bieten den Sport mehrere Gruppen (Dojo) in verschiedenen Regionen an. Wer starten m&ouml;chte, braucht keine Vorkenntnisse, sondern nur Spa&szlig; an der Bewegung. Und: Die Gruppen bieten in der Regel Schnuppertrainings an.<br>Die Gruppen gestalten ihr Training eigenst&auml;ndig, aber viele Elemente sind immer wieder anzutreffen bzw. fester Bestandteil &ndash; wie zum Beispiel das gemeinsame An- und Abgr&uuml;&szlig;en bei jedem Training oder bestimmte &Uuml;bungen.<br>Naginata als Sport ist vielseitig: Reaktionsverm&ouml;gen, Koordination, Konzentration spielen eine ebenso gro&szlig;e Rolle wie k&ouml;rperliche Fitness im Allgemeinen und die pers&ouml;nliche Entwicklung.<br>Mehr Details zu einzelnen Aspekten findest du in den folgenden Unterkapiteln.<br>&nbsp; &nbsp; &nbsp;<br>&bull; &nbsp; &nbsp;Die Waffe<br>&bull; &nbsp; &nbsp;Der Kampfsport<br>&bull; &nbsp; &nbsp;Ausr&uuml;stung<br>&bull; &nbsp; &nbsp;Graduierung<br>&bull; &nbsp; &nbsp;Geschichte</p>', '<h2>Die Geschichte</h2>');
+
+
+--
+-- Data for Name: planing; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.planing (id, status, planing_text) VALUES (1, 'published', '<h2>Veranstaltung planen</h2>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. &nbsp;&nbsp;</p>
+<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. &nbsp;&nbsp;</p>
+<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. &nbsp;&nbsp;</p>
+<p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer.</p>');
+
+
+--
+-- Data for Name: privacy; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.privacy (id, status, user_created, date_created, user_updated, date_updated, privacy_text) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-13 12:54:31.106+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-09-18 18:28:21.934+00', '<h2>Datenschutz</h2>');
+
+
+--
+-- Data for Name: settings; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.settings (id, status, user_created, date_created, user_updated, date_updated, title_short, title_long_1, title_long_2, "primary", secondary, primary_text, secondary_text, logo, favicon) VALUES (1, 'published', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-06-11 06:59:08.077+00', 'e326740c-cf99-4290-a147-ce854be586f6', '2024-10-01 11:30:28.308+00', 'DNagB', 'Deutscher Naginata Bund', 'Deutscher Naginata Bund e.V.', '#F2A606', '#15605F', '#22262A', '#FFFFFF', '40c65b93-b372-45cf-a7b1-22dbb11f9054', '147dab14-4609-47be-a9f1-e74076855598');
+
+
+--
+-- Data for Name: spatial_ref_sys; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: speaker; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (1, 'published', 'Julian Parrino', '2. Dan', 'pruefungsreferent@dnagb.de', 'e5ab9d1f-c129-4ae9-aa66-c688b64dad0f', 'Referent für Prüfwesen');
+INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (3, 'published', 'Jonas Stock', NULL, NULL, '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Referent für Jugend');
+INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (4, 'published', 'Cornelia Izquierdo Barea', '2. Dan', 'info@dnagb.de', 'c880bb79-61b4-4cf0-b3f7-d6c134b3da15', 'Vorsitzende des Rechtsausschusses');
+INSERT INTO public.speaker (id, status, name, rank, email, image, role) VALUES (2, 'published', 'Thomas Gerstmann', NULL, 'oeffentlichkeitsreferent@dnagb.de', '28bb19aa-a05d-4f39-929b-9bf4527e4bbe', 'Referent für Öffentlichkeitsarbeit');
+
+
+--
+-- Data for Name: useful; Type: TABLE DATA; Schema: public; Owner: nmadauss
+--
+
+INSERT INTO public.useful (id, status, useful_text) VALUES (1, 'published', '<h2>N&uuml;tzlich</h2>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. &nbsp;&nbsp;</p>
+<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. &nbsp;&nbsp;</p>
+<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. &nbsp;&nbsp;</p>
+<p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer.</p>');
+
+
+--
+-- Name: association_text_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.association_text_id_seq', 2, true);
+
+
+--
+-- Name: board_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.board_id_seq', 1, true);
+
+
+--
+-- Name: contact_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.contact_id_seq', 1, true);
+
+
+--
 -- Name: directus_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
 --
 
-SELECT pg_catalog.setval('public.directus_activity_id_seq', 2346, true);
+SELECT pg_catalog.setval('public.directus_activity_id_seq', 2347, true);
 
 
 --
@@ -5052,6 +6798,913 @@ SELECT pg_catalog.setval('public.directus_settings_id_seq', 1, true);
 --
 
 SELECT pg_catalog.setval('public.directus_webhooks_id_seq', 1, false);
+
+
+--
+-- Name: dojos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.dojos_id_seq', 2, true);
+
+
+--
+-- Name: downloads_files_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.downloads_files_id_seq', 17, true);
+
+
+--
+-- Name: downloads_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.downloads_id_seq', 1, true);
+
+
+--
+-- Name: events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.events_id_seq', 6, true);
+
+
+--
+-- Name: examination_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.examination_id_seq', 1, true);
+
+
+--
+-- Name: imprint_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.imprint_id_seq', 1, true);
+
+
+--
+-- Name: membership_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.membership_id_seq', 1, true);
+
+
+--
+-- Name: naginata_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.naginata_id_seq', 1, true);
+
+
+--
+-- Name: planing_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.planing_id_seq', 1, true);
+
+
+--
+-- Name: privacy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.privacy_id_seq', 1, true);
+
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.settings_id_seq', 1, true);
+
+
+--
+-- Name: speaker_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.speaker_id_seq', 4, true);
+
+
+--
+-- Name: useful_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nmadauss
+--
+
+SELECT pg_catalog.setval('public.useful_id_seq', 1, true);
+
+
+--
+-- Name: association_text association_text_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.association_text
+    ADD CONSTRAINT association_text_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: board board_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.board
+    ADD CONSTRAINT board_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: contact contact_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.contact
+    ADD CONSTRAINT contact_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_activity directus_activity_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_activity
+    ADD CONSTRAINT directus_activity_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_collections directus_collections_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_collections
+    ADD CONSTRAINT directus_collections_pkey PRIMARY KEY (collection);
+
+
+--
+-- Name: directus_dashboards directus_dashboards_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_dashboards
+    ADD CONSTRAINT directus_dashboards_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_extensions directus_extensions_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_extensions
+    ADD CONSTRAINT directus_extensions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_fields directus_fields_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_fields
+    ADD CONSTRAINT directus_fields_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_files directus_files_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_files
+    ADD CONSTRAINT directus_files_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_flows directus_flows_operation_unique; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_flows
+    ADD CONSTRAINT directus_flows_operation_unique UNIQUE (operation);
+
+
+--
+-- Name: directus_flows directus_flows_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_flows
+    ADD CONSTRAINT directus_flows_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_folders directus_folders_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_folders
+    ADD CONSTRAINT directus_folders_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_migrations directus_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_migrations
+    ADD CONSTRAINT directus_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: directus_notifications directus_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_notifications
+    ADD CONSTRAINT directus_notifications_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_operations directus_operations_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_operations
+    ADD CONSTRAINT directus_operations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_operations directus_operations_reject_unique; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_operations
+    ADD CONSTRAINT directus_operations_reject_unique UNIQUE (reject);
+
+
+--
+-- Name: directus_operations directus_operations_resolve_unique; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_operations
+    ADD CONSTRAINT directus_operations_resolve_unique UNIQUE (resolve);
+
+
+--
+-- Name: directus_panels directus_panels_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_panels
+    ADD CONSTRAINT directus_panels_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_permissions directus_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_permissions
+    ADD CONSTRAINT directus_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_presets directus_presets_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_presets
+    ADD CONSTRAINT directus_presets_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_relations directus_relations_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_relations
+    ADD CONSTRAINT directus_relations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_revisions directus_revisions_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_revisions
+    ADD CONSTRAINT directus_revisions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_roles directus_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_roles
+    ADD CONSTRAINT directus_roles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_sessions directus_sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_sessions
+    ADD CONSTRAINT directus_sessions_pkey PRIMARY KEY (token);
+
+
+--
+-- Name: directus_settings directus_settings_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_settings
+    ADD CONSTRAINT directus_settings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_shares directus_shares_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_shares
+    ADD CONSTRAINT directus_shares_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_translations directus_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_translations
+    ADD CONSTRAINT directus_translations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_users directus_users_email_unique; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_users
+    ADD CONSTRAINT directus_users_email_unique UNIQUE (email);
+
+
+--
+-- Name: directus_users directus_users_external_identifier_unique; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_users
+    ADD CONSTRAINT directus_users_external_identifier_unique UNIQUE (external_identifier);
+
+
+--
+-- Name: directus_users directus_users_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_users
+    ADD CONSTRAINT directus_users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_users directus_users_token_unique; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_users
+    ADD CONSTRAINT directus_users_token_unique UNIQUE (token);
+
+
+--
+-- Name: directus_versions directus_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_versions
+    ADD CONSTRAINT directus_versions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directus_webhooks directus_webhooks_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_webhooks
+    ADD CONSTRAINT directus_webhooks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: dojos dojos_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.dojos
+    ADD CONSTRAINT dojos_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: downloads_files downloads_files_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.downloads_files
+    ADD CONSTRAINT downloads_files_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: downloads downloads_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.downloads
+    ADD CONSTRAINT downloads_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.events
+    ADD CONSTRAINT events_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: examination examination_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.examination
+    ADD CONSTRAINT examination_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: imprint imprint_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.imprint
+    ADD CONSTRAINT imprint_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: membership membership_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.membership
+    ADD CONSTRAINT membership_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: naginata naginata_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.naginata
+    ADD CONSTRAINT naginata_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: planing planing_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.planing
+    ADD CONSTRAINT planing_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: privacy privacy_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.privacy
+    ADD CONSTRAINT privacy_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: settings settings_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.settings
+    ADD CONSTRAINT settings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: speaker speaker_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.speaker
+    ADD CONSTRAINT speaker_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: useful useful_pkey; Type: CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.useful
+    ADD CONSTRAINT useful_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: board board_president_image_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.board
+    ADD CONSTRAINT board_president_image_foreign FOREIGN KEY (president_image) REFERENCES public.directus_files(id) ON DELETE SET NULL;
+
+
+--
+-- Name: board board_treasurer_image_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.board
+    ADD CONSTRAINT board_treasurer_image_foreign FOREIGN KEY (treasurer_image) REFERENCES public.directus_files(id) ON DELETE SET NULL;
+
+
+--
+-- Name: board board_vice_image_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.board
+    ADD CONSTRAINT board_vice_image_foreign FOREIGN KEY (vice_image) REFERENCES public.directus_files(id) ON DELETE SET NULL;
+
+
+--
+-- Name: contact contact_user_created_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.contact
+    ADD CONSTRAINT contact_user_created_foreign FOREIGN KEY (user_created) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: contact contact_user_updated_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.contact
+    ADD CONSTRAINT contact_user_updated_foreign FOREIGN KEY (user_updated) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: directus_collections directus_collections_group_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_collections
+    ADD CONSTRAINT directus_collections_group_foreign FOREIGN KEY ("group") REFERENCES public.directus_collections(collection);
+
+
+--
+-- Name: directus_dashboards directus_dashboards_user_created_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_dashboards
+    ADD CONSTRAINT directus_dashboards_user_created_foreign FOREIGN KEY (user_created) REFERENCES public.directus_users(id) ON DELETE SET NULL;
+
+
+--
+-- Name: directus_files directus_files_folder_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_files
+    ADD CONSTRAINT directus_files_folder_foreign FOREIGN KEY (folder) REFERENCES public.directus_folders(id) ON DELETE SET NULL;
+
+
+--
+-- Name: directus_files directus_files_modified_by_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_files
+    ADD CONSTRAINT directus_files_modified_by_foreign FOREIGN KEY (modified_by) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: directus_files directus_files_uploaded_by_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_files
+    ADD CONSTRAINT directus_files_uploaded_by_foreign FOREIGN KEY (uploaded_by) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: directus_flows directus_flows_user_created_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_flows
+    ADD CONSTRAINT directus_flows_user_created_foreign FOREIGN KEY (user_created) REFERENCES public.directus_users(id) ON DELETE SET NULL;
+
+
+--
+-- Name: directus_folders directus_folders_parent_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_folders
+    ADD CONSTRAINT directus_folders_parent_foreign FOREIGN KEY (parent) REFERENCES public.directus_folders(id);
+
+
+--
+-- Name: directus_notifications directus_notifications_recipient_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_notifications
+    ADD CONSTRAINT directus_notifications_recipient_foreign FOREIGN KEY (recipient) REFERENCES public.directus_users(id) ON DELETE CASCADE;
+
+
+--
+-- Name: directus_notifications directus_notifications_sender_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_notifications
+    ADD CONSTRAINT directus_notifications_sender_foreign FOREIGN KEY (sender) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: directus_operations directus_operations_flow_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_operations
+    ADD CONSTRAINT directus_operations_flow_foreign FOREIGN KEY (flow) REFERENCES public.directus_flows(id) ON DELETE CASCADE;
+
+
+--
+-- Name: directus_operations directus_operations_reject_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_operations
+    ADD CONSTRAINT directus_operations_reject_foreign FOREIGN KEY (reject) REFERENCES public.directus_operations(id);
+
+
+--
+-- Name: directus_operations directus_operations_resolve_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_operations
+    ADD CONSTRAINT directus_operations_resolve_foreign FOREIGN KEY (resolve) REFERENCES public.directus_operations(id);
+
+
+--
+-- Name: directus_operations directus_operations_user_created_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_operations
+    ADD CONSTRAINT directus_operations_user_created_foreign FOREIGN KEY (user_created) REFERENCES public.directus_users(id) ON DELETE SET NULL;
+
+
+--
+-- Name: directus_panels directus_panels_dashboard_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_panels
+    ADD CONSTRAINT directus_panels_dashboard_foreign FOREIGN KEY (dashboard) REFERENCES public.directus_dashboards(id) ON DELETE CASCADE;
+
+
+--
+-- Name: directus_panels directus_panels_user_created_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_panels
+    ADD CONSTRAINT directus_panels_user_created_foreign FOREIGN KEY (user_created) REFERENCES public.directus_users(id) ON DELETE SET NULL;
+
+
+--
+-- Name: directus_permissions directus_permissions_role_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_permissions
+    ADD CONSTRAINT directus_permissions_role_foreign FOREIGN KEY (role) REFERENCES public.directus_roles(id) ON DELETE CASCADE;
+
+
+--
+-- Name: directus_presets directus_presets_role_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_presets
+    ADD CONSTRAINT directus_presets_role_foreign FOREIGN KEY (role) REFERENCES public.directus_roles(id) ON DELETE CASCADE;
+
+
+--
+-- Name: directus_presets directus_presets_user_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_presets
+    ADD CONSTRAINT directus_presets_user_foreign FOREIGN KEY ("user") REFERENCES public.directus_users(id) ON DELETE CASCADE;
+
+
+--
+-- Name: directus_revisions directus_revisions_activity_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_revisions
+    ADD CONSTRAINT directus_revisions_activity_foreign FOREIGN KEY (activity) REFERENCES public.directus_activity(id) ON DELETE CASCADE;
+
+
+--
+-- Name: directus_revisions directus_revisions_parent_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_revisions
+    ADD CONSTRAINT directus_revisions_parent_foreign FOREIGN KEY (parent) REFERENCES public.directus_revisions(id);
+
+
+--
+-- Name: directus_revisions directus_revisions_version_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_revisions
+    ADD CONSTRAINT directus_revisions_version_foreign FOREIGN KEY (version) REFERENCES public.directus_versions(id) ON DELETE CASCADE;
+
+
+--
+-- Name: directus_sessions directus_sessions_share_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_sessions
+    ADD CONSTRAINT directus_sessions_share_foreign FOREIGN KEY (share) REFERENCES public.directus_shares(id) ON DELETE CASCADE;
+
+
+--
+-- Name: directus_sessions directus_sessions_user_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_sessions
+    ADD CONSTRAINT directus_sessions_user_foreign FOREIGN KEY ("user") REFERENCES public.directus_users(id) ON DELETE CASCADE;
+
+
+--
+-- Name: directus_settings directus_settings_project_logo_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_settings
+    ADD CONSTRAINT directus_settings_project_logo_foreign FOREIGN KEY (project_logo) REFERENCES public.directus_files(id);
+
+
+--
+-- Name: directus_settings directus_settings_public_background_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_settings
+    ADD CONSTRAINT directus_settings_public_background_foreign FOREIGN KEY (public_background) REFERENCES public.directus_files(id);
+
+
+--
+-- Name: directus_settings directus_settings_public_favicon_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_settings
+    ADD CONSTRAINT directus_settings_public_favicon_foreign FOREIGN KEY (public_favicon) REFERENCES public.directus_files(id);
+
+
+--
+-- Name: directus_settings directus_settings_public_foreground_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_settings
+    ADD CONSTRAINT directus_settings_public_foreground_foreign FOREIGN KEY (public_foreground) REFERENCES public.directus_files(id);
+
+
+--
+-- Name: directus_settings directus_settings_public_registration_role_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_settings
+    ADD CONSTRAINT directus_settings_public_registration_role_foreign FOREIGN KEY (public_registration_role) REFERENCES public.directus_roles(id) ON DELETE SET NULL;
+
+
+--
+-- Name: directus_settings directus_settings_storage_default_folder_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_settings
+    ADD CONSTRAINT directus_settings_storage_default_folder_foreign FOREIGN KEY (storage_default_folder) REFERENCES public.directus_folders(id) ON DELETE SET NULL;
+
+
+--
+-- Name: directus_shares directus_shares_collection_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_shares
+    ADD CONSTRAINT directus_shares_collection_foreign FOREIGN KEY (collection) REFERENCES public.directus_collections(collection) ON DELETE CASCADE;
+
+
+--
+-- Name: directus_shares directus_shares_role_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_shares
+    ADD CONSTRAINT directus_shares_role_foreign FOREIGN KEY (role) REFERENCES public.directus_roles(id) ON DELETE CASCADE;
+
+
+--
+-- Name: directus_shares directus_shares_user_created_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_shares
+    ADD CONSTRAINT directus_shares_user_created_foreign FOREIGN KEY (user_created) REFERENCES public.directus_users(id) ON DELETE SET NULL;
+
+
+--
+-- Name: directus_users directus_users_role_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_users
+    ADD CONSTRAINT directus_users_role_foreign FOREIGN KEY (role) REFERENCES public.directus_roles(id) ON DELETE SET NULL;
+
+
+--
+-- Name: directus_versions directus_versions_collection_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_versions
+    ADD CONSTRAINT directus_versions_collection_foreign FOREIGN KEY (collection) REFERENCES public.directus_collections(collection) ON DELETE CASCADE;
+
+
+--
+-- Name: directus_versions directus_versions_user_created_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_versions
+    ADD CONSTRAINT directus_versions_user_created_foreign FOREIGN KEY (user_created) REFERENCES public.directus_users(id) ON DELETE SET NULL;
+
+
+--
+-- Name: directus_versions directus_versions_user_updated_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_versions
+    ADD CONSTRAINT directus_versions_user_updated_foreign FOREIGN KEY (user_updated) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: directus_webhooks directus_webhooks_migrated_flow_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.directus_webhooks
+    ADD CONSTRAINT directus_webhooks_migrated_flow_foreign FOREIGN KEY (migrated_flow) REFERENCES public.directus_flows(id) ON DELETE SET NULL;
+
+
+--
+-- Name: dojos dojos_logo_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.dojos
+    ADD CONSTRAINT dojos_logo_foreign FOREIGN KEY (logo) REFERENCES public.directus_files(id) ON DELETE SET NULL;
+
+
+--
+-- Name: downloads_files downloads_files_directus_files_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.downloads_files
+    ADD CONSTRAINT downloads_files_directus_files_id_foreign FOREIGN KEY (directus_files_id) REFERENCES public.directus_files(id) ON DELETE CASCADE;
+
+
+--
+-- Name: downloads_files downloads_files_downloads_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.downloads_files
+    ADD CONSTRAINT downloads_files_downloads_id_foreign FOREIGN KEY (downloads_id) REFERENCES public.downloads(id) ON DELETE CASCADE;
+
+
+--
+-- Name: events events_user_created_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.events
+    ADD CONSTRAINT events_user_created_foreign FOREIGN KEY (user_created) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: events events_user_updated_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.events
+    ADD CONSTRAINT events_user_updated_foreign FOREIGN KEY (user_updated) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: imprint imprint_user_created_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.imprint
+    ADD CONSTRAINT imprint_user_created_foreign FOREIGN KEY (user_created) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: imprint imprint_user_updated_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.imprint
+    ADD CONSTRAINT imprint_user_updated_foreign FOREIGN KEY (user_updated) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: privacy privacy_user_created_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.privacy
+    ADD CONSTRAINT privacy_user_created_foreign FOREIGN KEY (user_created) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: privacy privacy_user_updated_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.privacy
+    ADD CONSTRAINT privacy_user_updated_foreign FOREIGN KEY (user_updated) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: settings settings_favicon_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.settings
+    ADD CONSTRAINT settings_favicon_foreign FOREIGN KEY (favicon) REFERENCES public.directus_files(id) ON DELETE SET NULL;
+
+
+--
+-- Name: settings settings_logo_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.settings
+    ADD CONSTRAINT settings_logo_foreign FOREIGN KEY (logo) REFERENCES public.directus_files(id) ON DELETE SET NULL;
+
+
+--
+-- Name: settings settings_user_created_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.settings
+    ADD CONSTRAINT settings_user_created_foreign FOREIGN KEY (user_created) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: settings settings_user_updated_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.settings
+    ADD CONSTRAINT settings_user_updated_foreign FOREIGN KEY (user_updated) REFERENCES public.directus_users(id);
+
+
+--
+-- Name: speaker speaker_image_foreign; Type: FK CONSTRAINT; Schema: public; Owner: nmadauss
+--
+
+ALTER TABLE ONLY public.speaker
+    ADD CONSTRAINT speaker_image_foreign FOREIGN KEY (image) REFERENCES public.directus_files(id) ON DELETE SET NULL;
 
 
 --
