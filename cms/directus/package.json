@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx directus start",
+    "dev": "npx directus start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "install-db": "cd ../db-files && bash ./install-database.sh postgres postgres 127.0.0.1 5432",
     "postinstall-db": "npx directus database migrate:latest",
