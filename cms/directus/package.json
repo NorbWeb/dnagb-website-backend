@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "npx directus start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install-db": "cd ../db-files && bash ./install-database.sh postgres postgres 127.0.0.1 5432",
-    "postinstall-db": "npx directus database migrate:latest",
+    "install": "cd ../db-files && bash ./install-database.sh postgres postgres 127.0.0.1 5432",
+    "postinstall": "npx directus database migrate:latest && npx directus start",
     "dump-db": "cd ../db-files && bash ./dump-database.sh postgres postgres 127.0.0.1 5432",
     "migrate": "npx directus database migrate:latest",
     "postmigrate": "npx directus start"
