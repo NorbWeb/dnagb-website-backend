@@ -1,4 +1,3 @@
-version: '3'
 services:
   db:
     image: kartoza/postgis:15-3.3
@@ -18,3 +17,24 @@ services:
     restart: unless-stopped
     ports:
       - 5401:8080
+
+  # directus:
+  #     image: directus/directus:latest
+  #     restart: unless-stopped
+  #     ports:
+  #       - 8055:8055
+  #     environment:
+  #       DB_CLIENT: 'pg'
+  #       DB_HOST: 'db'
+  #       DB_PORT: '5432'
+  #       DB_DATABASE: 'dnagb'
+  #       DB_USER: 'nmadauss'
+  #       DB_PASSWORD: 'fady_mist_traumas_phthaleins'
+  #       ADMIN_EMAIL: 'admin@example.com'
+  #       ADMIN_PASSWORD: 'admin_password'
+  #       SECRET: 'TS-EZ5tIAiZhcn4v8oo6sjwoDJ7kyj-V'
+  #       # KEY: 'D7WT5-5BYVZ-JB63Q-SCWH3-TT4B0'
+  #     volumes:
+  #       - ./cms-data:/directus/uploads
+  #     depends_on:
+  #       - db
