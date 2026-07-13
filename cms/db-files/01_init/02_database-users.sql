@@ -9,4 +9,4 @@ CREATE ROLE nmadauss WITH
 	CONNECTION LIMIT -1
 	PASSWORD 'fady_mist_traumas_phthaleins';
 	
-ALTER DATABASE dnagb OWNER TO nmadauss;
+ALTER DATABASE dnagb2 OWNER TO nmadauss;

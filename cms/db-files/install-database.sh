@@ -10,7 +10,7 @@ PGOPTIONS="-q"
 
 CONNECTIONSTRING="postgresql://$USER:$PASSWORD@$HOST:$PORT"
 
-APPDB='dnagb'
+APPDB='dnagb2'
 
 DBINIT='./01_init'
 APPFOLDER='./02_app-data'
