@@ -10,7 +10,7 @@ SET client_encoding = 'UTF8';
 --SET client_min_messages = error;
 --SET row_security = off;
 
-DROP DATABASE IF EXISTS dnagb2 WITH (FORCE);
-CREATE DATABASE dnagb2 WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'C.UTF-8';
+DROP DATABASE IF EXISTS dnagb WITH (FORCE);
+CREATE DATABASE dnagb WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'C.UTF-8';
 
 

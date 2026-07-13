@@ -5,7 +5,7 @@ PORT=$4
 
 CONNECTIONSTRING="postgresql://$USER:$PASSWORD@$HOST:$PORT"
 
-APPDB='dnagb2'
+APPDB='dnagb'
 
 echo "$(date -u) SQL - Dump DB $CONNECTIONSTRING/$APPDB"
 pg_dump --column-inserts $CONNECTIONSTRING/$APPDB > "complete_db.sql"
